@@ -265,17 +265,18 @@
 
     /* Feature pills */
     .hero-features {
-      display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px;
+      display:flex; flex-wrap:nowrap; gap:8px; margin-bottom:34px;
     }
     .hero-feat {
-      display:inline-flex; align-items:center; gap:9px;
-      padding:11px 18px;
+      display:inline-flex; align-items:center; gap:7px;
+      padding:9px 13px;
       background:#fff;
       border:1.5px solid #e3ebf6; border-radius:14px;
-      font-size:.85rem; font-weight:600; color:#1a2944;
+      font-size:.78rem; font-weight:600; color:#1a2944;
       box-shadow:0 3px 10px rgba(1,54,107,.04);
+      white-space:nowrap;
     }
-    .hero-feat svg { width:18px; height:18px; stroke:var(--blue); flex-shrink:0; }
+    .hero-feat svg { width:16px; height:16px; stroke:var(--blue); flex-shrink:0; }
 
     /* Stats card bianca dentro hero — overlap bottom */
     .hero-stats-card {
@@ -306,19 +307,35 @@
     .hero-stat-n { font-size:2.1rem; font-weight:900; color:var(--red); line-height:1; }
     .hero-stat-l { font-size:.92rem; color:#3a4a66; font-weight:500; margin-top:4px; }
 
-    /* ===== HERO MASCOT — statica, piccola ===== */
+    /* ===== HERO MASCOT — sovrapposta alla stats card ===== */
     .hero-mascot-col {
       display:flex; align-items:flex-end; justify-content:center;
       position:relative;
-      align-self:end;
+      align-self:stretch;
+      overflow:visible;
+      z-index:10;
     }
     .mascot-wrapper {
-      position:relative;
-      display:flex; justify-content:center;
-      z-index:2;
+      position:absolute;
+      bottom:-20px;
+      display:flex; flex-direction:column; align-items:center;
+      z-index:10;
+    }
+    .mascot-cta-text {
+      background:var(--white);
+      color:blu;
+      font-size:.82rem; font-weight:700;
+      padding:9px 20px;
+      border-radius:50px;
+      margin-bottom:12px;
+      line-height: 1.35;
+      max-width: 230px;
+      display: inline-block;
+      text-align: center;
+      box-shadow:0 4px 14px rgba(28,41,53,.28);
     }
     .mascot-hero {
-      height:430px; width:auto;
+      height:340px; width:auto;
       display:block; position:relative; z-index:2;
       filter:drop-shadow(0 18px 32px rgba(0,0,0,.28));
     }
@@ -714,18 +731,17 @@
       <div class="hero-txt">
         <div class="hero-badge">
           <span class="pulse"></span>
-          Latina e Provincia &mdash; Attivi dal 2008
+          Lazio e dintorni &mdash; 25+ anni di esperienza
         </div>
         <h1 class="hero-title">
-          Termoidraulica,<br>
-          <span class="line-red">climatizzazione</span><br>
-          e <span class="line-red">fotovoltaico</span><br>
+          Impianti <span class="line-red">Termoidraulici</span><br>
+          e <span class="line-red">Fotovoltaici</span><br>
           per una casa<br>
           più confortevole.
         </h1>
         <p class="hero-sub">
           Soluzioni su misura per il benessere della tua famiglia,
-          con materiali certificati e assistenza garantita nel tempo.
+          con offerte chiavi in mano e assistenza garantita nel tempo.
         </p>
         <div class="hero-ctas">
           <a href="#preventivo" class="btn btn-red">
@@ -741,11 +757,11 @@
         <div class="hero-features">
           <div class="hero-feat">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Attivi dal 2008
+            25+ anni di esperienza
           </div>
           <div class="hero-feat">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
-            Materiali certificati
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Offerte chiavi in mano
           </div>
           <div class="hero-feat">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg>
@@ -757,6 +773,7 @@
       <!-- Mascotte destra -->
       <div class="hero-mascot-col">
         <div class="mascot-wrapper">
+          <div class="mascot-cta-text">Cosa aspetti?<br>Richiedi un preventivo!</div>
           <img
             src="assets/matra.png"
             alt="Mascotte Matra Energy"

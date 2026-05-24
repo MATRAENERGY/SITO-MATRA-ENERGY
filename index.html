@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Matra Energy SRL – Specialisti in termoidraulica, impianti fotovoltaici e climatizzazione a Latina e provincia. Preventivo gratuito.">
+  <title>Matra Energy SRL – Termoidraulica & Fotovoltaico | Latina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+    /* ===================================================
+       PALETTE — solo bianco, blu, rosso e varianti dirette
+       =================================================== */
+    :root {
+      --white:      #ffffff;
+      --blue:       #01366b;
+      --blue-mid:   #1a5490;   /* blu più chiaro — variante */
+      --blue-light: #3a74b0;   /* blu medio */
+      --blue-bg:    #eef4fa;   /* sfondo sezione chiara — tinta blu chiarissima */
+      --blue-dark:  #012554;   /* blu più scuro */
+      --blue-xdark: #010e20;   /* quasi nero-blu per sfondi profondi */
+      --red:        #ed2613;
+      --red-dark:   #c41e10;   /* rosso scuro hover */
+      --red-tint:   rgba(237,38,19,.1);
+
+      /* Testo */
+      --txt-on-light:  #01366b;
+      --txt-sub-light: #3a6890;
+      --txt-muted-light: #7aaacf;
+      --txt-on-dark:   #ffffff;
+      --txt-sub-dark:  rgba(255,255,255,.75);
+      --txt-muted-dark: rgba(255,255,255,.45);
+
+      /* Bordi */
+      --bd-light: rgba(1,54,107,.12);
+      --bd-dark:  rgba(255,255,255,.12);
+      --bd-red:   rgba(237,38,19,.3);
+
+      --r:    12px;
+      --r2:   20px;
+      --ease: cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; scroll-padding-top:106px; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--txt-on-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== UTILS ===== */
+    .container { max-width:1180px; margin:0 auto; padding:0 24px; }
+    .section   { padding:96px 0; }
+
+    /* tag/badge label */
+    .tag {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:.7rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--red);
+      padding:5px 14px;
+      background: var(--red-tint);
+      border:1px solid var(--bd-red);
+      border-radius:50px; margin-bottom:14px;
+    }
+    .tag.on-dark { color:#fff; background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.25); }
+
+    .section-title {
+      font-size: clamp(1.7rem,3.8vw,2.7rem);
+      font-weight:800; line-height:1.18; margin-bottom:14px;
+      color: var(--txt-on-light);
+    }
+    .section-title span { color:var(--red); }
+    .section-title.white { color:var(--white); }
+    .section-title.white span { color:var(--red); }
+
+    .subtitle {
+      font-size:1rem; color:var(--txt-sub-light);
+      max-width:580px; line-height:1.78;
+    }
+    .subtitle.white { color:var(--txt-sub-dark); }
+
+    /* Buttons */
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 26px; border-radius:9px;
+      font-family:'Poppins',sans-serif; font-size:.93rem;
+      font-weight:600; text-decoration:none; cursor:pointer;
+      border:none; transition:.27s var(--ease);
+    }
+    .btn-blue  { background:var(--blue); color:var(--white); }
+    .btn-blue:hover  { background:var(--blue-mid); transform:translateY(-2px); box-shadow:0 8px 24px rgba(1,54,107,.35); }
+    .btn-red   { background:var(--red); color:var(--white); }
+    .btn-red:hover   { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(237,38,19,.35); }
+    .btn-outline-white {
+      background:transparent; color:var(--white);
+      border:2px solid rgba(255,255,255,.55);
+    }
+    .btn-outline-white:hover {
+      background:rgba(255,255,255,.1); border-color:var(--white);
+      transform:translateY(-2px);
+    }
+    .btn-outline-blue {
+      background:transparent; color:var(--blue);
+      border:2px solid var(--blue);
+    }
+    .btn-outline-blue:hover {
+      background:var(--blue-bg); transform:translateY(-2px);
+    }
+
+    /* Scroll animation */
+    .f-up    { opacity:0; transform:translateY(36px); transition:opacity .7s ease,transform .7s ease; }
+    .f-left  { opacity:0; transform:translateX(-34px); transition:opacity .7s ease,transform .7s ease; }
+    .f-right { opacity:0; transform:translateX(34px);  transition:opacity .7s ease,transform .7s ease; }
+    .f-up.on,.f-left.on,.f-right.on { opacity:1; transform:none; }
+
+
+    /* ===================== NAVBAR ===================== */
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:999;
+      background:var(--white);
+      border-bottom:1px solid var(--bd-light);
+      padding:0; transition:box-shadow .3s, border-color .3s;
+    }
+    .nav.scrolled {
+      box-shadow:0 4px 20px rgba(1,54,107,.12);
+      border-bottom-color:transparent;
+    }
+    .nav-inner {
+      display:flex; align-items:center; justify-content:space-between;
+      max-width:1180px; margin:0 auto; padding:0 24px;
+      height:106px;
+    }
+
+    /* logo-testo nei colori originali su sfondo bianco */
+    .nav-logo {
+      display:inline-flex; align-items:center;
+      text-decoration:none;
+      transition:opacity .2s;
+    }
+    .nav-logo:hover { opacity:.8; }
+    .nav-logo img { height:90px; width:auto; display:block; object-fit:contain; }
+
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links a {
+      font-size:.85rem; font-weight:600; color:var(--blue);
+      text-decoration:none; transition:color .22s; position:relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-3px; left:0;
+      width:0; height:2px; background:var(--red); transition:width .22s;
+    }
+    .nav-links a:hover { color:var(--red); }
+    .nav-links a:hover::after { width:100%; }
+
+    .nav-cta { padding:9px 20px; font-size:.85rem; }
+
+    /* Hamburger */
+    .ham {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:4px;
+    }
+    .ham span { display:block; width:22px; height:2px; background:var(--blue); transition:.28s var(--ease); }
+    .ham.on span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .ham.on span:nth-child(2) { opacity:0; }
+    .ham.on span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* Mobile overlay */
+    .mob-menu {
+      display:none; position:fixed; inset:0;
+      background:var(--blue-dark); z-index:998;
+      flex-direction:column; align-items:center; justify-content:center; gap:28px;
+    }
+    .mob-menu.on { display:flex; }
+    .mob-menu a {
+      font-size:1.45rem; font-weight:700; color:#fff;
+      text-decoration:none; transition:color .2s;
+    }
+    .mob-menu a:hover { color:var(--red); }
+
+
+    /* ===================== HERO ===================== */
+    .hero {
+      background:var(--white);
+      min-height:100vh;
+      display:flex; align-items:center;
+      position:relative; overflow:hidden;
+      padding-top:106px;
+    }
+
+    /* Sfondo geometrico leggero — variante bianco/blu */
+    .hero-bg {
+      position:absolute; inset:0; pointer-events:none;
+    }
+    .hero-bg-pattern {
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(1,54,107,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(1,54,107,.04) 1px, transparent 1px);
+      background-size:50px 50px;
+    }
+    .hero-bg-glow {
+      position:absolute; right:-10%; top:-5%; width:55%; height:110%;
+      background:radial-gradient(ellipse, rgba(1,54,107,.07) 0%, transparent 68%);
+    }
+
+    /* Layout hero: 2 colonne */
+    .hero-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:40px; align-items:center;
+      position:relative; z-index:1;
+      padding:56px 0 60px;
+    }
+
+    /* Testo lato sinistro */
+    .hero-txt .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 15px;
+      background:var(--red-tint);
+      border:1px solid var(--bd-red); border-radius:50px;
+      font-size:.72rem; font-weight:700; color:var(--red);
+      letter-spacing:.09em; text-transform:uppercase; margin-bottom:24px;
+    }
+    .pulse { width:7px; height:7px; background:var(--red); border-radius:50%; animation:pulseAnim 1.9s infinite; }
+    @keyframes pulseAnim { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.7);opacity:.35} }
+
+    .hero-title {
+      font-size:clamp(2.2rem,5.2vw,3.8rem);
+      font-weight:900; line-height:1.08; letter-spacing:-.025em;
+      color:var(--blue); margin-bottom:20px;
+    }
+    .hero-title .line-red { color:var(--red); display:block; }
+
+    .hero-sub {
+      font-size:clamp(.95rem,1.7vw,1.1rem);
+      color:var(--txt-sub-light); max-width:480px;
+      margin-bottom:34px; line-height:1.78;
+    }
+    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
+
+    .hero-kpis { display:flex; flex-wrap:wrap; }
+    .hero-kpi {
+      padding:0 28px 0 0; margin-right:28px;
+      border-right:1px solid var(--bd-light);
+    }
+    .hero-kpi:last-child { border:none; padding:0; margin:0; }
+    .hero-kpi-n { font-size:1.45rem; font-weight:900; color:var(--red); line-height:1; }
+    .hero-kpi-l { font-size:.68rem; color:var(--txt-muted-light); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-top:3px; }
+
+    /* ===== HERO MASCOT AREA — redesign ===== */
+    .hero-mascot-col {
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      position:relative; padding-bottom:10px;
+    }
+
+    /* Blob luce blu dietro la mascotte */
+    .hero-mascot-col::before {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 50% 58%, rgba(1,54,107,.09) 0%, rgba(1,54,107,.035) 52%, transparent 74%);
+      pointer-events:none; z-index:0;
+    }
+    /* Onda curva alla base che "abbraccia" la mascotte */
+    .hero-mascot-col::after {
+      content:''; position:absolute;
+      bottom:0; left:-12%; right:-12%; height:46%;
+      background:radial-gradient(ellipse at 50% 100%, rgba(1,54,107,.08) 0%, rgba(1,54,107,.03) 60%, transparent 80%);
+      border-radius:58% 58% 0 0 / 38% 38% 0 0;
+      pointer-events:none; z-index:0;
+    }
+
+    /* Wrapper: mascotte + fumetto animano insieme */
+    .mascot-wrapper {
+      position:relative;
+      display:flex; flex-direction:column; align-items:center;
+      padding-top:80px;
+      z-index:2;
+      animation:mascotFloat 5.5s ease-in-out infinite;
+    }
+
+    /* Speech bubble sopra la testa */
+    .mascot-speech {
+      position:absolute;
+      top:0; left:50%;
+      transform:translateX(-30%);
+      background:var(--white);
+      color:var(--blue);
+      font-size:.88rem; font-weight:700; line-height:1.4;
+      padding:11px 18px;
+      border-radius:16px;
+      border:2.5px solid var(--blue);
+      box-shadow:0 8px 30px rgba(1,54,107,.20);
+      white-space:nowrap; z-index:3;
+    }
+    /* Coda fumetto — esterno (bordo blu) */
+    .mascot-speech::after {
+      content:''; position:absolute;
+      bottom:-18px; left:32px;
+      width:0; height:0;
+      border-left:9px solid transparent;
+      border-right:9px solid transparent;
+      border-top:18px solid var(--blue);
+    }
+    /* Coda fumetto — interno (riempimento bianco) */
+    .mascot-speech::before {
+      content:''; position:absolute;
+      bottom:-13px; left:33px;
+      width:0; height:0;
+      border-left:8px solid transparent;
+      border-right:8px solid transparent;
+      border-top:13px solid var(--white);
+      z-index:4;
+    }
+
+    /* Immagine mascotte — alta 470px, sfuma in basso */
+    .mascot-hero {
+      height:470px; width:auto;
+      display:block; position:relative; z-index:2;
+      -webkit-mask-image:linear-gradient(to bottom, black 80%, transparent 100%);
+      mask-image:linear-gradient(to bottom, black 80%, transparent 100%);
+      filter:drop-shadow(0 22px 42px rgba(1,54,107,.18));
+    }
+
+    /* Ombra sul pavimento */
+    .mascot-floor-shadow {
+      width:230px; height:22px;
+      background:radial-gradient(ellipse, rgba(1,54,107,.30) 0%, transparent 70%);
+      border-radius:50%;
+      margin-top:-10px;
+      position:relative; z-index:1;
+      animation:shadowPulse 5.5s ease-in-out infinite;
+      flex-shrink:0;
+    }
+
+    @keyframes mascotFloat {
+      0%,100% { transform:translateY(0)     rotate(-.3deg); }
+      50%      { transform:translateY(-22px) rotate(.3deg);  }
+    }
+    @keyframes shadowPulse {
+      0%,100% { transform:scaleX(1);    opacity:.75; }
+      50%      { transform:scaleX(.70); opacity:.28; }
+    }
+
+    .scroll-hint {
+      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:7px;
+      color:var(--txt-muted-light); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+    }
+    .scroll-line {
+      width:1px; height:34px;
+      background:linear-gradient(to bottom,var(--red),transparent);
+      animation:sLine 2s infinite;
+    }
+    @keyframes sLine { 0%{opacity:1;transform:scaleY(1)} 100%{opacity:0;transform:scaleY(.15)} }
+
+
+    /* ===================== STATS ===================== */
+    .stats {
+      background:var(--blue);
+      padding:72px 0;
+    }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+    .stat { text-align:center; padding:36px 24px; position:relative; }
+    .stat + .stat::before {
+      content:''; position:absolute; left:0; top:20%; height:60%;
+      width:1px; background:var(--bd-dark);
+    }
+    .stat-n { font-size:clamp(2.2rem,4.5vw,3.1rem); font-weight:900; color:var(--red); line-height:1; letter-spacing:-.025em; margin-bottom:7px; }
+    .stat-l { font-size:.8rem; color:#fff; font-weight:600; text-transform:uppercase; letter-spacing:.07em; }
+    .stat-d { font-size:.73rem; color:var(--txt-muted-dark); margin-top:3px; }
+
+
+    /* ===================== CHI SIAMO ===================== */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .about-list { list-style:none; margin:24px 0 30px; display:flex; flex-direction:column; gap:13px; }
+    .about-list li { display:flex; align-items:flex-start; gap:11px; font-size:.92rem; color:var(--txt-sub-light); }
+    .about-icon { color:var(--red); font-size:.75rem; min-width:18px; margin-top:4px; font-weight:900; }
+    .about-list strong { color:var(--blue); }
+    .img-ph {
+      aspect-ratio:4/3; background:var(--blue-bg);
+      border:1px solid var(--bd-light); border-radius:var(--r2);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:14px; padding:36px; text-align:center; position:relative; overflow:hidden;
+    }
+    .img-ph::before {
+      content:''; position:absolute; inset:0;
+      background:repeating-linear-gradient(45deg,transparent,transparent 14px,rgba(1,54,107,.025) 14px,rgba(1,54,107,.025) 15px);
+    }
+    .img-ph-icon { font-size:2.8rem; opacity:.25; }
+    .img-ph-txt { font-size:.8rem; line-height:1.55; color:var(--txt-sub-light); font-style:italic; opacity:.75; position:relative; }
+    .img-ph-txt strong { color:var(--red); font-style:normal; display:block; margin-bottom:5px; }
+
+
+    /* ===================== SERVIZI ===================== */
+    .services { background:var(--blue-bg); }
+    .services-head { text-align:center; margin-bottom:56px; }
+    .services-head .subtitle { margin:0 auto; }
+    .services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .svc {
+      background:var(--white); border:1px solid var(--bd-light);
+      border-radius:var(--r2); padding:34px 28px;
+      transition:.3s var(--ease); position:relative; overflow:hidden;
+    }
+    .svc::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:var(--red); transform:scaleX(0); transition:transform .3s var(--ease);
+    }
+    .svc:hover { border-color:rgba(237,38,19,.3); transform:translateY(-7px); box-shadow:0 22px 50px rgba(1,54,107,.12); }
+    .svc:hover::before { transform:scaleX(1); }
+    .svc-ico {
+      width:54px; height:54px; background:var(--red-tint);
+      border:1px solid var(--bd-red); border-radius:13px;
+      display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+    }
+    .svc-ico svg { width:26px; height:26px; stroke:var(--red); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .svc h3 { font-size:1.1rem; font-weight:700; margin-bottom:10px; color:var(--blue); }
+    .svc p  { font-size:.87rem; color:var(--txt-sub-light); line-height:1.7; }
+    .svc-link {
+      display:inline-flex; align-items:center; gap:5px;
+      margin-top:18px; font-size:.82rem; font-weight:600;
+      color:var(--red); text-decoration:none; transition:gap .22s;
+    }
+    .svc-link:hover { gap:9px; }
+
+
+    /* ===================== PORTFOLIO ===================== */
+    .portfolio-head { text-align:center; margin-bottom:54px; }
+    .portfolio-head .subtitle { margin:0 auto; }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .p-item { border-radius:var(--r); overflow:hidden; aspect-ratio:4/3; position:relative; cursor:pointer; }
+    .p-ph {
+      width:100%; height:100%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:24px; text-align:center; position:relative;
+    }
+    .p-cat {
+      position:absolute; top:11px; left:11px;
+      background:rgba(1,54,107,.65); backdrop-filter:blur(8px);
+      color:#fff; font-size:.67rem; font-weight:700;
+      text-transform:uppercase; letter-spacing:.09em;
+      padding:4px 10px; border-radius:5px;
+    }
+    .p-advice { font-size:.77rem; color:rgba(255,255,255,.78); line-height:1.5; font-style:italic; text-shadow:0 1px 6px rgba(0,0,0,.6); max-width:190px; }
+    .p-advice strong { color:#fff; font-style:normal; display:block; margin-bottom:5px; font-size:.8rem; }
+    .p-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); transition:background .28s; }
+    .p-item:hover .p-overlay { background:rgba(1,54,107,.4); }
+
+
+    /* ===================== RECENSIONI ===================== */
+    .reviews { background:var(--blue); }
+    .reviews-head { text-align:center; margin-bottom:54px; }
+    .reviews-head .subtitle { margin:0 auto; }
+    .c-slide { display:none; padding:0 60px; }
+    .c-slide.on { display:block; animation:fadeSlide .42s ease both; }
+    @keyframes fadeSlide { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+    .review-card {
+      background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--r2); padding:44px 48px;
+      max-width:740px; margin:0 auto; position:relative;
+    }
+    .review-q { position:absolute; top:24px; left:36px; font-size:5.5rem; color:var(--red); opacity:.22; line-height:1; font-family:Georgia,serif; }
+    .stars { display:flex; gap:3px; margin-bottom:18px; }
+    .star { color:var(--red); font-size:.95rem; }
+    .review-txt { font-size:1rem; color:var(--txt-sub-dark); line-height:1.82; font-style:italic; margin-bottom:26px; position:relative; z-index:1; }
+    .reviewer { display:flex; align-items:center; gap:13px; }
+    .rev-av {
+      width:46px; height:46px; border-radius:50%;
+      background:var(--red); color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:.95rem; flex-shrink:0;
+    }
+    .rev-name { font-weight:700; font-size:.97rem; color:#fff; }
+    .rev-role { font-size:.78rem; color:var(--txt-muted-dark); }
+    .c-controls { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:36px; }
+    .c-btn {
+      width:42px; height:42px; border-radius:50%;
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
+      color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.25s var(--ease);
+    }
+    .c-btn:hover { background:var(--red); border-color:var(--red); }
+    .c-dots { display:flex; gap:7px; }
+    .c-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.25); cursor:pointer; transition:.25s var(--ease); }
+    .c-dot.on { background:var(--red); width:22px; border-radius:4px; }
+
+
+    /* ===================== CTA / FORM ===================== */
+    .cta-section { background:var(--white); }
+    .cta-grid { display:grid; grid-template-columns:1fr 1.1fr; gap:80px; align-items:start; }
+
+    .cta-left h2 { font-size:clamp(1.7rem,3.3vw,2.35rem); font-weight:800; margin-bottom:14px; color:var(--blue); }
+    .cta-left h2 span { color:var(--red); }
+    .cta-left > p { color:var(--txt-sub-light); font-size:.97rem; margin-bottom:28px; line-height:1.72; }
+
+    .perks { list-style:none; display:flex; flex-direction:column; gap:11px; margin-bottom:36px; }
+    .perks li { display:flex; align-items:center; gap:10px; color:var(--txt-sub-light); font-size:.9rem; }
+    .perk-ico {
+      width:20px; height:20px; min-width:20px;
+      background:var(--red-tint); border:1px solid var(--bd-red);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      color:var(--red); font-size:.6rem; font-weight:700;
+    }
+
+    /* Mascotte piccola nella CTA */
+    .cta-mascot-row {
+      display:flex; align-items:flex-end; gap:14px; margin-top:8px;
+    }
+    .cta-mascot-img {
+      width:100px; flex-shrink:0;
+      filter:drop-shadow(0 6px 16px rgba(1,54,107,.15));
+      animation:mascotFloat 5.5s ease-in-out infinite;
+    }
+    .speech-bubble {
+      background:var(--blue-bg); border:1px solid var(--bd-light);
+      border-radius:16px 16px 16px 4px;
+      padding:12px 16px; font-size:.82rem; color:var(--txt-sub-light);
+      line-height:1.5; margin-bottom:16px;
+    }
+    .speech-bubble strong { color:var(--red); }
+
+    /* Form */
+    .form-card {
+      background:var(--white); border:1.5px solid var(--bd-light);
+      border-radius:var(--r2); padding:40px;
+      box-shadow:0 8px 40px rgba(1,54,107,.09);
+    }
+    .form-card h3 { font-size:1.25rem; font-weight:700; color:var(--blue); margin-bottom:3px; }
+    .form-card .sub { color:var(--txt-muted-light); font-size:.82rem; margin-bottom:26px; }
+    .fg { margin-bottom:18px; }
+    .fg label { display:block; font-size:.77rem; font-weight:600; color:var(--txt-sub-light); margin-bottom:7px; text-transform:uppercase; letter-spacing:.04em; }
+    .fg input, .fg select, .fg textarea {
+      width:100%; background:var(--blue-bg); border:1.5px solid var(--bd-light);
+      border-radius:8px; padding:11px 15px;
+      font-family:'Poppins',sans-serif; font-size:.88rem;
+      color:var(--blue); outline:none; transition:border-color .22s,box-shadow .22s;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color:var(--txt-muted-light); }
+    .fg input:focus,.fg select:focus,.fg textarea:focus {
+      border-color:var(--blue); box-shadow:0 0 0 3px rgba(1,54,107,.1);
+    }
+    .fg select {
+      cursor:pointer; appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233a6890' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 14px center;
+    }
+    .fg select option { background:var(--white); color:var(--blue); }
+    .fg textarea { resize:vertical; min-height:96px; }
+    .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .fg-row .fg { margin-bottom:0; }
+    .btn-submit { width:100%; justify-content:center; padding:14px; font-size:.97rem; font-weight:700; margin-top:4px; }
+    .form-note { font-size:.72rem; color:var(--txt-muted-light); text-align:center; margin-top:10px; }
+    .form-ok { display:none; text-align:center; padding:36px 20px; }
+    .form-ok.show { display:block; }
+    .ok-ico {
+      width:62px; height:62px; border-radius:50%;
+      background:var(--red-tint); border:2px solid var(--red);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.7rem; margin:0 auto 14px;
+    }
+    .form-ok h4 { font-size:1.15rem; font-weight:700; color:var(--red); margin-bottom:7px; }
+    .form-ok p  { color:var(--txt-sub-light); font-size:.88rem; }
+
+
+    /* ===================== CONTATTI ===================== */
+    .contacts { background:var(--blue); }
+    .contacts-head { text-align:center; margin-bottom:52px; }
+    .contacts-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .ct {
+      background:rgba(255,255,255,.07); border:1px solid var(--bd-dark);
+      border-radius:var(--r); padding:30px 24px; text-align:center;
+      transition:.28s var(--ease);
+    }
+    .ct:hover { border-color:rgba(237,38,19,.5); transform:translateY(-5px); box-shadow:0 14px 35px rgba(0,0,0,.25); }
+    .ct-ico {
+      width:58px; height:58px; background:var(--red-tint);
+      border:1px solid var(--bd-red); border-radius:var(--r);
+      display:flex; align-items:center; justify-content:center; margin:0 auto 18px;
+    }
+    .ct-ico svg { width:24px; height:24px; stroke:var(--red); fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+    .ct h4 { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--txt-muted-dark); margin-bottom:8px; }
+    .ct a  { color:#fff; font-size:.92rem; font-weight:500; text-decoration:none; line-height:1.55; display:block; }
+    .ct a:hover { color:var(--red); }
+    .ct p  { color:var(--txt-sub-dark); font-size:.9rem; line-height:1.6; }
+    .wa-btn {
+      display:inline-flex; align-items:center; gap:7px;
+      margin-top:11px; padding:8px 15px; background:#25d366;
+      color:#fff; border-radius:7px; font-size:.78rem; font-weight:700;
+      text-decoration:none; transition:.22s var(--ease);
+    }
+    .wa-btn:hover { background:#1aad52; transform:translateY(-2px); color:#fff; }
+
+
+    /* ===================== FOOTER ===================== */
+    .footer { background:var(--blue-dark); padding:52px 0 28px; border-top:3px solid var(--red); }
+    .footer-top {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:44px;
+    }
+
+    /* logo-testo nel footer — bianco su sfondo scuro, nessun contenitore */
+    .f-logo-wrap {
+      display:inline-flex;
+      margin-bottom:18px;
+    }
+    .f-logo-wrap img {
+      width:260px; height:auto; display:block; object-fit:contain;
+      filter:brightness(0) invert(1);
+    }
+
+    .f-brand-desc { color:var(--txt-muted-dark); font-size:.84rem; line-height:1.7; max-width:260px; margin-bottom:20px; }
+
+    /* Social icons — sfondo bianco, icone blu, hover rosso */
+    .f-social { display:flex; gap:10px; margin-top:4px; }
+    .soc {
+      width:44px; height:44px;
+      background:var(--white); border:none;
+      border-radius:10px; display:flex; align-items:center; justify-content:center;
+      color:var(--blue); text-decoration:none;
+      transition:.25s var(--ease);
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
+    }
+    .soc:hover { background:var(--red); color:#fff; transform:translateY(-3px); box-shadow:0 6px 16px rgba(237,38,19,.35); }
+    .soc svg { width:18px; height:18px; fill:currentColor; }
+
+    .f-col h5 { font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--txt-muted-dark); margin-bottom:14px; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .f-links a { color:var(--txt-sub-dark); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    .f-links a:hover { color:var(--red); }
+
+    .f-bottom {
+      border-top:1px solid var(--bd-dark); padding-top:24px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+    .f-bottom p { font-size:.76rem; color:var(--txt-muted-dark); }
+
+    /* ===================== SCROLL TOP ===================== */
+    .go-top {
+      position:fixed; bottom:28px; right:28px;
+      width:42px; height:42px; background:var(--red); color:#fff;
+      border:none; border-radius:50%; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:translateY(16px); transition:.28s var(--ease);
+      z-index:90; box-shadow:0 4px 18px rgba(237,38,19,.4);
+    }
+    .go-top.show { opacity:1; transform:none; }
+    .go-top:hover { background:var(--red-dark); transform:translateY(-3px); }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media(max-width:1040px){
+      .hero-grid { grid-template-columns:1fr; }
+      .hero-txt  { text-align:center; }
+      .hero-sub  { margin-left:auto; margin-right:auto; }
+      .hero-ctas { justify-content:center; }
+      .hero-kpis { justify-content:center; }
+      .hero-mascot-col { order:-1; }
+      .mascot-hero { height:300px; }
+      .mascot-speech { font-size:.78rem; padding:9px 14px; }
+      .mascot-floor-shadow { width:170px; }
+      .services-grid  { grid-template-columns:repeat(2,1fr); }
+      .stats-grid     { grid-template-columns:repeat(2,1fr); }
+      .stat + .stat::before { display:none; }
+      .about-grid     { grid-template-columns:1fr; gap:44px; }
+      .cta-grid       { grid-template-columns:1fr; gap:44px; }
+      .contacts-grid  { grid-template-columns:repeat(2,1fr); }
+      .portfolio-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-top     { grid-template-columns:1fr 1fr; gap:36px; }
+    }
+    @media(max-width:768px){
+      .section { padding:68px 0; }
+      .nav-links,.nav-cta { display:none; }
+      .ham     { display:flex; }
+      .services-grid { grid-template-columns:1fr; }
+      .c-slide { padding:0 16px; }
+      .review-card { padding:28px 22px; }
+      .fg-row  { grid-template-columns:1fr; }
+      .footer-top { grid-template-columns:1fr; gap:28px; }
+      .f-bottom { flex-direction:column; text-align:center; }
+    }
+    @media(max-width:520px){
+      .portfolio-grid { grid-template-columns:1fr; }
+      .contacts-grid  { grid-template-columns:1fr; }
+      .hero-ctas .btn { justify-content:center; width:100%; }
+      .stats-grid     { grid-template-columns:1fr 1fr; }
+      .hero-kpi       { padding:0 18px 0 0; margin-right:18px; }
+      .hero-grid      { padding:44px 0 40px; }
+      .mascot-hero    { height:240px; }
+      .mascot-speech  { font-size:.72rem; padding:7px 11px; white-space:normal; max-width:190px; }
+      .mascot-floor-shadow { width:130px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+
+    <!-- logo solo testo — in contenitore bianco per leggibilità sul blu -->
+    <a href="#home" class="nav-logo" title="Matra Energy SRL">
+      <img
+        src="assets/logo-testo.svg"
+        alt="Matra Energy SRL"
+        onerror="this.src='assets/logo.png'; this.onerror=null;"
+      >
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#chi-siamo">Chi Siamo</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#progetti">Progetti</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <a href="#preventivo" class="btn btn-red nav-cta">Preventivo Gratuito</a>
+    <button class="ham" id="ham" aria-label="Apri menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#chi-siamo"  onclick="closeMenu()">Chi Siamo</a>
+  <a href="#servizi"    onclick="closeMenu()">Servizi</a>
+  <a href="#progetti"   onclick="closeMenu()">Progetti</a>
+  <a href="#recensioni" onclick="closeMenu()">Recensioni</a>
+  <a href="#contatti"   onclick="closeMenu()">Contatti</a>
+  <a href="#preventivo" class="btn btn-red" onclick="closeMenu()">Preventivo Gratuito</a>
+</div>
+
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-bg-glow"></div>
+  </div>
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Testo sinistra -->
+      <div class="hero-txt">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          Latina e Provincia &mdash; Attivi dal 2008
+        </div>
+        <h1 class="hero-title">
+          La tua casa.<br>
+          <span class="line-red">La nostra energia.</span>
+        </h1>
+        <p class="hero-sub">
+          Specialisti in termoidraulica, impianti fotovoltaici e climatizzazione nel Lazio.
+          Soluzioni su misura, materiali certificati e assistenza garantita nel tempo.
+        </p>
+        <div class="hero-ctas">
+          <a href="#preventivo" class="btn btn-red">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 0110.14 2h3a2 2 0 012 1.72 12.84 12.84 0 01.7 2.81 2 2 0 01-.45 1.67L16 8.5"/></svg>
+            Richiedi Preventivo
+          </a>
+          <a href="#servizi" class="btn btn-outline-blue">
+            Scopri i Servizi
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="hero-kpis">
+          <div class="hero-kpi">
+            <div class="hero-kpi-n">15+</div>
+            <div class="hero-kpi-l">Anni di Attività</div>
+          </div>
+          <div class="hero-kpi">
+            <div class="hero-kpi-n">500+</div>
+            <div class="hero-kpi-l">Progetti Completati</div>
+          </div>
+          <div class="hero-kpi">
+            <div class="hero-kpi-n">300+</div>
+            <div class="hero-kpi-l">Clienti Soddisfatti</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mascotte destra — protagonista del hero -->
+      <div class="hero-mascot-col">
+        <div class="mascot-wrapper">
+          <div class="mascot-speech">Richiedi il tuo<br>preventivo gratuito!</div>
+          <img
+            src="assets/mascotte.svg"
+            alt="Mascotte Matra Energy"
+            class="mascot-hero"
+            onerror="this.src='assets/mascotte.png'; this.onerror=null;"
+          >
+        </div>
+        <div class="mascot-floor-shadow"></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scorri</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+
+<!-- ===================== STATS ===================== -->
+<section class="stats" id="numeri">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat f-up">
+        <div class="stat-n"><span class="counter" data-t="15">0</span>+</div>
+        <div class="stat-l">Anni di Esperienza</div>
+        <div class="stat-d">nel settore termoidraulica</div>
+      </div>
+      <div class="stat f-up" style="transition-delay:.1s">
+        <div class="stat-n"><span class="counter" data-t="500">0</span>+</div>
+        <div class="stat-l">Progetti Realizzati</div>
+        <div class="stat-d">tra privati e imprese</div>
+      </div>
+      <div class="stat f-up" style="transition-delay:.2s">
+        <div class="stat-n"><span class="counter" data-t="300">0</span>+</div>
+        <div class="stat-l">Clienti Fidelizzati</div>
+        <div class="stat-d">in tutta la provincia pontina</div>
+      </div>
+      <div class="stat f-up" style="transition-delay:.3s">
+        <div class="stat-n"><span class="counter" data-t="1200">0</span>kW</div>
+        <div class="stat-l">Fotovoltaico Installato</div>
+        <div class="stat-d">di potenza totale cumulata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CHI SIAMO ===================== -->
+<section class="section" id="chi-siamo">
+  <div class="container">
+    <div class="about-grid">
+      <div class="f-left">
+        <span class="tag">Chi Siamo</span>
+        <h2 class="section-title">Passione e tecnica al<br><span>servizio del tuo benessere</span></h2>
+        <p class="subtitle">
+          Matra Energy SRL nasce a Latina con una missione chiara: portare soluzioni energetiche di qualità nelle case e nelle aziende del Lazio. Con oltre 15 anni di esperienza, il nostro team di tecnici certificati lavora ogni giorno per garantire efficienza, affidabilità e risparmio reale in bolletta.
+        </p>
+        <ul class="about-list">
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Tecnici certificati</strong> — il nostro personale è costantemente aggiornato su normative e nuove tecnologie.</span>
+          </li>
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Materiali di prima scelta</strong> — utilizziamo solo prodotti certificati dei principali produttori europei.</span>
+          </li>
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Assistenza post-intervento</strong> — supporto e manutenzione garantiti per tutta la vita dell'impianto.</span>
+          </li>
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Zona d'intervento</strong> — Latina, Aprilia, Terracina, Cisterna, Sabaudia e tutta la provincia pontina.</span>
+          </li>
+        </ul>
+        <a href="#preventivo" class="btn btn-blue">Contattaci Ora</a>
+      </div>
+      <div class="img-ph f-right">
+        <div class="img-ph-icon">🏗️</div>
+        <p class="img-ph-txt">
+          <strong>📸 Foto consigliata</strong>
+          Inserisci qui una foto professionale del team al lavoro su un cantiere, oppure un ritratto del titolare in uniforme aziendale. Formato ideale: 4:3, luce naturale, sfondo reale.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== SERVIZI ===================== -->
+<section class="section services" id="servizi">
+  <div class="container">
+    <div class="services-head f-up">
+      <span class="tag">I Nostri Servizi</span>
+      <h2 class="section-title">Tutto ciò di cui hai bisogno,<br><span>sotto un unico tetto</span></h2>
+      <p class="subtitle">Dal progetto alla messa in opera, seguiamo ogni fase con competenza e attenzione ai dettagli.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="svc f-up" style="transition-delay:.05s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        </div>
+        <h3>Termoidraulica</h3>
+        <p>Progettazione e installazione di impianti idraulici, riscaldamento e sanitari per abitazioni e complessi commerciali. Riparazioni urgenti e manutenzione programmata.</p>
+        <a href="#preventivo" class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc f-up" style="transition-delay:.1s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <h3>Impianti Fotovoltaici</h3>
+        <p>Installazione chiavi in mano di impianti fotovoltaici residenziali e industriali. Sistema di accumulo, monitoraggio remoto e gestione pratiche GSE inclusa.</p>
+        <a href="#preventivo" class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc f-up" style="transition-delay:.15s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1010 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
+        </div>
+        <h3>Climatizzazione</h3>
+        <p>Fornitura e installazione di climatizzatori monosplit, multisplit e canalizzati dei migliori brand. Ricarica gas refrigerante e manutenzione annuale.</p>
+        <a href="#preventivo" class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+      <div class="svc f-up" style="transition-delay:.2s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Manutenzione</h3>
+        <p>Contratti di manutenzione ordinaria e straordinaria per caldaie, impianti solari e climatizzatori. Interventi rapidi, ricambi originali e certificazioni obbligatorie.</p>
+        <a href="#preventivo" class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PORTFOLIO ===================== -->
+<section class="section" id="progetti">
+  <div class="container">
+    <div class="portfolio-head f-up">
+      <span class="tag">Portfolio Progetti</span>
+      <h2 class="section-title">I nostri <span>lavori realizzati</span></h2>
+      <p class="subtitle">Ogni progetto è una storia di fiducia e professionalità. Scopri alcuni dei nostri interventi più significativi a Latina e provincia.</p>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="p-item f-up" style="transition-delay:.05s">
+        <div class="p-ph" style="background:linear-gradient(135deg,#012554,#01366b,#011830)">
+          <span class="p-cat">Fotovoltaico</span><div class="p-overlay"></div>
+          <p class="p-advice"><strong>📸 Foto consigliata</strong>Vista aerea o dal tetto con pannelli fotovoltaici su villetta residenziale. Cielo azzurro, luce naturale. Valorizza la copertura completa del tetto.</p>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.1s">
+        <div class="p-ph" style="background:linear-gradient(135deg,#6e1108,#a51a0f,#400a06)">
+          <span class="p-cat">Termoidraulica</span><div class="p-overlay"></div>
+          <p class="p-advice"><strong>📸 Foto consigliata</strong>Locale tecnico con nuova caldaia a condensazione installata in modo ordinato. Tubazioni in rame ben fissate, marchio produttore visibile.</p>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.15s">
+        <div class="p-ph" style="background:linear-gradient(135deg,#011528,#1a5490,#00091a)">
+          <span class="p-cat">Climatizzazione</span><div class="p-overlay"></div>
+          <p class="p-advice"><strong>📸 Foto consigliata</strong>Split installato in soggiorno moderno o unità esterna su terrazzo. Preferisci foto after-installation con ambiente pulito e ben illuminato.</p>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.2s">
+        <div class="p-ph" style="background:linear-gradient(135deg,#021e40,#01366b,#010e20)">
+          <span class="p-cat">Impianto Industriale</span><div class="p-overlay"></div>
+          <p class="p-advice"><strong>📸 Foto consigliata</strong>Impianto fotovoltaico su capannone industriale. Mostra la scala dell'installazione, numero di pannelli e il dashboard di monitoraggio.</p>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.25s">
+        <div class="p-ph" style="background:linear-gradient(135deg,#5e0f07,#ed2613,#380906)">
+          <span class="p-cat">Ristrutturazione Bagno</span><div class="p-overlay"></div>
+          <p class="p-advice"><strong>📸 Foto consigliata</strong>Bagno ristrutturato con nuova rubinetteria e impianto idraulico rinnovato. Il confronto "prima e dopo" funziona molto bene qui.</p>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.3s">
+        <div class="p-ph" style="background:linear-gradient(135deg,#010e1e,#3a74b0,#000810)">
+          <span class="p-cat">Manutenzione</span><div class="p-overlay"></div>
+          <p class="p-advice"><strong>📸 Foto consigliata</strong>Tecnico in divisa Matra Energy durante manutenzione. Mostra professionalità: uniforme ordinata, attrezzatura a vista, cliente soddisfatto.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== RECENSIONI ===================== -->
+<section class="section reviews" id="recensioni">
+  <div class="container">
+    <div class="reviews-head f-up">
+      <span class="tag on-dark">Recensioni Clienti</span>
+      <h2 class="section-title white">Cosa dicono di <span>noi</span></h2>
+      <p class="subtitle white">La fiducia dei nostri clienti è il risultato del nostro impegno quotidiano verso la qualità.</p>
+    </div>
+    <div class="f-up">
+
+      <div class="c-slide on" id="slide-0">
+        <div class="review-card">
+          <div class="review-q">"</div>
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="review-txt">Ho chiamato Matra Energy per installare un impianto fotovoltaico sulla mia villetta a Latina. Dal sopralluogo al collaudo finale tutto è stato gestito in modo impeccabile. Il team è arrivato puntuale, ha lavorato in modo ordinato e mi ha spiegato ogni dettaglio. Adesso risparmio quasi il 70% sulla bolletta. Consigliatissimi!</p>
+          <div class="reviewer"><div class="rev-av">MR</div><div><div class="rev-name">Marco Rossi</div><div class="rev-role">Proprietario di casa, Latina</div></div></div>
+        </div>
+      </div>
+
+      <div class="c-slide" id="slide-1">
+        <div class="review-card">
+          <div class="review-q">"</div>
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="review-txt">Avevamo bisogno di rifare completamente l'impianto idraulico durante una ristrutturazione. Matra Energy ha fatto un lavoro straordinario: precisi, veloci e onesti nel preventivo — nessuna sorpresa finale. Il risultato è perfetto. Li richiamerò per il sistema di riscaldamento.</p>
+          <div class="reviewer"><div class="rev-av">LB</div><div><div class="rev-name">Laura Bianchi</div><div class="rev-role">Architetta, Aprilia</div></div></div>
+        </div>
+      </div>
+
+      <div class="c-slide" id="slide-2">
+        <div class="review-card">
+          <div class="review-q">"</div>
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="review-txt">Gestisco un'attività commerciale e avevo bisogno di climatizzazione seria. Matra Energy ha fatto sopralluogo gratuito, proposto la soluzione più adatta senza esagerare sui costi, e installato tutto in un fine settimana per non interrompere l'attività. Cinque stelle meritate.</p>
+          <div class="reviewer"><div class="rev-av">AC</div><div><div class="rev-name">Antonio Conti</div><div class="rev-role">Titolare ristorante, Terracina</div></div></div>
+        </div>
+      </div>
+
+      <div class="c-slide" id="slide-3">
+        <div class="review-card">
+          <div class="review-q">"</div>
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="review-txt">Caldaia rotta a dicembre, chiamata alle 8 e tecnico da me entro le 11. Problema risolto in meno di due ore con ricambio originale. Non pensavo fosse possibile un servizio così rapido. Ho subito sottoscritto il contratto di manutenzione annuale. Professionalità vera.</p>
+          <div class="reviewer"><div class="rev-av">GV</div><div><div class="rev-name">Giovanna Verdi</div><div class="rev-role">Residente, Cisterna di Latina</div></div></div>
+        </div>
+      </div>
+
+      <div class="c-slide" id="slide-4">
+        <div class="review-card">
+          <div class="review-q">"</div>
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="review-txt">Ho installato un impianto fotovoltaico da 6 kW con accumulo grazie a Matra Energy. Hanno gestito tutta la burocrazia con il GSE e le pratiche comunali, io non ho fatto nulla. Personale competente, sempre disponibile. È raro trovare un'azienda così seria. Li consiglio a tutti.</p>
+          <div class="reviewer"><div class="rev-av">FM</div><div><div class="rev-name">Fabio Marino</div><div class="rev-role">Imprenditore agricolo, Sabaudia</div></div></div>
+        </div>
+      </div>
+
+      <div class="c-controls">
+        <button class="c-btn" id="cPrev" aria-label="Precedente">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="c-dots" id="cDots">
+          <div class="c-dot on" data-i="0"></div>
+          <div class="c-dot"    data-i="1"></div>
+          <div class="c-dot"    data-i="2"></div>
+          <div class="c-dot"    data-i="3"></div>
+          <div class="c-dot"    data-i="4"></div>
+        </div>
+        <button class="c-btn" id="cNext" aria-label="Successivo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CTA / FORM ===================== -->
+<section class="section cta-section" id="preventivo">
+  <div class="container">
+    <div class="cta-grid">
+
+      <!-- Sinistra: testo + mascotte con fumetto -->
+      <div class="f-left">
+        <span class="tag">Preventivo Gratuito</span>
+        <h2>Inizia a risparmiare<br><span>già da oggi</span></h2>
+        <p>Compila il form: un nostro tecnico ti ricontatterà entro 24 ore per un sopralluogo gratuito e un preventivo senza impegno.</p>
+        <ul class="perks">
+          <li><span class="perk-ico">✓</span> Sopralluogo gratuito senza impegno</li>
+          <li><span class="perk-ico">✓</span> Preventivo dettagliato entro 24 ore</li>
+          <li><span class="perk-ico">✓</span> Consulenza su incentivi e detrazioni fiscali</li>
+          <li><span class="perk-ico">✓</span> Assistenza dalla progettazione al collaudo</li>
+          <li><span class="perk-ico">✓</span> Garanzia su materiali e manodopera</li>
+        </ul>
+
+        <!-- Mascotte decorativa con fumetto -->
+        <div class="cta-mascot-row">
+          <img
+            src="assets/mascotte.svg"
+            alt="Mascotte Matra Energy"
+            class="cta-mascot-img"
+            onerror="this.src='assets/mascotte.png'; this.onerror=null;"
+          >
+          <div class="speech-bubble">
+            <strong>Pronto ad aiutarti!</strong><br>
+            Compila il form e ti<br>ricontatto io entro 24 ore.
+          </div>
+        </div>
+      </div>
+
+      <!-- Destra: form -->
+      <div class="f-right">
+        <div class="form-card">
+          <h3>Contattaci Subito</h3>
+          <p class="sub">Risposta garantita entro 24 ore lavorative</p>
+          <form id="contactForm" novalidate>
+            <div class="fg-row">
+              <div class="fg">
+                <label for="nome">Nome e Cognome *</label>
+                <input type="text" id="nome" name="nome" placeholder="Mario Rossi" required>
+              </div>
+              <div class="fg">
+                <label for="telefono">Telefono *</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+39 333 1234567" required>
+              </div>
+            </div>
+            <div class="fg">
+              <label for="servizio">Servizio Richiesto *</label>
+              <select id="servizio" name="servizio" required>
+                <option value="" disabled selected>Seleziona un servizio</option>
+                <option value="termoidraulica">Termoidraulica</option>
+                <option value="fotovoltaico">Impianto Fotovoltaico</option>
+                <option value="climatizzazione">Climatizzazione</option>
+                <option value="manutenzione">Manutenzione</option>
+                <option value="altro">Altro / Non so ancora</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="messaggio">Descrivi la tua richiesta</label>
+              <textarea id="messaggio" name="messaggio" placeholder="Descrivi brevemente la tua esigenza o il problema riscontrato…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-red btn-submit">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Invia Richiesta
+            </button>
+            <p class="form-note">I tuoi dati sono al sicuro. Non riceverai spam.</p>
+          </form>
+          <div class="form-ok" id="formOk">
+            <div class="ok-ico">✓</div>
+            <h4>Richiesta inviata!</h4>
+            <p>Ti contatteremo entro 24 ore lavorative.<br>Grazie per aver scelto Matra Energy.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CONTATTI ===================== -->
+<section class="section contacts" id="contatti">
+  <div class="container">
+    <div class="contacts-head f-up">
+      <span class="tag on-dark">Contatti</span>
+      <h2 class="section-title white">Siamo sempre <span>a tua disposizione</span></h2>
+      <p class="subtitle white">Contattaci nel modo che preferisci. Rispondiamo rapidamente a qualsiasi richiesta.</p>
+    </div>
+    <div class="contacts-grid">
+
+      <div class="ct f-up" style="transition-delay:.05s">
+        <div class="ct-ico">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 0110.14 2h3a2 2 0 012 1.72 12.84 12.84 0 01.7 2.81 2 2 0 01-.45 1.67L16 8.5"/></svg>
+        </div>
+        <h4>Telefono &amp; WhatsApp</h4>
+        <a href="tel:+393247790045">+39 324 779 0045</a>
+        <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" class="wa-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Scrivici su WhatsApp
+        </a>
+      </div>
+
+      <div class="ct f-up" style="transition-delay:.1s">
+        <div class="ct-ico">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h4>Email</h4>
+        <a href="mailto:amministrazione@matraenergy.it">amministrazione@<br>matraenergy.it</a>
+      </div>
+
+      <div class="ct f-up" style="transition-delay:.15s">
+        <div class="ct-ico">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h4>Sede Operativa</h4>
+        <p>Strada Capograssa 544<br>04100 Latina (LT)<br>Lazio, Italia</p>
+      </div>
+
+      <div class="ct f-up" style="transition-delay:.2s">
+        <div class="ct-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>Orari</h4>
+        <p>Lun – Ven: 8:00 – 18:00<br>Sab: 8:00 – 13:00<br><span style="color:var(--red);font-size:.82rem">Urgenze 24/7 su WhatsApp</span></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand col: logo-testo + mascotte piccola + social -->
+      <div class="f-brand">
+        <div class="f-logo-wrap">
+          <img
+            src="assets/logo-testo.svg"
+            alt="Matra Energy SRL"
+            onerror="this.src='assets/logo.png'; this.onerror=null;"
+          >
+        </div>
+        <p class="f-brand-desc">Specialisti in termoidraulica, fotovoltaico e climatizzazione a Latina e in tutta la provincia pontina dal 2008.</p>
+
+        <div class="f-social">
+          <a href="https://facebook.com/matraenergy" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://instagram.com/matraenergy" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" class="soc" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h5>Servizi</h5>
+        <ul class="f-links">
+          <li><a href="#servizi">Termoidraulica</a></li>
+          <li><a href="#servizi">Impianti Fotovoltaici</a></li>
+          <li><a href="#servizi">Climatizzazione</a></li>
+          <li><a href="#servizi">Manutenzione</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Azienda</h5>
+        <ul class="f-links">
+          <li><a href="#chi-siamo">Chi Siamo</a></li>
+          <li><a href="#progetti">Progetti</a></li>
+          <li><a href="#recensioni">Recensioni</a></li>
+          <li><a href="#preventivo">Preventivo Gratuito</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Contatti</h5>
+        <ul class="f-links">
+          <li><a href="tel:+393247790045">+39 324 779 0045</a></li>
+          <li><a href="mailto:amministrazione@matraenergy.it">amministrazione@<br>matraenergy.it</a></li>
+          <li><a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank">WhatsApp</a></li>
+          <li style="color:var(--txt-muted-dark);font-size:.82rem;line-height:1.5;margin-top:4px">Strada Capograssa 544<br>04100 Latina (LT)</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="f-bottom">
+      <p>© 2024 Matra Energy SRL — Tutti i diritti riservati</p>
+      <p>P.IVA 03356610596 &nbsp;|&nbsp; Strada Capograssa 544, 04100 Latina (LT)</p>
+    </div>
+  </div>
+</footer>
+
+<button class="go-top" id="goTop" aria-label="Torna in cima">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+  /* Navbar scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 48), { passive: true });
+
+  /* Hamburger */
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('on');
+    mob.classList.toggle('on');
+    document.body.style.overflow = mob.classList.contains('on') ? 'hidden' : '';
+  });
+  function closeMenu(){ ham.classList.remove('on'); mob.classList.remove('on'); document.body.style.overflow = ''; }
+
+  /* Scroll animations */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.f-up,.f-left,.f-right').forEach(el => io.observe(el));
+
+  /* Counters */
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ runCounter(e.target); cio.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.counter').forEach(el => cio.observe(el));
+
+  function runCounter(el){
+    const t = +el.dataset.t, dur = 1800, step = t / (dur / 16);
+    let c = 0;
+    const iv = setInterval(() => {
+      c = Math.min(c + step, t);
+      el.textContent = Math.floor(c).toLocaleString('it-IT');
+      if(c >= t) clearInterval(iv);
+    }, 16);
+  }
+
+  /* Carousel */
+  let cur = 0;
+  const slides = document.querySelectorAll('.c-slide');
+  const dots   = document.querySelectorAll('.c-dot');
+  const n = slides.length;
+  let ap;
+  function goTo(i){
+    slides[cur].classList.remove('on'); dots[cur].classList.remove('on');
+    cur = (i + n) % n;
+    slides[cur].classList.add('on'); dots[cur].classList.add('on');
+  }
+  function resetAp(){ clearInterval(ap); ap = setInterval(() => goTo(cur+1), 5200); }
+  document.getElementById('cNext').addEventListener('click', () => { goTo(cur+1); resetAp(); });
+  document.getElementById('cPrev').addEventListener('click', () => { goTo(cur-1); resetAp(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.i); resetAp(); }));
+  resetAp();
+
+  /* Form */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const nome     = document.getElementById('nome').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const servizio = document.getElementById('servizio').value;
+    let ok = true;
+    [{id:'nome',v:nome},{id:'telefono',v:telefono},{id:'servizio',v:servizio}].forEach(({id,v}) => {
+      const el = document.getElementById(id);
+      if(!v){ el.style.borderColor='var(--red)'; ok=false; el.addEventListener('input',()=>el.style.borderColor='',{once:true}); }
+    });
+    if(!ok) return;
+    this.style.display = 'none';
+    document.getElementById('formOk').classList.add('show');
+  });
+
+  /* Scroll top */
+  const goTop = document.getElementById('goTop');
+  window.addEventListener('scroll', () => goTop.classList.toggle('show', window.scrollY > 480), { passive: true });
+  goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Active nav */
+  const secs = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const id = e.target.id;
+        navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+id ? 'var(--red)' : ''; });
+      }
+    });
+  }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' }).observe || secs.forEach(s => {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+e.target.id ? 'var(--red)' : ''; });
+        }
+      });
+    }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' }).observe(s);
+  });
+  // Fix: usa un solo observer
+  const navIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+e.target.id ? 'var(--red)' : ''; });
+      }
+    });
+  }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' });
+  secs.forEach(s => navIO.observe(s));
+</script>
+
+</body>
+</html>

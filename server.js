@@ -17,7 +17,8 @@ const MIME = {
 };
 
 http.createServer((req, res) => {
-  const url  = req.url === '/' ? '/index.html' : req.url;
+  const raw  = req.url === '/' ? '/index.html' : req.url;
+  const url  = decodeURIComponent(raw.split('?')[0]);
   const file = path.join(ROOT, url);
   const ext  = path.extname(file);
   const mime = MIME[ext] || 'text/plain';

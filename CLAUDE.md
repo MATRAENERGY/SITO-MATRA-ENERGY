@@ -34,7 +34,7 @@ Do not teach unless user asks.
 ---
 
 MATRA ENERGY SRL — STATO PROGETTO
-Data aggiornamento: 24 maggio 2026
+Data aggiornamento: 25 maggio 2026
 File: index.html (tutto in uno — HTML + CSS + JS insieme)
 Start: node server.js → http://localhost:8080
 IMPORTANTE: mai usare sed su index.html — svuota il file. Usare SOLO Edit tool.
@@ -64,7 +64,8 @@ Stats (sotto hero)
 - Hover su ogni stat: sale di 4px
 
 Chi Siamo
-- Due colonne: testo + foto placeholder
+- Due colonne: testo + foto reale
+- Immagine: assets/imagine sezione chi siamo.png (.about-real-img, aspect-ratio 4/3)
 - Testo: "Con oltre 25 anni di esperienza…"
 
 Servizi
@@ -72,7 +73,11 @@ Servizi
 - Hover: sale + barra rossa top
 
 Portfolio
-- 6 card placeholder con gradienti colorati
+- 6 card con data-album per lightbox (click apre galleria, frecce, ESC chiude)
+- Fotovoltaico: imagine impianto fotovoltaico.png (bg-position center 30%)
+- Impianto Industriale: imagine impianto industriale.png
+- Termoidraulica, Climatizzazione, Ristrutturazione, Manutenzione: gradiente placeholder
+- Badge "1 foto" / "Prossimamente" + hover hint camera
 
 Recensioni
 - Sfondo: gradiente profondo #010c24 (stesso palette stats/contatti)
@@ -84,10 +89,10 @@ Recensioni
 - Carousel auto ogni 5.2s + frecce + puntini
 
 Sezione Preventivo (id="preventivo")
-- Layout 3 COLONNE: 260px mascotte | 1.1fr testo | 1.4fr form
-- Col 1: mascotte per preventivi.png (sfondo rimosso con jimp) + speech bubble sopra
-- Col 2: tag + h2 "Inizia a risparmiare / già da oggi" + perks list
-- Col 3: form-card (padding 50x52px, input 14px padding, textarea 124px)
+- Layout 3 COLONNE: 1fr testo | 1.6fr form | 280px mascotte
+- Col 1: tag + h2 "Inizia a risparmiare / già da oggi" + perks list (bordo rosso sx su paragrafo)
+- Col 2: form-card (padding 38x44px, textarea 88px)
+- Col 3: mascotte per preventivi.png + speech bubble (radius gira verso sx)
 - Form invia REALMENTE via Web3Forms → amministrazione@matraenergy.it
 - Chiave Web3Forms: b7cb4961-7aed-4508-b728-933945ddba89
 - Campi: Nome*, Telefono*, Email (opzionale), Servizio*, Messaggio
@@ -95,15 +100,20 @@ Sezione Preventivo (id="preventivo")
 Contatti
 - Sfondo: gradiente profondo #010c24 con radial glow (uguale footer)
 - 4 card glassmorphism (backdrop-filter:blur(12px))
-- Icona 1: messaggi (non telefono) — "Messaggi & Telefono"
-- Subtitle: margin:0 auto → centrato
+- Icone: BIANCHE (non rosse) — .ct-ico bg rgba(255,255,255,.1), stroke:#fff
+- Card 1: messaggi — "Messaggi & Telefono" + WhatsApp
+- Card 2: email — "Email"
+- Card 3: pin — "Sede Operativa"
+- Card 4: orologio — "Orari"
 - Hover card: glow rosso sottile
 
 Footer
 - Sfondo: gradiente #010c24 → #012554 (continua visivamente dai contatti)
 - Separatore contatti/footer: rgba(255,255,255,.1) — NON rosso
 - Logo bianco 260px (filter invert)
-- Social: FB, IG, WhatsApp
+- Social: FB, IG, WhatsApp — icone 52px, Instagram SVG filled single-path
+- Colonna "Assistenza": testo + bottone mailto (NON lista link)
+- f-bottom: © 2026, REA LT-334019, link Privacy Policy + Cookie Policy (modal)
 
 ---
 
@@ -113,6 +123,9 @@ ASSET IN assets/
 - mascotte.png → fallback hero
 - mascotte per preventivi.png → Sezione preventivo (sfondo RIMOSSO con jimp)
 - background per la hero.png → Background hero (NON hero-bg.jpg)
+- imagine sezione chi siamo.png → Sezione Chi Siamo
+- imagine impianto fotovoltaico.png → Portfolio card Fotovoltaico
+- imagine impianto industriale.png → Portfolio card Impianto Industriale
 - logo.png, logo.svg → vari usi
 - Logo completo / solo mascotte → .ai .eps .pdf .png .svg (sorgenti)
 
@@ -137,21 +150,21 @@ FUNZIONA ✅
 - Responsive: 1040px, 768px, 520px
 - Immagini con spazi nel nome: decodificate correttamente dal server
 - Sfondo mascotte preventivi: rimosso (PNG trasparente)
+- Lightbox portfolio con album per categoria (prev/next/dots/ESC)
+- Privacy Policy + Cookie Policy (modal 2 tab, GDPR 2026)
 
 NON FUNZIONA / MANCA ❌
 Priorità alta:
 - Recensioni: sono placeholder (Marco Rossi, Laura Bianchi ecc.) — inserire vere da Google
-- Google Reviews API: struttura pronta, serve Place ID + Google API key
-- Portfolio: 6 card vuote — servono foto progetti veri
-- Chi Siamo: manca foto team/cantiere
+- Google Reviews API: serve Place ID + Google API key (chiamata server-side via server.js)
+- Portfolio: 4 card ancora placeholder — servono foto (termoidraulica, climatizzazione, ristrutturazione, manutenzione)
 
 Tecnici minori:
 - Favicon: manca
 - Meta og:image: manca (social share senza preview)
 - robots.txt + sitemap.xml: mancano (SEO base)
-- Cookie banner GDPR: obbligatorio per sito italiano
+- Cookie banner GDPR: manca banner visibile all'ingresso (modal privacy presente ma non auto-popup)
 - Google Maps embed: sezione contatti ha solo card, no mappa
-- Copyright: verificare anno (attualmente non aggiornato)
 
 ---
 

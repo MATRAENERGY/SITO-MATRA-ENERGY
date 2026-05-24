@@ -1,9 +1,66 @@
-Caveoman capisce. Miro vuole:
+\## Ultra Caveman Output
 
-Rewrite summary in caveman mode (semplice, diretto, no fancy)
-Attiva caveman mode permanent per tutti projects
 
-Caveman scrive subito la versione caveman del claude.md, poi mette istruzioni per activation permanente.
+
+Speak less.
+
+
+
+Default answer:
+
+\- max 5 short lines
+
+\- no long explanation
+
+\- no theory
+
+\- no options unless needed
+
+\- no repeated warnings
+
+\- no big summaries
+
+
+
+Use this format:
+
+
+
+Status:
+
+Done / Not done / Risk
+
+
+
+Next:
+
+One command or one action
+
+
+
+Ask:
+
+Only if truly blocked
+
+
+
+When coding:
+
+\- say file touched
+
+\- say section touched
+
+\- say result
+
+\- stop
+
+
+
+Do not write paragraphs.
+
+Do not over-explain.
+
+Do not teach unless user asks.
 
 MATRA ENERGY SRL — STATO PROGETTO (CAVEMAN MODE)
 Data: 24 maggio 2026
@@ -93,6 +150,7 @@ Font: Poppins (Google)
 Colori: bianco, blu #01366b, rosso #ed2613
 
 
+
 ASSET IN assets/
 NomeUsologo-testo.svgNavbar + footer (versione URL-safe)mascotte.svgHero + CTA section (1400 linee Illustrator)mascotte.pngFallback mascottelogo.pngFallback logo.ai, .eps, .pdfSorgenti — non serviti
 
@@ -110,6 +168,7 @@ Logo originale navbar (sfondo bianco)
 Logo bianco footer (filter invert)
 
 
+
 NON FUNZIONA ❌ / PROBLEMI
 Critici
 
@@ -123,7 +182,7 @@ Chi Siamo: manca foto team/cantiere
 Recensioni: 5 clienti finti (Marco, Laura, ecc.) — metti veri o approvati
 Social: facebook.com/matraenergy + instagram.com/matraenergy esistono
 Telefono: +39 324 779 0045
-Email: amministrazione@matraenergy.it 
+Email: amministrazione@matraenergy.it
 
 Tecnici (minori)
 
@@ -132,7 +191,7 @@ Meta og:image: niente (share social non ha preview)
 robots.txt + sitemap.xml: niente (SEO base)
 Cookie banner GDPR: obbligatorio sito italiano — manca
 Google Maps: sezione Contatti ha solo card, no mappa
-Dead code: righe ~1347–1361 (duplicate observer nav) — funziona lo stesso
+Dead code: righe \~1347–1361 (duplicate observer nav) — funziona lo stesso
 Copyright: dice "© 2024" — update a 2025/2026
 logo-testo.svg: è copia rinominata — se originale cambia, ricopia
 
@@ -145,3 +204,4 @@ Font:        Poppins (Google CDN)
 Vars CSS:    --blue #01366b | --red #ed2613 | --white #fff
 Navbar h:    106px (sincro con scroll-padding-top + hero padding)
 Breakpoint:  1040px | 768px | 520px
+

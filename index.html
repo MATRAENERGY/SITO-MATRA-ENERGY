@@ -106,11 +106,11 @@
       transform:translateY(-2px);
     }
     .btn-outline-blue {
-      background:transparent; color:var(--blue);
-      border:2px solid var(--blue);
+      background:transparent; color:var(--white);
+      border:2px solid rgba(255,255,255,.45);
     }
     .btn-outline-blue:hover {
-      background:var(--blue-bg); transform:translateY(-2px);
+      background:rgba(255,255,255,.1); border-color:var(--white); transform:translateY(-2px);
     }
 
     /* Scroll animation */
@@ -123,42 +123,54 @@
     /* ===================== NAVBAR ===================== */
     .nav {
       position:fixed; top:0; left:0; right:0; z-index:999;
-      background:var(--white);
-      border-bottom:1px solid var(--bd-light);
-      padding:0; transition:box-shadow .3s, border-color .3s;
+      background:transparent;
+      padding:14px 0; transition:padding .3s, background .3s;
     }
     .nav.scrolled {
-      box-shadow:0 4px 20px rgba(1,54,107,.12);
-      border-bottom-color:transparent;
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 20px rgba(1,54,107,.10);
+      padding:8px 0;
     }
     .nav-inner {
       display:flex; align-items:center; justify-content:space-between;
-      max-width:1180px; margin:0 auto; padding:0 24px;
-      height:106px;
+      max-width:1320px; margin:0 auto; padding:0 28px;
+      gap:24px;
     }
 
-    /* logo-testo nei colori originali su sfondo bianco */
     .nav-logo {
       display:inline-flex; align-items:center;
       text-decoration:none;
       transition:opacity .2s;
+      flex-shrink:0;
     }
     .nav-logo:hover { opacity:.8; }
-    .nav-logo img { height:90px; width:auto; display:block; object-fit:contain; }
+    .nav-logo img { height:78px; width:auto; display:block; object-fit:contain; }
 
-    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    /* Pill container per i link */
+    .nav-links {
+      display:flex; align-items:center; gap:42px; list-style:none;
+      background:#fff;
+      padding:18px 44px;
+      border-radius:60px;
+      box-shadow:0 6px 24px rgba(1,54,107,.08);
+    }
     .nav-links a {
-      font-size:.85rem; font-weight:600; color:var(--blue);
+      font-size:.95rem; font-weight:500; color:#1a2944;
       text-decoration:none; transition:color .22s; position:relative;
     }
     .nav-links a::after {
-      content:''; position:absolute; bottom:-3px; left:0;
+      content:''; position:absolute; bottom:-4px; left:0;
       width:0; height:2px; background:var(--red); transition:width .22s;
     }
     .nav-links a:hover { color:var(--red); }
     .nav-links a:hover::after { width:100%; }
 
-    .nav-cta { padding:9px 20px; font-size:.85rem; }
+    .nav-cta {
+      padding:16px 28px; font-size:.95rem;
+      border-radius:60px;
+      box-shadow:0 6px 20px rgba(237,38,19,.30);
+    }
 
     /* Hamburger */
     .ham {
@@ -186,177 +198,134 @@
 
     /* ===================== HERO ===================== */
     .hero {
-      background:var(--white);
-      min-height:100vh;
-      display:flex; align-items:center;
+      background: #fff;
+      min-height:auto;
       position:relative; overflow:hidden;
-      padding-top:106px;
+      padding-top:130px;
+      padding-bottom:0;
     }
 
-    /* Sfondo geometrico leggero — variante bianco/blu */
     .hero-bg {
       position:absolute; inset:0; pointer-events:none;
     }
-    .hero-bg-pattern {
+    .hero-bg-photo {
       position:absolute; inset:0;
-      background-image:
-        linear-gradient(rgba(1,54,107,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(1,54,107,.04) 1px, transparent 1px);
-      background-size:50px 50px;
+      background:url('assets/hero-bg.jpg') center right / cover no-repeat;
+      z-index:0;
     }
-    .hero-bg-glow {
-      position:absolute; right:-10%; top:-5%; width:55%; height:110%;
-      background:radial-gradient(ellipse, rgba(1,54,107,.07) 0%, transparent 68%);
+    .hero-bg-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right, #fff 0%, rgba(255,255,255,.97) 28%, rgba(255,255,255,.55) 48%, rgba(255,255,255,0) 65%);
+      z-index:1;
     }
 
     /* Layout hero: 2 colonne */
     .hero-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:40px; align-items:center;
-      position:relative; z-index:1;
-      padding:56px 0 60px;
+      display:grid; grid-template-columns:1.05fr .95fr;
+      gap:20px; align-items:start;
+      position:relative; z-index:2;
+      padding:30px 0 30px;
     }
 
     /* Testo lato sinistro */
     .hero-txt .hero-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:6px 15px;
-      background:var(--red-tint);
-      border:1px solid var(--bd-red); border-radius:50px;
-      font-size:.72rem; font-weight:700; color:var(--red);
-      letter-spacing:.09em; text-transform:uppercase; margin-bottom:24px;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 22px;
+      background:#fff;
+      border:1.5px solid #d6e1f0; border-radius:50px;
+      font-size:.78rem; font-weight:700; color:var(--blue);
+      letter-spacing:.09em; text-transform:uppercase; margin-bottom:26px;
+      box-shadow:0 4px 14px rgba(1,54,107,.06);
     }
-    .pulse { width:7px; height:7px; background:var(--red); border-radius:50%; animation:pulseAnim 1.9s infinite; }
+    .pulse { width:9px; height:9px; background:var(--red); border-radius:50%; animation:pulseAnim 1.9s infinite; }
     @keyframes pulseAnim { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.7);opacity:.35} }
 
     .hero-title {
-      font-size:clamp(2.2rem,5.2vw,3.8rem);
-      font-weight:900; line-height:1.08; letter-spacing:-.025em;
-      color:var(--blue); margin-bottom:20px;
+      font-size:clamp(2.1rem,4.4vw,3.4rem);
+      font-weight:900; line-height:1.12; letter-spacing:-.025em;
+      color:#0a1d3d; margin-bottom:18px;
     }
-    .hero-title .line-red { color:var(--red); display:block; }
+    .hero-title .line-red { color:var(--red); }
 
     .hero-sub {
-      font-size:clamp(.95rem,1.7vw,1.1rem);
-      color:var(--txt-sub-light); max-width:480px;
-      margin-bottom:34px; line-height:1.78;
+      font-size:clamp(.95rem,1.2vw,1.05rem);
+      color:#3a4a66; max-width:520px;
+      margin-bottom:26px; line-height:1.7;
     }
-    .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:48px; }
-
-    .hero-kpis { display:flex; flex-wrap:wrap; }
-    .hero-kpi {
-      padding:0 28px 0 0; margin-right:28px;
-      border-right:1px solid var(--bd-light);
+    .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+    .hero-ctas .btn { padding:16px 28px; border-radius:14px; font-size:.95rem; }
+    .hero-ctas .btn-red { box-shadow:0 8px 22px rgba(237,38,19,.32); }
+    .hero-ctas .btn-outline-blue {
+      background:#fff; color:var(--blue);
+      border:1.5px solid #d6e1f0;
     }
-    .hero-kpi:last-child { border:none; padding:0; margin:0; }
-    .hero-kpi-n { font-size:1.45rem; font-weight:900; color:var(--red); line-height:1; }
-    .hero-kpi-l { font-size:.68rem; color:var(--txt-muted-light); font-weight:600; text-transform:uppercase; letter-spacing:.06em; margin-top:3px; }
-
-    /* ===== HERO MASCOT AREA — redesign ===== */
-    .hero-mascot-col {
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      position:relative; padding-bottom:10px;
+    .hero-ctas .btn-outline-blue:hover {
+      background:#f5f9ff; border-color:var(--blue); transform:translateY(-2px);
     }
 
-    /* Blob luce blu dietro la mascotte */
-    .hero-mascot-col::before {
-      content:''; position:absolute; inset:0;
-      background:radial-gradient(ellipse at 50% 58%, rgba(1,54,107,.09) 0%, rgba(1,54,107,.035) 52%, transparent 74%);
-      pointer-events:none; z-index:0;
+    /* Feature pills */
+    .hero-features {
+      display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px;
     }
-    /* Onda curva alla base che "abbraccia" la mascotte */
-    .hero-mascot-col::after {
-      content:''; position:absolute;
-      bottom:0; left:-12%; right:-12%; height:46%;
-      background:radial-gradient(ellipse at 50% 100%, rgba(1,54,107,.08) 0%, rgba(1,54,107,.03) 60%, transparent 80%);
-      border-radius:58% 58% 0 0 / 38% 38% 0 0;
-      pointer-events:none; z-index:0;
-    }
-
-    /* Wrapper: mascotte + fumetto animano insieme */
-    .mascot-wrapper {
-      position:relative;
-      display:flex; flex-direction:column; align-items:center;
-      padding-top:80px;
-      z-index:2;
-      animation:mascotFloat 5.5s ease-in-out infinite;
-    }
-
-    /* Speech bubble sopra la testa */
-    .mascot-speech {
-      position:absolute;
-      top:0; left:50%;
-      transform:translateX(-30%);
-      background:var(--white);
-      color:var(--blue);
-      font-size:.88rem; font-weight:700; line-height:1.4;
+    .hero-feat {
+      display:inline-flex; align-items:center; gap:9px;
       padding:11px 18px;
-      border-radius:16px;
-      border:2.5px solid var(--blue);
-      box-shadow:0 8px 30px rgba(1,54,107,.20);
-      white-space:nowrap; z-index:3;
+      background:#fff;
+      border:1.5px solid #e3ebf6; border-radius:14px;
+      font-size:.85rem; font-weight:600; color:#1a2944;
+      box-shadow:0 3px 10px rgba(1,54,107,.04);
     }
-    /* Coda fumetto — esterno (bordo blu) */
-    .mascot-speech::after {
-      content:''; position:absolute;
-      bottom:-18px; left:32px;
-      width:0; height:0;
-      border-left:9px solid transparent;
-      border-right:9px solid transparent;
-      border-top:18px solid var(--blue);
-    }
-    /* Coda fumetto — interno (riempimento bianco) */
-    .mascot-speech::before {
-      content:''; position:absolute;
-      bottom:-13px; left:33px;
-      width:0; height:0;
-      border-left:8px solid transparent;
-      border-right:8px solid transparent;
-      border-top:13px solid var(--white);
-      z-index:4;
-    }
+    .hero-feat svg { width:18px; height:18px; stroke:var(--blue); flex-shrink:0; }
 
-    /* Immagine mascotte — alta 470px, sfuma in basso */
-    .mascot-hero {
-      height:470px; width:auto;
-      display:block; position:relative; z-index:2;
-      -webkit-mask-image:linear-gradient(to bottom, black 80%, transparent 100%);
-      mask-image:linear-gradient(to bottom, black 80%, transparent 100%);
-      filter:drop-shadow(0 22px 42px rgba(1,54,107,.18));
+    /* Stats card bianca dentro hero — overlap bottom */
+    .hero-stats-card {
+      position:relative; z-index:3;
+      margin:-10px auto 30px;
+      max-width:1180px;
+      background:#fff;
+      border:1.5px solid #e3ebf6;
+      border-radius:22px;
+      box-shadow:0 12px 40px rgba(1,54,107,.10);
+      padding:28px 40px;
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
-
-    /* Ombra sul pavimento */
-    .mascot-floor-shadow {
-      width:230px; height:22px;
-      background:radial-gradient(ellipse, rgba(1,54,107,.30) 0%, transparent 70%);
-      border-radius:50%;
-      margin-top:-10px;
-      position:relative; z-index:1;
-      animation:shadowPulse 5.5s ease-in-out infinite;
+    .hero-stat {
+      display:flex; align-items:center; gap:18px;
+      padding:0 18px;
+      border-right:1px solid #e3ebf6;
+    }
+    .hero-stat:last-child { border-right:none; }
+    .hero-stat-ico {
+      width:54px; height:54px; border-radius:14px;
+      background:#f0f6ff;
+      display:flex; align-items:center; justify-content:center;
       flex-shrink:0;
     }
+    .hero-stat-ico svg { width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:2; }
+    .hero-stat-n { font-size:2.1rem; font-weight:900; color:var(--red); line-height:1; }
+    .hero-stat-l { font-size:.92rem; color:#3a4a66; font-weight:500; margin-top:4px; }
 
+    /* ===== HERO MASCOT — statica, piccola ===== */
+    .hero-mascot-col {
+      display:flex; align-items:flex-end; justify-content:center;
+      position:relative;
+      align-self:end;
+    }
+    .mascot-wrapper {
+      position:relative;
+      display:flex; justify-content:center;
+      z-index:2;
+    }
+    .mascot-hero {
+      height:430px; width:auto;
+      display:block; position:relative; z-index:2;
+      filter:drop-shadow(0 18px 32px rgba(0,0,0,.28));
+    }
     @keyframes mascotFloat {
-      0%,100% { transform:translateY(0)     rotate(-.3deg); }
-      50%      { transform:translateY(-22px) rotate(.3deg);  }
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-12px); }
     }
-    @keyframes shadowPulse {
-      0%,100% { transform:scaleX(1);    opacity:.75; }
-      50%      { transform:scaleX(.70); opacity:.28; }
-    }
-
-    .scroll-hint {
-      position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
-      display:flex; flex-direction:column; align-items:center; gap:7px;
-      color:var(--txt-muted-light); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
-    }
-    .scroll-line {
-      width:1px; height:34px;
-      background:linear-gradient(to bottom,var(--red),transparent);
-      animation:sLine 2s infinite;
-    }
-    @keyframes sLine { 0%{opacity:1;transform:scaleY(1)} 100%{opacity:0;transform:scaleY(.15)} }
 
 
     /* ===================== STATS ===================== */
@@ -650,15 +619,18 @@
 
     /* ===================== RESPONSIVE ===================== */
     @media(max-width:1040px){
+      .hero { padding-top:110px; }
       .hero-grid { grid-template-columns:1fr; }
       .hero-txt  { text-align:center; }
       .hero-sub  { margin-left:auto; margin-right:auto; }
       .hero-ctas { justify-content:center; }
-      .hero-kpis { justify-content:center; }
-      .hero-mascot-col { order:-1; }
+      .hero-features { justify-content:center; }
+      .hero-bg-overlay { background:linear-gradient(to bottom, rgba(255,255,255,.96) 0%, rgba(255,255,255,.85) 55%, rgba(255,255,255,.55) 100%); }
+      .hero-mascot-col { order:2; }
       .mascot-hero { height:300px; }
-      .mascot-speech { font-size:.78rem; padding:9px 14px; }
-      .mascot-floor-shadow { width:170px; }
+      .hero-stats-card { grid-template-columns:1fr; padding:20px 24px; }
+      .hero-stat { border-right:none; border-bottom:1px solid #e3ebf6; padding-bottom:16px; }
+      .hero-stat:last-child { border-bottom:none; padding-bottom:0; }
       .services-grid  { grid-template-columns:repeat(2,1fr); }
       .stats-grid     { grid-template-columns:repeat(2,1fr); }
       .stat + .stat::before { display:none; }
@@ -684,11 +656,8 @@
       .contacts-grid  { grid-template-columns:1fr; }
       .hero-ctas .btn { justify-content:center; width:100%; }
       .stats-grid     { grid-template-columns:1fr 1fr; }
-      .hero-kpi       { padding:0 18px 0 0; margin-right:18px; }
-      .hero-grid      { padding:44px 0 40px; }
+      .hero-grid      { padding:24px 0 20px; }
       .mascot-hero    { height:240px; }
-      .mascot-speech  { font-size:.72rem; padding:7px 11px; white-space:normal; max-width:190px; }
-      .mascot-floor-shadow { width:130px; }
     }
   </style>
 </head>
@@ -735,8 +704,8 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-photo"></div>
+    <div class="hero-bg-overlay"></div>
   </div>
   <div class="container">
     <div class="hero-grid">
@@ -748,58 +717,86 @@
           Latina e Provincia &mdash; Attivi dal 2008
         </div>
         <h1 class="hero-title">
-          La tua casa.<br>
-          <span class="line-red">La nostra energia.</span>
+          Termoidraulica,<br>
+          <span class="line-red">climatizzazione</span><br>
+          e <span class="line-red">fotovoltaico</span><br>
+          per una casa<br>
+          più confortevole.
         </h1>
         <p class="hero-sub">
-          Specialisti in termoidraulica, impianti fotovoltaici e climatizzazione nel Lazio.
-          Soluzioni su misura, materiali certificati e assistenza garantita nel tempo.
+          Soluzioni su misura per il benessere della tua famiglia,
+          con materiali certificati e assistenza garantita nel tempo.
         </p>
         <div class="hero-ctas">
           <a href="#preventivo" class="btn btn-red">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 0110.14 2h3a2 2 0 012 1.72 12.84 12.84 0 01.7 2.81 2 2 0 01-.45 1.67L16 8.5"/></svg>
-            Richiedi Preventivo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Richiedi Preventivo Gratuito
           </a>
           <a href="#servizi" class="btn btn-outline-blue">
             Scopri i Servizi
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
         </div>
-        <div class="hero-kpis">
-          <div class="hero-kpi">
-            <div class="hero-kpi-n">15+</div>
-            <div class="hero-kpi-l">Anni di Attività</div>
+
+        <div class="hero-features">
+          <div class="hero-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Attivi dal 2008
           </div>
-          <div class="hero-kpi">
-            <div class="hero-kpi-n">500+</div>
-            <div class="hero-kpi-l">Progetti Completati</div>
+          <div class="hero-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg>
+            Materiali certificati
           </div>
-          <div class="hero-kpi">
-            <div class="hero-kpi-n">300+</div>
-            <div class="hero-kpi-l">Clienti Soddisfatti</div>
+          <div class="hero-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg>
+            Assistenza garantita
           </div>
         </div>
       </div>
 
-      <!-- Mascotte destra — protagonista del hero -->
+      <!-- Mascotte destra -->
       <div class="hero-mascot-col">
         <div class="mascot-wrapper">
-          <div class="mascot-speech">Richiedi il tuo<br>preventivo gratuito!</div>
           <img
-            src="assets/mascotte.svg"
+            src="assets/matra.png"
             alt="Mascotte Matra Energy"
             class="mascot-hero"
-            onerror="this.src='assets/mascotte.png'; this.onerror=null;"
           >
         </div>
-        <div class="mascot-floor-shadow"></div>
       </div>
 
     </div>
-  </div>
-  <div class="scroll-hint">
-    <span>Scorri</span>
-    <div class="scroll-line"></div>
+
+    <!-- Stats card bianca dentro hero -->
+    <div class="hero-stats-card">
+      <div class="hero-stat">
+        <div class="hero-stat-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="hero-stat-n">15+</div>
+          <div class="hero-stat-l">Anni di attività</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-ico">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
+        </div>
+        <div>
+          <div class="hero-stat-n">500+</div>
+          <div class="hero-stat-l">Progetti completati</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-ico">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+          <div class="hero-stat-n">300+</div>
+          <div class="hero-stat-l">Clienti soddisfatti</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1267,6 +1264,52 @@
 
 <!-- ===================== JAVASCRIPT ===================== -->
 <script>
+  /* Hero canvas — particelle calore */
+  (function(){
+    const cv = document.getElementById('hero-canvas');
+    if(!cv) return;
+    const ctx = cv.getContext('2d');
+    let W, H, pts = [];
+    function resize(){ W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function mkPt(){
+      return {
+        x: Math.random() * W,
+        y: H + Math.random() * 60,
+        r: Math.random() * 2.2 + 0.6,
+        sp: Math.random() * 0.55 + 0.2,
+        wo: (Math.random() - 0.5) * 0.4,
+        op: Math.random() * 0.5 + 0.15,
+        /* colori: bianco, ambra, rosso-arancio brand */
+        col: [
+          'rgba(255,255,255,',
+          'rgba(255,160,60,',
+          'rgba(237,80,30,',
+          'rgba(180,210,255,'
+        ][Math.floor(Math.random()*4)]
+      };
+    }
+    for(let i=0;i<80;i++){ const p=mkPt(); p.y=Math.random()*H; pts.push(p); }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = p.col + p.op + ')';
+        ctx.fill();
+        p.y  -= p.sp;
+        p.x  += p.wo;
+        p.op -= 0.0008;
+        if(p.y < -10 || p.op <= 0){ const n=mkPt(); Object.assign(p,n); }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
   /* Navbar scroll */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 48), { passive: true });

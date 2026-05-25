@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Matra Energy SRL – Specialisti in termoidraulica, impianti fotovoltaici e climatizzazione a Latina e provincia. Preventivo gratuito.">
   <title>Matra Energy SRL – Termoidraulica & Fotovoltaico | Latina</title>
+  <link rel="icon" type="image/svg+xml" href="assets/mascotte.svg">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
 
@@ -514,30 +515,24 @@
     .c-slide.on { display:block; animation:fadeSlide .42s ease both; }
     @keyframes fadeSlide { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
     .review-card {
-      background:rgba(255,255,255,.055);
-      backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(145deg, #ffffff 0%, #f4f7fb 100%);
+      border:1px solid rgba(1,54,107,.1);
       border-radius:20px; padding:48px 56px;
       max-width:800px; margin:0 auto; position:relative;
-      box-shadow:0 24px 60px rgba(0,0,0,.3);
-    }
-    .review-q {
-      position:absolute; top:28px; right:44px;
-      font-size:7rem; color:#fff; opacity:.07;
-      line-height:1; font-family:Georgia,serif; pointer-events:none; user-select:none;
+      box-shadow:0 8px 40px rgba(0,0,0,.18), 0 1px 0 rgba(255,255,255,.8) inset;
     }
     .review-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
     .stars { display:flex; gap:3px; align-items:center; }
     .star svg { width:20px; height:20px; }
     .google-badge {
       display:inline-flex; align-items:center; gap:6px;
-      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.13);
+      background:#f1f3f4; border:1px solid #dadce0;
       border-radius:20px; padding:5px 13px;
-      font-size:.7rem; font-weight:600; color:rgba(255,255,255,.65); letter-spacing:.04em;
+      font-size:.7rem; font-weight:600; color:#5f6368; letter-spacing:.04em;
     }
     .google-badge svg { width:13px; height:13px; flex-shrink:0; }
     .review-txt {
-      font-size:.98rem; color:rgba(255,255,255,.78);
+      font-size:.98rem; color:#3c4043;
       line-height:1.88; font-style:italic; margin-bottom:28px;
     }
     .reviewer { display:flex; align-items:center; gap:14px; }
@@ -548,8 +543,8 @@
       font-weight:800; font-size:.95rem; flex-shrink:0;
       box-shadow:0 4px 14px rgba(237,38,19,.35);
     }
-    .rev-name { font-weight:700; font-size:.97rem; color:#fff; }
-    .rev-role { font-size:.76rem; color:rgba(255,255,255,.4); margin-top:2px; }
+    .rev-name { font-weight:700; font-size:.97rem; color:#202124; }
+    .rev-role { font-size:.76rem; color:#80868b; margin-top:2px; }
     .c-controls { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:40px; }
     .c-btn {
       width:44px; height:44px; border-radius:50%;
@@ -688,6 +683,26 @@
     .ct a  { color:#fff; font-size:.92rem; font-weight:500; text-decoration:none; line-height:1.55; display:block; }
     .ct a:hover { color:var(--red); }
     .ct p  { color:rgba(255,255,255,.62); font-size:.9rem; line-height:1.65; }
+    .ct-ico-link { text-decoration:none; display:flex !important; align-items:center; justify-content:center; transition:.22s var(--ease); }
+    .ct-ico-link:hover { background:rgba(255,255,255,.25) !important; border-color:rgba(255,255,255,.6) !important; transform:scale(1.08); }
+    .ct-ico-link svg { width:26px; height:26px; stroke:#fff; fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+    .ct-ico-link svg.fill-icon { fill:#fff; stroke:none; }
+
+    .ct-map-wrap { display:block; position:relative; height:148px; overflow:hidden; text-decoration:none; }
+    .ct-map-wrap iframe { width:100%; height:100%; border:0; pointer-events:none; display:block; filter:saturate(.7) brightness(.85); }
+    .ct-map-wrap:hover iframe { filter:saturate(.9) brightness(.95); }
+    .ct-map-pin { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+    .ct-map-pin svg { width:36px; height:36px; fill:var(--red); stroke:none; filter:drop-shadow(0 3px 10px rgba(0,0,0,.7)); transition:.2s; }
+    .ct-map-wrap:hover .ct-map-pin svg { transform:scale(1.15); }
+    .ct-map-body { padding:22px 28px 28px; }
+    .ct-map-body h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.42); margin-bottom:8px; }
+    .ct-map-body p { color:rgba(255,255,255,.62); font-size:.9rem; line-height:1.6; }
+
+    .ct-hours { display:grid; grid-template-columns:auto 1fr; gap:4px 14px; margin:0; }
+    .ct-hours span { color:rgba(255,255,255,.62); font-size:.88rem; line-height:1.55; }
+    .ct-hours span:nth-child(even) { color:rgba(255,255,255,.9); font-weight:500; }
+    .ct-hours .chiuso { color:rgba(255,255,255,.38); }
+
     .wa-btn {
       display:inline-flex; align-items:center; gap:7px;
       margin-top:11px; padding:8px 15px; background:#25d366;
@@ -1173,15 +1188,15 @@
     </div>
     <div class="f-up">
 
-      <div class="c-slide on" id="slide-0"><div class="review-card"><div class="review-q">"</div><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ho chiamato Matra Energy per installare un impianto fotovoltaico sulla mia villetta a Latina. Dal sopralluogo al collaudo finale tutto è stato gestito in modo impeccabile. Il team è arrivato puntuale, ha lavorato in modo ordinato e mi ha spiegato ogni dettaglio. Adesso risparmio quasi il 70% sulla bolletta. Consigliatissimi!</p><div class="reviewer"><div class="rev-av">MR</div><div><div class="rev-name">Marco Rossi</div><div class="rev-role">Proprietario di casa, Latina</div></div></div></div></div>
+      <div class="c-slide on" id="slide-0"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ho chiamato Matra Energy per installare un impianto fotovoltaico sulla mia villetta a Latina. Dal sopralluogo al collaudo finale tutto è stato gestito in modo impeccabile. Il team è arrivato puntuale, ha lavorato in modo ordinato e mi ha spiegato ogni dettaglio. Adesso risparmio quasi il 70% sulla bolletta. Consigliatissimi!</p><div class="reviewer"><div class="rev-av">MR</div><div><div class="rev-name">Marco Rossi</div><div class="rev-role">Proprietario di casa, Latina</div></div></div></div></div>
 
-      <div class="c-slide" id="slide-1"><div class="review-card"><div class="review-q">"</div><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Avevamo bisogno di rifare completamente l'impianto idraulico durante una ristrutturazione. Matra Energy ha fatto un lavoro straordinario: precisi, veloci e onesti nel preventivo — nessuna sorpresa finale. Il risultato è perfetto. Li richiamerò per il sistema di riscaldamento.</p><div class="reviewer"><div class="rev-av">LB</div><div><div class="rev-name">Laura Bianchi</div><div class="rev-role">Architetta, Aprilia</div></div></div></div></div>
+      <div class="c-slide" id="slide-1"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Avevamo bisogno di rifare completamente l'impianto idraulico durante una ristrutturazione. Matra Energy ha fatto un lavoro straordinario: precisi, veloci e onesti nel preventivo — nessuna sorpresa finale. Il risultato è perfetto. Li richiamerò per il sistema di riscaldamento.</p><div class="reviewer"><div class="rev-av">LB</div><div><div class="rev-name">Laura Bianchi</div><div class="rev-role">Architetta, Aprilia</div></div></div></div></div>
 
-      <div class="c-slide" id="slide-2"><div class="review-card"><div class="review-q">"</div><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Gestisco un'attività commerciale e avevo bisogno di climatizzazione seria. Matra Energy ha fatto sopralluogo gratuito, proposto la soluzione più adatta senza esagerare sui costi, e installato tutto in un fine settimana per non interrompere l'attività. Cinque stelle meritate.</p><div class="reviewer"><div class="rev-av">AC</div><div><div class="rev-name">Antonio Conti</div><div class="rev-role">Titolare ristorante, Terracina</div></div></div></div></div>
+      <div class="c-slide" id="slide-2"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Gestisco un'attività commerciale e avevo bisogno di climatizzazione seria. Matra Energy ha fatto sopralluogo gratuito, proposto la soluzione più adatta senza esagerare sui costi, e installato tutto in un fine settimana per non interrompere l'attività. Cinque stelle meritate.</p><div class="reviewer"><div class="rev-av">AC</div><div><div class="rev-name">Antonio Conti</div><div class="rev-role">Titolare ristorante, Terracina</div></div></div></div></div>
 
-      <div class="c-slide" id="slide-3"><div class="review-card"><div class="review-q">"</div><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Caldaia rotta a dicembre, chiamata alle 8 e tecnico da me entro le 11. Problema risolto in meno di due ore con ricambio originale. Non pensavo fosse possibile un servizio così rapido. Ho subito sottoscritto il contratto di manutenzione annuale. Professionalità vera.</p><div class="reviewer"><div class="rev-av">GV</div><div><div class="rev-name">Giovanna Verdi</div><div class="rev-role">Residente, Cisterna di Latina</div></div></div></div></div>
+      <div class="c-slide" id="slide-3"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Caldaia rotta a dicembre, chiamata alle 8 e tecnico da me entro le 11. Problema risolto in meno di due ore con ricambio originale. Non pensavo fosse possibile un servizio così rapido. Ho subito sottoscritto il contratto di manutenzione annuale. Professionalità vera.</p><div class="reviewer"><div class="rev-av">GV</div><div><div class="rev-name">Giovanna Verdi</div><div class="rev-role">Residente, Cisterna di Latina</div></div></div></div></div>
 
-      <div class="c-slide" id="slide-4"><div class="review-card"><div class="review-q">"</div><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ho installato un impianto fotovoltaico da 6 kW con accumulo grazie a Matra Energy. Hanno gestito tutta la burocrazia con il GSE e le pratiche comunali, io non ho fatto nulla. Personale competente, sempre disponibile. È raro trovare un'azienda così seria. Li consiglio a tutti.</p><div class="reviewer"><div class="rev-av">FM</div><div><div class="rev-name">Fabio Marino</div><div class="rev-role">Imprenditore agricolo, Sabaudia</div></div></div></div></div>
+      <div class="c-slide" id="slide-4"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ho installato un impianto fotovoltaico da 6 kW con accumulo grazie a Matra Energy. Hanno gestito tutta la burocrazia con il GSE e le pratiche comunali, io non ho fatto nulla. Personale competente, sempre disponibile. È raro trovare un'azienda così seria. Li consiglio a tutti.</p><div class="reviewer"><div class="rev-av">FM</div><div><div class="rev-name">Fabio Marino</div><div class="rev-role">Imprenditore agricolo, Sabaudia</div></div></div></div></div>
 
       <div class="c-controls">
         <button class="c-btn" id="cPrev" aria-label="Precedente">
@@ -1300,31 +1315,33 @@
     <div class="contacts-grid">
 
       <div class="ct f-up" style="transition-delay:.05s">
-        <div class="ct-ico">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        </div>
+        <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" class="ct-ico ct-ico-link" aria-label="Scrivici su WhatsApp" style="width:62px;height:62px;background:rgba(37,211,102,.18);border:1px solid rgba(37,211,102,.4);border-radius:14px;margin:0 auto 20px;box-shadow:0 4px 16px rgba(0,0,0,.15);">
+          <svg class="fill-icon" viewBox="0 0 24 24" style="width:28px;height:28px;fill:#25d366;stroke:none;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
         <h4>Messaggi &amp; Telefono</h4>
         <a href="tel:+393247790045">+39 324 779 0045</a>
-        <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" class="wa-btn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Scrivici su WhatsApp
-        </a>
+        <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" style="color:rgba(37,211,102,.85);font-size:.85rem;margin-top:4px;">Scrivici su WhatsApp</a>
       </div>
 
       <div class="ct f-up" style="transition-delay:.1s">
-        <div class="ct-ico">
+        <a href="mailto:amministrazione@matraenergy.it" class="ct-ico ct-ico-link" aria-label="Inviaci un'email" style="width:62px;height:62px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:14px;margin:0 auto 20px;box-shadow:0 4px 16px rgba(0,0,0,.15);">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
+        </a>
         <h4>Email</h4>
-        <a href="mailto:amministrazione@matraenergy.it">amministrazione@<br>matraenergy.it</a>
+        <a href="mailto:amministrazione@matraenergy.it" style="font-size:.8rem;white-space:nowrap;">amministrazione@matraenergy.it</a>
       </div>
 
-      <div class="ct f-up" style="transition-delay:.15s">
-        <div class="ct-ico">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="ct f-up" style="transition-delay:.15s; padding:0;">
+        <a href="https://maps.google.com/?q=Strada+Capograssa+544,+04100+Latina+LT" target="_blank" rel="noopener" class="ct-map-wrap" aria-label="Apri in Google Maps">
+          <iframe src="https://maps.google.com/maps?q=Strada+Capograssa+544,+Latina+LT&output=embed&zoom=15" width="100%" height="148" style="border:0;" loading="lazy" title="Mappa sede"></iframe>
+          <div class="ct-map-pin">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+        </a>
+        <div class="ct-map-body">
+          <h4>Sede Operativa</h4>
+          <p>Strada Capograssa 544<br>04100 Latina (LT)</p>
         </div>
-        <h4>Sede Operativa</h4>
-        <p>Strada Capograssa 544<br>04100 Latina (LT)<br>Lazio, Italia</p>
       </div>
 
       <div class="ct f-up" style="transition-delay:.2s">
@@ -1332,7 +1349,12 @@
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
         <h4>Orari</h4>
-        <p>Lun – Ven: 8:00 – 18:00<br>Sab: 8:00 – 13:00<br><span style="color:var(--red);font-size:.82rem">Urgenze 24/7 su WhatsApp</span></p>
+        <div class="ct-hours">
+          <span>Lun – Ven</span><span>8:00 – 18:00</span>
+          <span>Sabato</span><span>8:00 – 13:00</span>
+          <span>Dom e festivi</span><span class="chiuso">Chiusi</span>
+        </div>
+        <p style="margin-top:10px;"><span style="color:var(--red);font-size:.82rem;">Urgenze 24/7 su WhatsApp</span></p>
       </div>
 
     </div>
@@ -1354,7 +1376,7 @@
             onerror="this.src='assets/logo.png'; this.onerror=null;"
           >
         </div>
-        <p class="f-brand-desc">Specialisti in termoidraulica, fotovoltaico e climatizzazione a Latina e in tutta la provincia pontina dal 2008.</p>
+        <p class="f-brand-desc">Specialisti in termoidraulica, fotovoltaico e climatizzazione nel Lazio e dintorni con 25+ anni di esperienza nel settore.</p>
 
         <div class="f-social">
           <a href="https://facebook.com/matraenergy" target="_blank" rel="noopener" class="soc" aria-label="Facebook">

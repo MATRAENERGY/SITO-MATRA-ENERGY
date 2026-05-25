@@ -98,12 +98,13 @@ Sezione Preventivo (id="preventivo")
 - Campi: Nome*, Telefono*, Email (opzionale), Servizio*, Messaggio
 
 Contatti
-- Sfondo: gradiente profondo #010c24 con radial glow (uguale footer)
-- 4 card glassmorphism (backdrop-filter:blur(12px))
-- Icone: BIANCHE (non rosse) — .ct-ico bg rgba(255,255,255,.1), stroke:#fff
-- Card 1: messaggi — "Messaggi & Telefono" + WhatsApp
-- Card 2: email — "Email"
-- Card 3: pin — "Sede Operativa"
+- Sfondo sezione: gradiente profondo #010c24 con radial glow (uguale footer)
+- 4 card BIANCHE (#fff bg, border #e3ebf6, shadow) per contrasto su bg scuro
+- Testi card: titoli #7a8aa3, link var(--blue), p #5a6478
+- Icone colorate per servizio: WhatsApp verde #25d366 fill, Mail blu #1a73e8, Pin rosso, Orari var(--red)
+- Card 1: WhatsApp + telefono — "Messaggi & Telefono"
+- Card 2: email — link `.ct-mail-link` nowrap+ellipsis (no overflow mobile)
+- Card 3: pin — "Sede Operativa" con mappa Google embed
 - Card 4: orologio — "Orari"
 - Hover card: glow rosso sottile
 
@@ -147,8 +148,12 @@ FUNZIONA ✅
 - Form → invia email reale a amministrazione@matraenergy.it (Web3Forms)
 - Menu mobile
 - Nav evidenzia sezione corrente su scroll
-- Responsive: 1040px (iPad+mobile layout compatto 2-col), 768px, 520px
-- MOBILE/iPad (≤1040): nav ham sx|logo centro|CTA dx; hero 2-col compatto come desktop (bg-photo + overlay laterale); mascotte dx absolute bottom:-28px sovrapposta a stats card; stats 3-col; servizi/portfolio/contatti tutti 2x2; reviews compatti; preventivo grid "text mascot / form form" con perks piccoli + mascotte 200px padding-top:40px; footer: brand full | Servizi+Azienda 2col | Assistenza full
+- Responsive: 1040px (iPad+mobile layout compatto 2-col), 768px, 520px, 360px (ultra-stretti)
+- MOBILE/iPad (≤1040): nav ham sx|logo centro|CTA dx; hero 2-col compatto; mascotte dx absolute sovrapposta stats card; stats 3-col; servizi/portfolio/contatti 2x2; reviews compatti; preventivo grid "text mascot / form form"; footer: brand full | Servizi+Azienda 2col | Assistenza full
+- MOBILE (≤520): hero 1-col text full width, mascotte absolute bottom-right; preventivo riarrangiato 1-col (text top centrato → mascot row con bubble dx → form); JS scroll-handler: click su `a[href="#preventivo"]` scroll esatto su `.cta-mascot-col -90px` (solo su ≤520)
+- ULTRA-STRETTI (≤360): badge wrap, bottoni padding 9x4 font .55, evita overflow
+- Speech bubble mascotte hero: animazione `comic-pop` 5.5s infinite (scala 0→1.18→1→hold→0)
+- Mascotte preventivo mobile: animazione `mascotFloatMini` -2px↔-7px (oscilla solo in alto, no overlap form)
 - Immagini con spazi nel nome: decodificate correttamente dal server
 - Sfondo mascotte preventivi: rimosso (PNG trasparente)
 - Lightbox portfolio con album per categoria (prev/next/dots/ESC)

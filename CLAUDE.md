@@ -34,7 +34,7 @@ Do not teach unless user asks.
 ---
 
 MATRA ENERGY SRL — STATO PROGETTO
-Data aggiornamento: 25 maggio 2026
+Data aggiornamento: 26 maggio 2026
 File: index.html (tutto in uno — HTML + CSS + JS insieme)
 Start: node server.js → http://localhost:8080
 IMPORTANTE: mai usare sed su index.html — svuota il file. Usare SOLO Edit tool.
@@ -147,7 +147,8 @@ FUNZIONA ✅
 - Form → invia email reale a amministrazione@matraenergy.it (Web3Forms)
 - Menu mobile
 - Nav evidenzia sezione corrente su scroll
-- Responsive: 1040px, 768px, 520px
+- Responsive: 1040px (iPad+mobile layout compatto 2-col), 768px, 520px
+- MOBILE/iPad (≤1040): nav ham sx|logo centro|CTA dx; hero 2-col compatto come desktop (bg-photo + overlay laterale); mascotte dx absolute bottom:-28px sovrapposta a stats card; stats 3-col; servizi/portfolio/contatti tutti 2x2; reviews compatti; preventivo grid "text mascot / form form" con perks piccoli + mascotte 200px padding-top:40px; footer: brand full | Servizi+Azienda 2col | Assistenza full
 - Immagini con spazi nel nome: decodificate correttamente dal server
 - Sfondo mascotte preventivi: rimosso (PNG trasparente)
 - Lightbox portfolio con album per categoria (prev/next/dots/ESC)

@@ -1,0 +1,64 @@
+name: Deploy to site-live
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy filtered content to site-live
+        run: |
+          MAIN_SHA=$(git rev-parse --short HEAD)
+
+          # Collect only web-safe files into a staging area
+          mkdir -p /tmp/deploy/assets
+          cp index.html /tmp/deploy/
+
+          find assets/ -maxdepth 1 -type f \( \
+            -iname "*.png" -o -iname "*.jpg" -o \
+            -iname "*.jpeg" -o -iname "*.svg" -o \
+            -iname "*.webp" \
+          \) -exec cp {} /tmp/deploy/assets/ \;
+
+          # Switch to site-live — create orphan on first run, track remote on updates
+          if git ls-remote --exit-code --heads origin site-live > /dev/null 2>&1; then
+            git fetch origin site-live
+            git checkout -b site-live origin/site-live
+          else
+            git checkout --orphan site-live
+            git rm -rf . > /dev/null 2>&1 || true
+          fi
+
+          # Replace content entirely with filtered snapshot
+          rm -rf assets index.html
+          mkdir -p assets
+          cp /tmp/deploy/index.html .
+          cp /tmp/deploy/assets/* assets/ 2>/dev/null || true
+
+          # Stage all changes (additions, modifications, deletions)
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes since last deploy — skipping commit."
+            exit 0
+          fi
+
+          git commit -m "Deploy from main@${MAIN_SHA}"
+          git push origin site-live

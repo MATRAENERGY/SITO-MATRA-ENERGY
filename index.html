@@ -1,0 +1,2322 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Matra Energy SRL – Specialisti in termoidraulica, impianti fotovoltaici e climatizzazione a Latina e provincia. Preventivo gratuito.">
+  <title>Matra Energy SRL – Termoidraulica & Fotovoltaico | Latina</title>
+  <link rel="icon" type="image/svg+xml" sizes="any" href="assets/Logo solo mascotte.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/Logo solo mascotte.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/Logo solo mascotte.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/Logo solo mascotte.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+
+    /* ===================================================
+       PALETTE — solo bianco, blu, rosso e varianti dirette
+       =================================================== */
+    :root {
+      --white:      #ffffff;
+      --blue:       #01366b;
+      --blue-mid:   #1a5490;   /* blu più chiaro — variante */
+      --blue-light: #3a74b0;   /* blu medio */
+      --blue-bg:    #eef4fa;   /* sfondo sezione chiara — tinta blu chiarissima */
+      --blue-dark:  #012554;   /* blu più scuro */
+      --blue-xdark: #010e20;   /* quasi nero-blu per sfondi profondi */
+      --red:        #ed2613;
+      --red-dark:   #c41e10;   /* rosso scuro hover */
+      --red-tint:   rgba(237,38,19,.1);
+
+      /* Testo */
+      --txt-on-light:  #01366b;
+      --txt-sub-light: #3a6890;
+      --txt-muted-light: #7aaacf;
+      --txt-on-dark:   #ffffff;
+      --txt-sub-dark:  rgba(255,255,255,.75);
+      --txt-muted-dark: rgba(255,255,255,.45);
+
+      /* Bordi */
+      --bd-light: rgba(1,54,107,.12);
+      --bd-dark:  rgba(255,255,255,.12);
+      --bd-red:   rgba(237,38,19,.3);
+
+      --r:    12px;
+      --r2:   20px;
+      --ease: cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; scroll-padding-top:106px; overflow-x:hidden; width:100%; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--white);
+      color: var(--txt-on-light);
+      line-height: 1.6;
+      overflow-x: hidden;
+      width:100%;
+      position:relative;
+    }
+
+    /* ===== SPLASH INTRO ===== */
+    .splash {
+      position:fixed; inset:0; z-index:9999;
+      background:radial-gradient(circle at center, #ffffff 0%, #eaf2fb 70%, #d8e6f5 100%);
+      display:flex; align-items:center; justify-content:center;
+      animation: splashFade .5s ease 1.2s forwards;
+    }
+    .splash-logo {
+      max-width:min(420px, 70vw); width:100%; height:auto; display:block;
+      opacity:0; transform:scale(.7);
+      animation: splashZoom 1.4s linear forwards;
+      filter:drop-shadow(0 18px 40px rgba(1,54,107,.25));
+    }
+    @keyframes splashZoom {
+      0%   { opacity:0; transform:scale(.7); }
+      25%  { opacity:1; transform:scale(.85); }
+      100% { opacity:1; transform:scale(1.25); }
+    }
+    @keyframes splashFade {
+      to { opacity:0; visibility:hidden; pointer-events:none; }
+    }
+    body.splash-on { overflow:hidden; }
+
+    /* ===== UTILS ===== */
+    .container { max-width:1180px; margin:0 auto; padding:0 24px; }
+    .section   { padding:96px 0; }
+
+    /* tag/badge label */
+    .tag {
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:.7rem; font-weight:700; letter-spacing:.14em;
+      text-transform:uppercase; color:var(--red);
+      padding:5px 14px;
+      background: var(--red-tint);
+      border:1px solid var(--bd-red);
+      border-radius:50px; margin-bottom:14px;
+    }
+    .tag.on-dark { color:#fff; background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.25); }
+
+    .section-title {
+      font-size: clamp(1.7rem,3.8vw,2.7rem);
+      font-weight:800; line-height:1.18; margin-bottom:14px;
+      color: var(--txt-on-light);
+    }
+    .section-title span { color:var(--red); }
+    .section-title.white { color:var(--white); }
+    .section-title.white span { color:var(--red); }
+
+    .subtitle {
+      font-size:1rem; color:var(--txt-sub-light);
+      max-width:580px; line-height:1.78;
+    }
+    .subtitle.white { color:var(--txt-sub-dark); }
+
+    /* Buttons */
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 26px; border-radius:9px;
+      font-family:'Poppins',sans-serif; font-size:.93rem;
+      font-weight:600; text-decoration:none; cursor:pointer;
+      border:none; transition:.27s var(--ease);
+    }
+    .btn-blue  { background:var(--blue); color:var(--white); }
+    .btn-blue:hover  { background:var(--blue-mid); transform:translateY(-2px); box-shadow:0 8px 24px rgba(1,54,107,.35); }
+    .btn-red   { background:var(--red); color:var(--white); }
+    .btn-red:hover   { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(237,38,19,.35); }
+    .btn-outline-white {
+      background:transparent; color:var(--white);
+      border:2px solid rgba(255,255,255,.55);
+    }
+    .btn-outline-white:hover {
+      background:rgba(255,255,255,.1); border-color:var(--white);
+      transform:translateY(-2px);
+    }
+    .btn-outline-blue {
+      background:transparent; color:var(--white);
+      border:2px solid rgba(255,255,255,.45);
+    }
+    .btn-outline-blue:hover {
+      background:rgba(255,255,255,.1); border-color:var(--white); transform:translateY(-2px);
+    }
+
+    /* Scroll animation */
+    .f-up    { opacity:0; transform:translateY(36px); transition:opacity .7s ease,transform .7s ease; }
+    .f-left  { opacity:0; transform:translateX(-34px); transition:opacity .7s ease,transform .7s ease; }
+    .f-right { opacity:0; transform:translateX(34px);  transition:opacity .7s ease,transform .7s ease; }
+    .f-up.on,.f-left.on,.f-right.on { opacity:1; transform:none; }
+
+
+    /* ===================== NAVBAR ===================== */
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:999;
+      background:transparent;
+      padding:14px 0; transition:padding .3s, background .3s;
+    }
+    .nav.scrolled {
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 20px rgba(1,54,107,.10);
+      padding:8px 0;
+    }
+    .nav-inner {
+      display:flex; align-items:center; justify-content:space-between;
+      max-width:1320px; margin:0 auto; padding:0 28px;
+      gap:24px;
+    }
+
+    .nav-logo {
+      display:inline-flex; align-items:center;
+      text-decoration:none;
+      transition:opacity .2s;
+      flex-shrink:0;
+    }
+    .nav-logo:hover { opacity:.8; }
+    .nav-logo img { height:78px; width:auto; display:block; object-fit:contain; }
+
+    /* Pill container per i link */
+    .nav-links {
+      display:flex; align-items:center; gap:42px; list-style:none;
+      background:#fff;
+      padding:18px 44px;
+      border-radius:60px;
+      box-shadow:0 6px 24px rgba(1,54,107,.08);
+    }
+    .nav-links a {
+      font-size:.95rem; font-weight:500; color:#1a2944;
+      text-decoration:none; transition:color .22s; position:relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0;
+      width:0; height:2px; background:var(--red); transition:width .22s;
+    }
+    .nav-links a:hover { color:var(--red); }
+    .nav-links a:hover::after { width:100%; }
+
+    .nav-cta {
+      padding:16px 28px; font-size:.95rem;
+      border-radius:60px;
+      box-shadow:0 6px 20px rgba(237,38,19,.30);
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .nav-cta-ico { display:none; }
+
+    /* Hamburger */
+    .ham {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:4px;
+    }
+    .ham span { display:block; width:22px; height:2px; background:var(--blue); transition:.28s var(--ease); }
+    .ham.on span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .ham.on span:nth-child(2) { opacity:0; }
+    .ham.on span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* Mobile overlay */
+    .mob-menu {
+      display:none; position:fixed; inset:0;
+      background:var(--blue-dark); z-index:998;
+      flex-direction:column; align-items:center; justify-content:center;
+      gap:24px; padding:40px 24px;
+    }
+    .mob-menu.on { display:flex; }
+    /* Logo navbar bianco quando menu aperto */
+    body.menu-open .nav-logo img { filter:brightness(0) invert(1); transition:filter .2s; }
+    body.menu-open .nav.scrolled { background:transparent; box-shadow:none; backdrop-filter:none; }
+    .mob-menu-links {
+      display:flex; flex-direction:column; align-items:center; gap:20px;
+    }
+    .mob-menu-links a {
+      font-size:1.3rem; font-weight:700; color:#fff;
+      text-decoration:none; transition:color .2s;
+    }
+    .mob-menu-links a:hover { color:var(--red); }
+    .mob-menu-cta {
+      margin-top:4px;
+    }
+    .mob-menu-social {
+      display:flex; gap:18px; margin-top:8px;
+    }
+    .mob-menu-social a {
+      width:48px; height:48px; border-radius:50%;
+      background:#fff; border:none;
+      color:var(--blue-dark); display:flex; align-items:center; justify-content:center;
+      transition:.22s var(--ease); text-decoration:none;
+      box-shadow:0 4px 14px rgba(0,0,0,.2);
+    }
+    .mob-menu-social a:hover {
+      background:var(--red); color:#fff;
+      transform:translateY(-3px);
+    }
+
+
+    /* ===================== HERO ===================== */
+    .hero {
+      background: #fff;
+      min-height:auto;
+      position:relative; overflow:hidden;
+      padding-top:130px;
+      padding-bottom:44px;
+    }
+
+    .hero-bg {
+      position:absolute; inset:0; pointer-events:none;
+    }
+
+    /* ===== HERO ORBS ===== */
+    @keyframes orb-drift {
+      0%,100% { transform:translate(0,0) scale(1); }
+      25%      { transform:translate(40px,-30px) scale(1.08); }
+      50%      { transform:translate(-20px,35px) scale(0.94); }
+      75%      { transform:translate(25px,10px) scale(1.04); }
+    }
+    @keyframes orb-drift-b {
+      0%,100% { transform:translate(0,0) scale(1); }
+      30%      { transform:translate(-50px,20px) scale(1.06); }
+      60%      { transform:translate(30px,-40px) scale(0.96); }
+    }
+    .hero-orb {
+      position:absolute; border-radius:50%; pointer-events:none;
+      filter:blur(70px); will-change:transform;
+    }
+    .hero-orb-1 { width:480px; height:480px; background:rgba(1,54,107,.09); top:-120px; right:5%; animation:orb-drift 9s ease-in-out infinite; }
+    .hero-orb-2 { width:320px; height:320px; background:rgba(237,38,19,.06); bottom:5%; right:30%; animation:orb-drift-b 12s ease-in-out infinite; animation-delay:-4s; }
+    .hero-orb-3 { width:260px; height:260px; background:rgba(1,54,107,.07); top:40%; left:2%; animation:orb-drift 10s ease-in-out infinite; animation-delay:-7s; }
+    .hero-orb-4 { width:200px; height:200px; background:rgba(65,150,230,.08); top:10%; left:35%; animation:orb-drift-b 14s ease-in-out infinite; animation-delay:-2s; }
+
+    /* ===== ANIMAZIONI GLOBALI ===== */
+    @keyframes pulse-glow {
+      0%,100% { box-shadow:0 8px 22px rgba(237,38,19,.32); }
+      50%      { box-shadow:0 8px 36px rgba(237,38,19,.55), 0 0 0 6px rgba(237,38,19,.08); }
+    }
+    .btn-red { animation:pulse-glow 3s ease-in-out infinite; }
+    .btn-red:hover { animation:none; }
+
+    @keyframes stat-breathe {
+      0%,100% { text-shadow:none; }
+      50%      { text-shadow:0 0 18px rgba(237,38,19,.3); }
+    }
+    .stat-n { animation:stat-breathe 4s ease-in-out infinite; }
+
+    @keyframes ico-spin {
+      0%   { transform:rotate(0deg); }
+      100% { transform:rotate(360deg); }
+    }
+    .svc:hover .svc-ico svg { animation:ico-spin 0.6s ease; }
+
+    @keyframes shimmer-slide {
+      0%   { background-position:-200% center; }
+      100% { background-position:200% center; }
+    }
+    .section-title span {
+      background:linear-gradient(90deg, var(--red) 0%, #ff6b4a 30%, var(--red) 60%, #c41e10 100%);
+      background-size:200% auto;
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+      animation:shimmer-slide 4s linear infinite;
+    }
+
+    @keyframes card-float {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-6px); }
+    }
+    .review-card.on { animation:card-float 5s ease-in-out infinite; animation-delay:var(--delay,0s); }
+    .hero-bg-photo {
+      position:absolute; inset:0;
+      background:url('assets/background%20per%20la%20hero.png') center right / cover no-repeat;
+      z-index:0;
+    }
+    .hero-bg-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right, #fff 0%, rgba(255,255,255,.97) 28%, rgba(255,255,255,.55) 48%, rgba(255,255,255,0) 65%);
+      z-index:1;
+    }
+
+    /* Layout hero: 2 colonne */
+    .hero-grid {
+      display:grid; grid-template-columns:1.05fr .95fr;
+      gap:20px; align-items:start;
+      position:relative; z-index:4;
+      padding:30px 0 30px;
+    }
+
+    /* Testo lato sinistro */
+    .hero-txt .hero-badge {
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 22px;
+      background:#fff;
+      border:1.5px solid #d6e1f0; border-radius:50px;
+      font-size:.78rem; font-weight:700; color:var(--blue);
+      letter-spacing:.09em; text-transform:uppercase; margin-bottom:26px;
+      box-shadow:0 4px 14px rgba(1,54,107,.06);
+    }
+    .pulse { width:9px; height:9px; background:var(--red); border-radius:50%; animation:pulseAnim 1.9s infinite; }
+    @keyframes pulseAnim { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.7);opacity:.35} }
+
+    .hero-title {
+      font-size:clamp(2.1rem,4.4vw,3.4rem);
+      font-weight:900; line-height:1.12; letter-spacing:-.025em;
+      color:#0a1d3d; margin-bottom:18px;
+    }
+    .hero-title .line-red { color:var(--red); }
+
+    .hero-sub {
+      font-size:clamp(.95rem,1.2vw,1.05rem);
+      color:#3a4a66; max-width:520px;
+      margin-bottom:26px; line-height:1.7;
+    }
+    .hero-ctas { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+    .hero-ctas .btn { padding:16px 28px; border-radius:14px; font-size:.95rem; }
+    .hero-ctas .btn-red { box-shadow:0 8px 22px rgba(237,38,19,.32); }
+    .hero-ctas .btn-outline-blue {
+      background:#fff; color:var(--blue);
+      border:1.5px solid #d6e1f0;
+    }
+    .hero-ctas .btn-outline-blue:hover {
+      background:#f5f9ff; border-color:var(--blue); transform:translateY(-2px);
+    }
+
+    /* Feature pills */
+    .hero-features {
+      display:flex; flex-wrap:nowrap; gap:8px; margin-bottom:34px;
+    }
+    .hero-feat {
+      display:inline-flex; align-items:center; gap:7px;
+      padding:9px 13px;
+      background:#fff;
+      border:1.5px solid #e3ebf6; border-radius:14px;
+      font-size:.78rem; font-weight:600; color:#1a2944;
+      box-shadow:0 3px 10px rgba(1,54,107,.04);
+      white-space:nowrap;
+    }
+    .hero-feat svg { width:16px; height:16px; stroke:var(--blue); flex-shrink:0; }
+
+    /* Stats card bianca dentro hero — overlap bottom */
+    .hero-stats-card {
+      position:relative; z-index:3;
+      margin:-10px auto 0;
+      max-width:1180px;
+      background:linear-gradient(135deg, #ffffff 0%, #f8faff 60%, #f2f7ff 100%);
+      border:2px solid #d8e8f8;
+      border-radius:22px;
+      box-shadow:0 24px 64px rgba(1,54,107,.20), 0 6px 20px rgba(1,54,107,.10), inset 0 1px 0 rgba(255,255,255,.95);
+      padding:28px 40px;
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+    .hero-stat {
+      display:flex; align-items:center; gap:18px;
+      padding:0 18px;
+      border-right:1px solid #e3ebf6;
+    }
+    .hero-stat:last-child { border-right:none; }
+    .hero-stat-ico {
+      width:54px; height:54px; border-radius:14px;
+      background:#f0f6ff;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    .hero-stat-ico svg { width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:2; }
+    .hero-stat-n { font-size:2.1rem; font-weight:900; color:var(--red); line-height:1; }
+    .hero-stat-l { font-size:.92rem; color:#3a4a66; font-weight:500; margin-top:4px; }
+
+    /* ===== HERO MASCOT — sovrapposta alla stats card ===== */
+    .hero-mascot-col {
+      display:flex; align-items:flex-end; justify-content:center;
+      position:relative;
+      align-self:stretch;
+      overflow:visible;
+      z-index:10;
+    }
+    .mascot-wrapper {
+      position:absolute;
+      bottom:-23px;
+      display:flex; flex-direction:column; align-items:center;
+      z-index:10;
+    }
+    .mascot-cta-text {
+      background:var(--white);
+      color:blu;
+      font-size:.82rem; font-weight:700;
+      padding:9px 20px;
+      border-radius:50px;
+      margin-bottom:12px;
+      line-height: 1.35;
+      max-width: 230px;
+      display: inline-block;
+      text-align: center;
+      box-shadow:0 4px 14px rgba(28,41,53,.28);
+    }
+    .mascot-hero {
+      height:340px; width:auto;
+      display:block; position:relative; z-index:2;
+      filter:drop-shadow(0 18px 32px rgba(0,0,0,.28));
+    }
+    @keyframes mascotFloat {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-12px); }
+    }
+
+
+    /* ===================== STATS ===================== */
+    .stats {
+      background: #010c24;
+      background-image:
+        radial-gradient(ellipse at 25% 50%, rgba(1,54,107,.7) 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 50%, rgba(24,85,200,.3) 0%, transparent 55%),
+        linear-gradient(135deg, #010c24 0%, #01244a 50%, #01366b 100%);
+      padding:80px 0;
+    }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+    .stat {
+      text-align:center; padding:40px 24px; position:relative;
+      transition:.3s ease;
+    }
+    .stat:hover { transform:translateY(-4px); }
+    .stat + .stat::before {
+      content:''; position:absolute; left:0; top:20%; height:60%;
+      width:1px; background:rgba(255,255,255,.1);
+    }
+    .stat-n { font-size:clamp(2.4rem,4.8vw,3.4rem); font-weight:900; color:var(--red); line-height:1; letter-spacing:-.025em; margin-bottom:8px; }
+    .stat-l { font-size:.82rem; color:rgba(255,255,255,.85); font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+    .stat-d { font-size:.74rem; color:rgba(255,255,255,.4); margin-top:4px; }
+
+
+    /* ===================== CHI SIAMO ===================== */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .about-list { list-style:none; margin:24px 0 30px; display:flex; flex-direction:column; gap:13px; }
+    .about-list li { display:flex; align-items:flex-start; gap:11px; font-size:.92rem; color:var(--txt-sub-light); }
+    .about-icon { color:var(--red); font-size:.75rem; min-width:18px; margin-top:4px; font-weight:900; }
+    .about-list strong { color:var(--blue); }
+    .img-ph {
+      aspect-ratio:4/3; background:var(--blue-bg);
+      border:1px solid var(--bd-light); border-radius:var(--r2);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:14px; padding:36px; text-align:center; position:relative; overflow:hidden;
+    }
+    .img-ph::before {
+      content:''; position:absolute; inset:0;
+      background:repeating-linear-gradient(45deg,transparent,transparent 14px,rgba(1,54,107,.025) 14px,rgba(1,54,107,.025) 15px);
+    }
+    .img-ph-icon { font-size:2.8rem; opacity:.25; }
+    .img-ph-txt { font-size:.8rem; line-height:1.55; color:var(--txt-sub-light); font-style:italic; opacity:.75; position:relative; }
+    .img-ph-txt strong { color:var(--red); font-style:normal; display:block; margin-bottom:5px; }
+    .about-real-img { width:100%; border-radius:var(--r2); aspect-ratio:4/3; object-fit:cover; box-shadow:0 12px 40px rgba(1,54,107,.15); display:block; }
+
+
+    /* ===================== SERVIZI ===================== */
+    .services { background:var(--blue-bg); }
+    .services-head { text-align:center; margin-bottom:56px; }
+    .services-head .subtitle { margin:0 auto; }
+    .services-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .svc {
+      background:var(--white); border:1px solid var(--bd-light);
+      border-radius:var(--r2); padding:34px 28px;
+      transition:.3s var(--ease); position:relative; overflow:hidden;
+      display:flex; flex-direction:column;
+      text-decoration:none; color:inherit; cursor:pointer;
+    }
+    .svc::before {
+      content:''; position:absolute; top:0; left:0; right:0; height:3px;
+      background:var(--red); transform:scaleX(0); transition:transform .3s var(--ease);
+    }
+    .svc:hover { border-color:rgba(237,38,19,.3); transform:translateY(-7px); box-shadow:0 22px 50px rgba(1,54,107,.12); }
+    .svc:hover::before { transform:scaleX(1); }
+    .svc-ico {
+      width:54px; height:54px; background:var(--red-tint);
+      border:1px solid var(--bd-red); border-radius:13px;
+      display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+    }
+    .svc-ico svg { width:26px; height:26px; stroke:var(--red); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+    .svc h3 { font-size:1.1rem; font-weight:700; margin-bottom:10px; color:var(--blue); }
+    .svc p  { font-size:.87rem; color:var(--txt-sub-light); line-height:1.7; flex:1; }
+    .svc-link {
+      display:inline-flex; align-items:center; gap:5px;
+      margin-top:22px; font-size:.82rem; font-weight:600;
+      color:var(--red); text-decoration:none; transition:gap .22s;
+    }
+    .svc:hover .svc-link { gap:9px; }
+
+
+    /* ===================== PORTFOLIO ===================== */
+    .portfolio-head { text-align:center; margin-bottom:54px; }
+    .portfolio-head .subtitle { margin:0 auto; }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .p-item { border-radius:var(--r); overflow:hidden; aspect-ratio:4/3; position:relative; cursor:pointer; }
+    .p-ph {
+      width:100%; height:100%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:24px; text-align:center; position:relative;
+    }
+    .p-cat {
+      position:absolute; top:11px; left:11px;
+      background:rgba(1,54,107,.65); backdrop-filter:blur(8px);
+      color:#fff; font-size:.67rem; font-weight:700;
+      text-transform:uppercase; letter-spacing:.09em;
+      padding:4px 10px; border-radius:5px;
+    }
+    .p-overlay { position:absolute; inset:0; background:rgba(0,0,0,0); transition:background .28s; }
+    .p-item:hover .p-overlay { background:rgba(0,0,0,.45); }
+    .p-hint {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      gap:8px; color:#fff; font-size:.82rem; font-weight:600; letter-spacing:.04em;
+      opacity:0; transition:opacity .25s; z-index:2; text-shadow:0 1px 4px rgba(0,0,0,.6);
+    }
+    .p-item:hover .p-hint { opacity:1; }
+    .p-count {
+      position:absolute; bottom:10px; right:10px; z-index:2;
+      background:rgba(0,0,0,.55); backdrop-filter:blur(6px);
+      color:#fff; font-size:.65rem; font-weight:700; letter-spacing:.07em;
+      text-transform:uppercase; padding:3px 9px; border-radius:4px;
+    }
+    .p-count-soon { background:rgba(255,255,255,.15); }
+
+    /* ===================== LIGHTBOX ===================== */
+    .lb-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,.92); z-index:9000;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      opacity:0; pointer-events:none; transition:opacity .25s;
+    }
+    .lb-overlay.open { opacity:1; pointer-events:all; }
+    .lb-close {
+      position:absolute; top:18px; right:22px;
+      background:none; border:none; color:#fff; font-size:2.2rem; line-height:1;
+      cursor:pointer; opacity:.7; transition:opacity .2s; z-index:2;
+    }
+    .lb-close:hover { opacity:1; }
+    .lb-content { position:relative; max-width:90vw; max-height:78vh; display:flex; align-items:center; justify-content:center; }
+    .lb-img { max-width:90vw; max-height:78vh; object-fit:contain; border-radius:8px; display:block; }
+    .lb-ph-box {
+      width:min(600px,80vw); height:min(400px,55vh);
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+      border-radius:12px; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:14px; color:rgba(255,255,255,.5);
+      font-size:.95rem; text-align:center; padding:32px;
+    }
+    .lb-ph-box svg { opacity:.3; }
+    .lb-nav {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15);
+      color:#fff; font-size:2rem; width:52px; height:52px;
+      border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      transition:.2s; z-index:2; line-height:1;
+    }
+    .lb-nav:hover { background:rgba(255,255,255,.22); }
+    .lb-nav:disabled { opacity:.2; cursor:default; }
+    .lb-prev { left:16px; }
+    .lb-next { right:16px; }
+    .lb-footer {
+      margin-top:18px; display:flex; align-items:center; gap:16px;
+      color:rgba(255,255,255,.55); font-size:.82rem;
+    }
+    .lb-cat { color:#fff; font-weight:700; font-size:.88rem; text-transform:uppercase; letter-spacing:.08em; }
+    .lb-dots { display:flex; gap:6px; }
+    .lb-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.3); border:none; cursor:pointer; padding:0; transition:.2s; }
+    .lb-dot.active { background:#fff; }
+
+
+    /* ===================== RECENSIONI ===================== */
+    .reviews {
+      background: #010c24;
+      background-image:
+        radial-gradient(ellipse at 80% 10%, rgba(1,54,107,.65) 0%, transparent 55%),
+        radial-gradient(ellipse at 10% 90%, rgba(24,85,200,.25) 0%, transparent 50%),
+        linear-gradient(160deg, #010c24 0%, #01244a 55%, #01366b 100%);
+    }
+    .reviews-head { text-align:center; margin-bottom:54px; }
+    .reviews-head .subtitle { margin:0 auto; }
+    .c-slide { display:none; padding:0 40px; }
+    .c-slide.on { display:block; animation:fadeSlide .42s ease both; }
+    @keyframes fadeSlide { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
+    .review-card {
+      background:linear-gradient(145deg, #ffffff 0%, #f4f7fb 100%);
+      border:1px solid rgba(1,54,107,.1);
+      border-radius:20px; padding:48px 56px;
+      max-width:800px; margin:0 auto; position:relative;
+      box-shadow:0 8px 40px rgba(0,0,0,.18), 0 1px 0 rgba(255,255,255,.8) inset;
+    }
+    .review-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
+    .stars { display:flex; gap:3px; align-items:center; }
+    .star svg { width:20px; height:20px; }
+    .google-badge {
+      display:inline-flex; align-items:center; gap:6px;
+      background:#f1f3f4; border:1px solid #dadce0;
+      border-radius:20px; padding:5px 13px;
+      font-size:.7rem; font-weight:600; color:#5f6368; letter-spacing:.04em;
+    }
+    .google-badge svg { width:13px; height:13px; flex-shrink:0; }
+    .review-txt {
+      font-size:.98rem; color:#3c4043;
+      line-height:1.88; font-style:italic; margin-bottom:28px;
+    }
+    .reviewer { display:flex; align-items:center; gap:14px; }
+    .rev-av {
+      width:48px; height:48px; border-radius:50%; overflow:hidden;
+      background:linear-gradient(135deg, var(--red), #ff5c4d);
+      color:#fff; display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:.95rem; flex-shrink:0;
+      box-shadow:0 4px 14px rgba(237,38,19,.35);
+    }
+    .rev-name { font-weight:700; font-size:.97rem; color:#202124; }
+    .rev-role { font-size:.76rem; color:#80868b; margin-top:2px; }
+    .c-controls { display:flex; align-items:center; justify-content:center; gap:18px; margin-top:40px; }
+    .c-btn {
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.13);
+      color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.25s var(--ease);
+    }
+    .c-btn:hover { background:var(--red); border-color:var(--red); }
+    .c-dots { display:flex; gap:7px; }
+    .c-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.2); cursor:pointer; transition:.25s var(--ease); }
+    .c-dot.on { background:var(--red); width:22px; border-radius:4px; }
+
+
+    /* ===================== CTA / FORM ===================== */
+    .cta-section { background:var(--blue-bg); }
+    .cta-grid {
+      display:grid;
+      grid-template-columns:1fr 1.6fr 280px;
+      gap:52px;
+      align-items:start;
+    }
+
+    /* Mascotte colonna */
+    .cta-mascot-col { display:flex; flex-direction:column; align-items:center; gap:14px; }
+    .cta-mascot-img {
+      width:100%; max-width:260px;
+      filter:drop-shadow(0 14px 36px rgba(1,54,107,.2));
+      animation:mascotFloat 5.5s ease-in-out infinite;
+    }
+    .speech-bubble {
+      background:var(--white); border:1.5px solid var(--bd-light);
+      border-radius:16px 16px 4px 16px;
+      padding:14px 18px; font-size:.88rem; color:var(--txt-sub-light);
+      line-height:1.6; text-align:center;
+      box-shadow:0 4px 16px rgba(1,54,107,.08);
+      width:100%;
+    }
+    .speech-bubble strong { color:var(--red); display:block; margin-bottom:4px; }
+
+    /* Testo */
+    .cta-left { padding-top:8px; }
+    .cta-left h2 { font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; margin-bottom:18px; color:var(--blue); line-height:1.18; }
+    .cta-left h2 span { color:var(--red); }
+    .cta-left > p { color:var(--txt-sub-light); font-size:.97rem; margin-bottom:32px; line-height:1.75; border-left:3px solid var(--red); padding-left:14px; }
+
+    .perks { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:0; }
+    .perks li { display:flex; align-items:center; gap:11px; color:var(--txt-sub-light); font-size:.91rem; }
+    .perk-ico {
+      width:22px; height:22px; min-width:22px;
+      background:var(--red-tint); border:1px solid var(--bd-red);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
+      color:var(--red); font-size:.65rem; font-weight:700;
+    }
+
+    /* Form */
+    .form-card {
+      background:var(--white); border:1.5px solid var(--bd-light);
+      border-radius:var(--r2); padding:38px 44px;
+      box-shadow:0 12px 50px rgba(1,54,107,.11);
+    }
+    .form-card h3 { font-size:1.3rem; font-weight:700; color:var(--blue); margin-bottom:4px; }
+    .form-card .sub { color:var(--txt-muted-light); font-size:.84rem; margin-bottom:28px; }
+    .fg { margin-bottom:22px; }
+    .fg label { display:block; font-size:.77rem; font-weight:600; color:var(--txt-sub-light); margin-bottom:9px; text-transform:uppercase; letter-spacing:.04em; }
+    .fg input, .fg select, .fg textarea {
+      width:100%; background:var(--blue-bg); border:1.5px solid var(--bd-light);
+      border-radius:9px; padding:14px 18px;
+      font-family:'Poppins',sans-serif; font-size:.92rem;
+      color:var(--blue); outline:none; transition:border-color .22s,box-shadow .22s;
+    }
+    .fg input::placeholder, .fg textarea::placeholder { color:var(--txt-muted-light); }
+    .fg input:focus,.fg select:focus,.fg textarea:focus {
+      border-color:var(--blue); box-shadow:0 0 0 3px rgba(1,54,107,.1);
+    }
+    .fg select {
+      cursor:pointer; appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233a6890' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat; background-position:right 14px center;
+    }
+    .fg select option { background:var(--white); color:var(--blue); }
+    .fg textarea { resize:vertical; min-height:88px; }
+    .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .fg-row .fg { margin-bottom:0; }
+    .btn-submit { width:100%; justify-content:center; padding:15px; font-size:.97rem; font-weight:700; margin-top:6px; }
+    .form-note { font-size:.72rem; color:var(--txt-muted-light); text-align:center; margin-top:10px; }
+    .form-ok { display:none; text-align:center; padding:36px 20px; }
+    .form-ok.show { display:block; }
+    .ok-ico {
+      width:62px; height:62px; border-radius:50%;
+      background:var(--red-tint); border:2px solid var(--red);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.7rem; margin:0 auto 14px;
+    }
+    .form-ok h4 { font-size:1.15rem; font-weight:700; color:var(--red); margin-bottom:7px; }
+    .form-ok p  { color:var(--txt-sub-light); font-size:.88rem; }
+
+
+    /* ===================== CONTATTI ===================== */
+    .contacts {
+      background: #010c24;
+      background-image:
+        radial-gradient(ellipse at 15% 60%, rgba(24,85,200,.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(1,54,107,.6) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(10,40,100,.5) 0%, transparent 60%),
+        linear-gradient(150deg, #010c24 0%, #012040 50%, #01366b 100%);
+    }
+    .contacts-head { text-align:center; margin-bottom:52px; }
+    .contacts-head .subtitle { margin:0 auto; text-align:center; }
+    .contacts-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+    .ct {
+      background:#ffffff;
+      border:1px solid #e3ebf6;
+      border-radius:16px; padding:34px 24px; text-align:center;
+      transition:.3s var(--ease); position:relative; overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.18);
+    }
+    .ct:hover {
+      border-color:rgba(237,38,19,.4);
+      transform:translateY(-6px);
+      box-shadow:0 20px 50px rgba(0,0,0,.28), 0 0 0 1px rgba(237,38,19,.15);
+      background:#fafcff;
+    }
+    .ct-ico {
+      width:62px; height:62px;
+      background:#f0f6ff;
+      border:1px solid #d6e1f0; border-radius:14px;
+      display:flex; align-items:center; justify-content:center; margin:0 auto 20px;
+      box-shadow:0 3px 10px rgba(1,54,107,.08);
+    }
+    .ct-ico svg { width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+    .ct h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#7a8aa3; margin-bottom:10px; }
+    .ct a  { color:var(--blue); font-size:.92rem; font-weight:600; text-decoration:none; line-height:1.55; display:block; }
+    .ct a:hover { color:var(--red); }
+    .ct p  { color:#5a6478; font-size:.9rem; line-height:1.65; }
+    .ct-ico-link { text-decoration:none; display:flex !important; align-items:center; justify-content:center; transition:.22s var(--ease); }
+    .ct-ico-link:hover { transform:scale(1.08); filter:brightness(.95); }
+    .ct-ico-link svg { width:26px; height:26px; fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+    .ct-ico-link svg.fill-icon { stroke:none; }
+
+    .ct-map-wrap { display:block; position:relative; height:148px; overflow:hidden; text-decoration:none; }
+    .ct-map-wrap iframe { width:100%; height:100%; border:0; pointer-events:none; display:block; filter:saturate(.95) brightness(1); }
+    .ct-map-wrap:hover iframe { filter:saturate(1) brightness(1.05); }
+    .ct-map-pin { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+    .ct-map-pin svg { width:36px; height:36px; fill:var(--red); stroke:none; filter:drop-shadow(0 3px 10px rgba(0,0,0,.5)); transition:.2s; }
+    .ct-map-wrap:hover .ct-map-pin svg { transform:scale(1.15); }
+    .ct-map-body { padding:22px 28px 28px; background:#fff; }
+    .ct-map-body h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#7a8aa3; margin-bottom:8px; }
+    .ct-map-body p { color:#5a6478; font-size:.9rem; line-height:1.6; }
+
+    .ct-hours { display:grid; grid-template-columns:auto 1fr; gap:4px 14px; margin:0; }
+    .ct-hours span { color:#5a6478; font-size:.88rem; line-height:1.55; }
+    .ct-hours span:nth-child(even) { color:var(--blue); font-weight:600; }
+    .ct-hours .chiuso { color:#a4adbf; }
+    /* Email link mobile-friendly (no overflow) */
+    .ct-mail-link { font-size:.76rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
+    .ct-mail-link:hover { color:#1a73e8 !important; }
+
+    .wa-btn {
+      display:inline-flex; align-items:center; gap:7px;
+      margin-top:11px; padding:8px 15px; background:#25d366;
+      color:#fff; border-radius:7px; font-size:.78rem; font-weight:700;
+      text-decoration:none; transition:.22s var(--ease);
+    }
+    .wa-btn:hover { background:#1aad52; transform:translateY(-2px); color:#fff; }
+
+
+    /* ===================== FOOTER ===================== */
+    .footer {
+      background: #010c24;
+      background-image: linear-gradient(180deg, #010c24 0%, #01244a 60%, #012554 100%);
+      padding:52px 0 28px;
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+    .footer-top {
+      display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; margin-bottom:44px;
+    }
+
+    /* logo-testo nel footer — bianco su sfondo scuro, nessun contenitore */
+    .f-logo-wrap {
+      display:inline-flex;
+      margin-bottom:18px;
+      text-decoration:none; cursor:pointer;
+    }
+    .f-logo-wrap img {
+      width:260px; height:auto; display:block; object-fit:contain;
+      filter:brightness(0) invert(1);
+    }
+
+    .f-brand-desc { color:var(--txt-muted-dark); font-size:.84rem; line-height:1.7; max-width:260px; margin-bottom:20px; }
+
+    /* Social icons — sfondo bianco, icone blu, hover rosso */
+    .f-social { display:flex; gap:10px; margin-top:4px; }
+    .soc {
+      width:52px; height:52px;
+      background:var(--white); border:none;
+      border-radius:12px; display:flex; align-items:center; justify-content:center;
+      color:var(--blue); text-decoration:none;
+      transition:.25s var(--ease);
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
+    }
+    .soc:hover { background:var(--red); color:#fff; transform:translateY(-3px); box-shadow:0 6px 16px rgba(237,38,19,.35); }
+    .soc svg { width:24px; height:24px; fill:currentColor; }
+
+    .f-col h5 { font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--txt-muted-dark); margin-bottom:14px; }
+    .f-links { list-style:none; display:flex; flex-direction:column; gap:9px; }
+    .f-links a { color:var(--txt-sub-dark); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    .f-links a:hover { color:var(--red); }
+
+    .f-bottom {
+      border-top:1px solid var(--bd-dark); padding-top:24px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    }
+    .f-bottom p { font-size:.76rem; color:var(--txt-muted-dark); }
+    .f-legal-link { background:none; border:none; color:var(--txt-muted-dark); font-size:.76rem; cursor:pointer; padding:0; text-decoration:underline; text-underline-offset:2px; transition:color .2s; }
+    .f-legal-link:hover { color:#fff; }
+
+    /* ===================== PRIVACY MODAL ===================== */
+    .prv-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:8000;
+      display:flex; align-items:center; justify-content:center; padding:20px;
+      opacity:0; pointer-events:none; transition:opacity .25s;
+    }
+    .prv-overlay.open { opacity:1; pointer-events:all; }
+    .prv-box {
+      background:#fff; border-radius:16px; width:min(780px,100%);
+      max-height:85vh; display:flex; flex-direction:column;
+      box-shadow:0 24px 80px rgba(0,0,0,.4);
+    }
+    .prv-head {
+      padding:28px 36px 20px; border-bottom:1px solid var(--bd-light);
+      display:flex; align-items:center; justify-content:space-between; flex-shrink:0;
+    }
+    .prv-head h3 { font-size:1.15rem; font-weight:800; color:var(--blue); margin:0; }
+    .prv-close { background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--txt-muted-light); line-height:1; padding:0; transition:color .2s; }
+    .prv-close:hover { color:var(--blue); }
+    .prv-tabs { display:flex; gap:0; flex-shrink:0; border-bottom:1px solid var(--bd-light); }
+    .prv-tab { flex:1; padding:12px; border:none; background:none; font-size:.82rem; font-weight:600; color:var(--txt-muted-light); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:.2s; }
+    .prv-tab.active { color:var(--blue); border-bottom-color:var(--blue); }
+    .prv-body { padding:32px 36px; overflow-y:auto; flex:1; font-size:.88rem; line-height:1.75; color:var(--txt-sub-light); }
+    .prv-body h4 { font-size:.92rem; font-weight:700; color:var(--blue); margin:24px 0 8px; }
+    .prv-body h4:first-child { margin-top:0; }
+    .prv-body p { margin-bottom:12px; }
+    .prv-body ul { padding-left:18px; margin-bottom:12px; }
+    .prv-body ul li { margin-bottom:5px; }
+    .prv-body a { color:var(--blue); }
+    .prv-body strong { color:var(--blue-dark); }
+
+    /* ===================== SCROLL TOP ===================== */
+    .go-top {
+      position:fixed; bottom:28px; right:28px;
+      width:42px; height:42px; background:var(--red); color:#fff;
+      border:none; border-radius:50%; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; transform:translateY(16px); transition:.28s var(--ease);
+      z-index:90; box-shadow:0 4px 18px rgba(237,38,19,.4);
+    }
+    .go-top.show { opacity:1; transform:none; }
+    .go-top:hover { background:var(--red-dark); transform:translateY(-3px); }
+
+    /* ===================== RESPONSIVE ===================== */
+
+    /* ── iPad + tutto sotto desktop (≤1040px) — layout mobile compatto 2-col ── */
+    @media(max-width:1040px){
+
+      /* NAV: hamburger sx | logo centro | CTA dx (equidistanti) */
+      .nav-links { display:none; }
+      .nav-inner { gap:10px; padding:0 22px; }
+      .nav-logo { order:2; flex:1; display:flex; justify-content:center; }
+      .nav-logo img { height:68px; }
+      .ham { order:1; display:flex; min-width:42px; justify-content:center; }
+      .nav-cta { order:3; padding:11px 14px; font-size:.82rem; gap:6px; border-radius:50px; min-width:42px; justify-content:center; }
+      .nav-cta-ico { display:block; }
+
+      /* HERO: 2 colonne come desktop, compatto */
+      .hero { padding-top:108px; padding-bottom:40px; }
+      .hero-grid { grid-template-columns:1.4fr .85fr; gap:14px; padding:14px 0 0; align-items:start; }
+      .hero-txt { text-align:left; order:1; }
+      .hero-sub { margin:0 0 18px; max-width:none; }
+      .hero-ctas { justify-content:flex-start; }
+      .hero-features { justify-content:flex-start; flex-wrap:wrap; }
+
+      /* BG overlay laterale (come desktop) */
+      .hero-bg-overlay { background:linear-gradient(to right, #fff 0%, rgba(255,255,255,.95) 28%, rgba(255,255,255,.5) 55%, rgba(255,255,255,0) 75%); }
+      .hero-orb-1 { width:320px; height:320px; }
+      .hero-orb-2 { width:220px; height:220px; opacity:.85; }
+      .hero-orb-3 { width:200px; height:200px; }
+      .hero-orb-4 { width:160px; height:160px; }
+
+      /* Badge largo (a) */
+      .hero-badge { font-size:.74rem; padding:9px 22px; margin-bottom:18px; letter-spacing:.08em; gap:10px; white-space:nowrap; }
+      .pulse { width:9px; height:9px; }
+
+      /* Titolo largo (b) */
+      .hero-title { font-size:clamp(1.7rem,4.8vw,2.8rem); margin-bottom:14px; line-height:1.12; letter-spacing:-.02em; }
+      .hero-sub { font-size:.9rem; line-height:1.6; margin-bottom:20px; }
+
+      /* CTA armoniosi piu piccoli (c) */
+      .hero-ctas { gap:10px; margin-bottom:18px; flex-wrap:nowrap; }
+      .hero-ctas .btn { padding:11px 14px; font-size:.74rem; border-radius:50px; width:auto; justify-content:center; gap:6px; flex:1; font-weight:600; }
+      .hero-ctas .btn svg { width:13px; height:13px; }
+
+      /* Feature pills */
+      .hero-features { gap:7px; margin-bottom:18px; }
+      .hero-feat { font-size:.7rem; padding:7px 11px; border-radius:11px; gap:6px; }
+      .hero-feat svg { width:13px; height:13px; }
+
+      /* MASCOT dx: bottom su linea superiore stats card (d) */
+      .hero-mascot-col { order:2; align-self:stretch; height:auto; margin-bottom:0; overflow:visible; position:relative; z-index:5; }
+      .mascot-wrapper { position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); }
+      .mascot-hero { height:230px; filter:drop-shadow(0 14px 24px rgba(0,0,0,.25)); }
+      .mascot-cta-text { font-size:.72rem; padding:7px 14px; max-width:180px; margin-bottom:10px; }
+
+      /* Stats card 3 col compatta */
+      .hero-stats-card { grid-template-columns:repeat(3,1fr); padding:18px 18px; gap:10px; border-radius:18px; margin-top:0; }
+      .hero-stat { padding:0 10px; gap:12px; border-right:1px solid #e3ebf6; }
+      .hero-stat:last-child { border-right:none; }
+      .hero-stat-ico { width:44px; height:44px; border-radius:11px; }
+      .hero-stat-ico svg { width:22px; height:22px; }
+      .hero-stat-n { font-size:1.6rem; }
+      .hero-stat-l { font-size:.78rem; margin-top:3px; line-height:1.2; }
+
+      /* SEZIONI: tutto a 2 colonne */
+      .services-grid  { grid-template-columns:repeat(2,1fr); }
+      .stats-grid     { grid-template-columns:repeat(2,1fr); }
+      .stat + .stat::before { display:none; }
+      .about-grid     { grid-template-columns:1fr; gap:40px; }
+      .contacts-grid  { grid-template-columns:repeat(2,1fr); }
+      .portfolio-grid { grid-template-columns:repeat(2,1fr); }
+
+      /* RECENSIONI compatte */
+      .reviews-head { margin-bottom:30px; }
+      .c-slide { padding:0 16px; }
+      .review-card { padding:26px 24px; border-radius:16px; }
+      .review-txt { font-size:.85rem; line-height:1.7; margin-bottom:18px; }
+      .star svg { width:16px; height:16px; }
+      .google-badge { font-size:.62rem; padding:4px 10px; }
+      .rev-av { width:40px; height:40px; font-size:.82rem; }
+      .rev-name { font-size:.85rem; }
+      .rev-role { font-size:.68rem; }
+      .c-controls { margin-top:24px; }
+
+      /* PREVENTIVO: testo sx + mascotte dx sopra | form sotto */
+      .cta-grid {
+        display:grid;
+        grid-template-columns:1.25fr 1fr;
+        grid-template-areas:
+          "text mascot"
+          "form form";
+        gap:16px 16px; align-items:start;
+      }
+      .cta-left { grid-area:text; order:0; text-align:left; padding-top:0; }
+      .cta-left .tag { font-size:.72rem; padding:5px 12px; }
+      .cta-left h2 { font-size:1.6rem; margin-bottom:12px; line-height:1.18; }
+      .cta-left > p { font-size:.85rem; margin-bottom:14px; padding-left:12px; line-height:1.55; max-width:none; }
+      /* Perks compatti */
+      .cta-left .perks { gap:6px; margin-bottom:0; }
+      .cta-left .perks li { font-size:.76rem; gap:8px; line-height:1.35; }
+      .cta-left .perks .perk-ico { width:18px; height:18px; min-width:18px; font-size:.55rem; }
+      /* Mascotte preventivo: più giù + più grande */
+      .cta-mascot-col { grid-area:mascot; order:0; flex-direction:column; align-items:center; gap:8px; padding-top:40px; }
+      .cta-mascot-img { max-width:200px; }
+      .speech-bubble { font-size:.72rem; padding:8px 12px; max-width:170px; line-height:1.4; }
+      .speech-bubble strong { font-size:.78rem; margin-bottom:2px; }
+      .cta-grid > .f-up { grid-area:form; order:0; }
+      .form-card { padding:26px 22px; }
+
+      /* FOOTER: brand full | Servizi+Azienda 2col | Assistenza full */
+      .footer-top { grid-template-columns:1fr 1fr; gap:28px 24px; }
+      .footer-top .f-brand { grid-column:1 / -1; }
+      .footer-top .f-col:last-child { grid-column:1 / -1; }
+    }
+
+    /* ── Tablet portrait / phone landscape (≤768px) — refine ── */
+    @media(max-width:768px){
+      .section { padding:64px 0; }
+      .nav-logo img { height:60px; }
+      .hero { padding-top:100px; padding-bottom:32px; }
+      .hero-title { font-size:clamp(1.35rem,4.4vw,1.9rem); }
+      .hero-sub { font-size:.82rem; }
+      .mascot-hero { height:200px; }
+      .mascot-wrapper { bottom:-4px; }
+      .hero-stats-card { padding:16px 14px; gap:8px; }
+      .hero-stat { padding:0 8px; gap:9px; }
+      .hero-stat-ico { width:40px; height:40px; }
+      .hero-stat-ico svg { width:20px; height:20px; }
+      .hero-stat-n { font-size:1.4rem; }
+      .hero-stat-l { font-size:.7rem; }
+      .fg-row  { grid-template-columns:1fr; }
+      .f-bottom { flex-direction:column; text-align:center; gap:10px; }
+      .cta-left h2 { font-size:1.45rem; }
+      .cta-mascot-img { max-width:170px; }
+    }
+
+    /* ── Fix range 521-600: pill features stack + bubble mascotte ridotto ── */
+    @media(min-width:521px) and (max-width:600px){
+      .hero-features { flex-direction:column; align-items:flex-start; gap:6px; }
+      .hero-feat { width:auto; }
+      .hero-ctas .btn { padding:10px 10px; font-size:.7rem; }
+      .mascot-cta-text { font-size:.6rem; padding:6px 12px; max-width:150px; }
+    }
+
+    /* ── Fix range ≤416: padding ridotto, mascotte visibile, stats/btn anti-overflow ── */
+    @media(max-width:416px){
+      .container { padding:0 12px; }
+      .hero-ctas { gap:6px; }
+      .hero-ctas .btn { padding:9px 4px; font-size:.55rem; gap:3px; min-width:0; }
+      .hero-ctas .btn svg { width:7px; height:10px; }
+      .hero-stats-card { padding:10px 5px; gap:3px; }
+      .hero-stat { padding:0 2px; }
+      .hero-stat-n { font-size:.85rem; }
+      .hero-stat-l { font-size:.46rem; word-break:normal; hyphens:auto; }
+    }
+
+    /* ── Telefoni portrait (≤520px) — finest ── */
+    @media(max-width:520px){
+      .section { padding:52px 0; }
+
+      /* NAV: CTA icon-only, largo orrizontalmente; ham + CTA staccati dal bordo */
+      .nav-inner { gap:8px; padding:0 18px 0 22px; }
+      .nav-logo { padding-left:10px; }
+      .nav-cta { margin-right:8px; }
+      .nav-logo img { height:60px; }
+      .ham { min-width:46px; padding:6px 10px; }
+      .nav-cta { padding:10px 28px; gap:0; min-width:auto; }
+      .nav-cta-txt { display:none; }
+      .nav-cta-ico { width:20px; height:20px; }
+
+      /* HERO finest — 1 col, mascotte assoluta */
+      .hero { padding-top:94px; padding-bottom:24px; }
+      .hero-grid { grid-template-columns:1fr; gap:0; padding:8px 0 0; position:relative; }
+      .hero-txt { text-align:left; }
+      /* Badge: largo orrizontalmente, font naturale */
+      .hero-badge { font-size:.66rem; padding:7px 18px; margin:0 0 14px -10px; gap:7px; letter-spacing:.05em; white-space:nowrap; }
+      .pulse { width:8px; height:8px; }
+      /* Titolo full width — niente <br>, wrap naturale 3 righe */
+      .hero-title { font-size:clamp(1.7rem,7vw,2.4rem); margin-bottom:12px; line-height:1.1; }
+      .hero-title br { display:none; }
+      /* Sottotitolo full width */
+      .hero-sub { font-size:.65rem; line-height:1.55; margin-bottom:18px; max-width:240px; }
+
+      /* Bottoni larghi e affiancati */
+      .hero-ctas { gap:8px; margin-bottom:18px; flex-wrap:wrap; transform: translateX(-2px); }
+      .hero-ctas .btn { padding:10px 5px; font-size:.60rem; border-radius:10px; gap:5px; flex:1; justify-content:center; }
+      .hero-ctas .btn svg { width:8px; height:12px; }
+
+      /* Spazio per mascotte tra features e stats card */
+      .hero-features { gap:6px; margin-bottom:130px; flex-direction:column; align-items:flex-start; }
+      .hero-feat { font-size:.55rem; padding:5px 9px; border-radius:10px; gap:5px; }
+      .hero-feat svg { width:12px; height:12px; }
+
+      .hero-orb-1 { width:240px; height:240px; }
+      .hero-orb-2 { width:160px; height:160px; }
+      .hero-orb-3 { width:140px; height:140px; }
+      .hero-orb-4 { width:110px; height:110px; }
+
+      /* Mascotte assoluta dx, bubble absoluta accanto al viso */
+      .hero-mascot-col { position:absolute; bottom:0; right:85px; left:auto; top:auto; height:auto; width:auto; align-self:auto; z-index:5; overflow:visible; }
+      .mascot-wrapper { position:relative; display:block; }
+      .mascot-hero { height:150px; max-width:none; display:block; }
+      .mascot-cta-text { position:absolute; bottom:78px; left:100%; margin:0 0 0 -24px; font-size:.55rem; padding:6px 11px; max-width:115px; text-align:center; line-height:1.4; transform:none; white-space:normal; z-index:6; }
+
+      .hero-stats-card { padding:11px 8px; gap:4px; border-radius:13px; }
+      .hero-stat { padding:0 4px; gap:5px; flex-direction:column; text-align:center; align-items:center; }
+      .hero-stat-ico { width:26px; height:26px; border-radius:7px; }
+      .hero-stat-ico svg { width:14px; height:14px; }
+      .hero-stat-n { font-size:.95rem; }
+      .hero-stat-l { font-size:.52rem; margin-top:2px; }
+
+      /* Contatti: card piccole e centrate */
+      #contatti { padding:32px 0; }
+      .contacts-head { margin-bottom:18px; }
+      .contacts-grid { gap:8px; }
+      .ct { padding:14px 8px; border-radius:12px; }
+      .ct-ico { width:32px; height:32px; border-radius:9px; margin:0 auto 6px; }
+      .ct-ico svg { width:16px; height:16px; }
+      .ct h4 { font-size:.5rem; letter-spacing:.08em; margin-bottom:5px; }
+      .ct a { font-size:.62rem; line-height:1.35; }
+      .ct p { font-size:.6rem; line-height:1.4; }
+      .ct-ico-link svg { width:16px; height:16px; }
+      .ct-map-wrap { height:90px; }
+      .ct-map-pin svg { width:24px; height:24px; }
+      .ct-map-body { padding:10px 12px 14px; }
+      .ct-map-body h4 { font-size:.5rem; margin-bottom:4px; }
+      .ct-map-body p { font-size:.6rem; line-height:1.35; }
+      .ct-hours { gap:3px 8px; justify-content:center; }
+      .ct-hours span { font-size:.58rem; line-height:1.35; }
+      .ct-mail-link { font-size:.56rem; }
+
+      /* Portfolio cards piu grandi, meno padding */
+      #progetti { padding:36px 0; }
+      #progetti .container { padding:0 10px; }
+      .portfolio-head { margin-bottom:18px; }
+      .portfolio-grid { gap:8px; }
+      .p-item { aspect-ratio:1/1; border-radius:12px; }
+      .p-cat { font-size:.58rem; padding:3px 8px; top:8px; left:8px; }
+      .p-count { font-size:.55rem; padding:2px 7px; bottom:8px; right:8px; }
+
+      /* Servizi cards compatte e centrate */
+      #servizi { padding:36px 0; }
+      .services-head { margin-bottom:20px; }
+      .services-grid { gap:10px; }
+      .svc { padding:16px 10px; border-radius:14px; align-items:center; text-align:center; }
+      .svc-ico { width:34px; height:34px; border-radius:9px; margin-bottom:8px; }
+      .svc-ico svg { width:18px; height:18px; }
+      .svc h3 { font-size:.72rem; margin-bottom:4px; line-height:1.2; }
+      .svc p { font-size:.58rem; line-height:1.4; }
+      .svc-link { font-size:.6rem; margin-top:8px; gap:3px; }
+
+      /* Stats sezione compatta */
+      .stats { padding:32px 0; }
+      .stats-grid { grid-template-columns:1fr 1fr; gap:0; }
+      .stat { padding:18px 10px; }
+      .stat-n { font-size:1.7rem; margin-bottom:4px; }
+      .stat-l { font-size:.62rem; letter-spacing:.06em; }
+      .stat-d { font-size:.58rem; margin-top:2px; }
+
+      /* Chi siamo: foto prima */
+      .about-grid { grid-template-columns:1fr; gap:22px; }
+      .about-grid > .f-left  { order:2; }
+      .about-grid > .f-right { order:1; }
+      .about-real-img { aspect-ratio:16/10; }
+      #chi-siamo { padding:36px 0; }
+      #chi-siamo .section-title { font-size:1.3rem; line-height:1.18; }
+      #chi-siamo .subtitle { font-size:.72rem; line-height:1.5; }
+      .about-list { gap:6px; margin:10px 0 14px; }
+      .about-list li { font-size:.68rem; line-height:1.45; }
+      .about-list .about-icon { font-size:.58rem; }
+
+      /* Recensioni finest — molto compatte */
+      #recensioni { padding:32px 0; }
+      .reviews-head { margin-bottom:14px; }
+      .c-slide { padding:0 4px; }
+      .review-card { padding:14px 12px; border-radius:12px; }
+      .review-top { margin-bottom:10px; gap:8px; }
+      .review-txt { font-size:.62rem; line-height:1.5; margin-bottom:10px; }
+      .star svg { width:11px; height:11px; }
+      .google-badge { font-size:.52rem; padding:3px 7px; }
+      .reviewer { gap:8px; }
+      .rev-av { width:30px; height:30px; font-size:.65rem; }
+      .rev-name { font-size:.7rem; }
+      .rev-role { font-size:.55rem; }
+      .c-controls { margin-top:12px; gap:10px; }
+      .c-btn { width:32px; height:32px; }
+
+      /* Preventivo: layout 1 colonna — text top centrato, mascot 200px sotto, form in fondo */
+      .cta-grid {
+        grid-template-columns:1fr !important;
+        grid-template-areas:
+          "text"
+          "mascot"
+          "form" !important;
+        gap:0 !important;
+      }
+      .cta-left { grid-area:text; text-align:center; }
+      .cta-mascot-col { grid-area:mascot; }
+      .cta-grid > .f-up { grid-area:form; }
+
+      #preventivo .cta-left { position:relative; z-index:2; }
+      /* Tag come "primo titolo" centrale */
+      #preventivo .cta-left .tag { display:inline-block; font-size:.78rem; padding:7px 18px; margin:0 auto 14px; }
+      /* h2 + p come titoli centrali a tutta larghezza */
+      .cta-left h2 { font-size:1.6rem; margin:0 auto 10px; line-height:1.18; max-width:100%; text-align:center; }
+      .cta-left > p { font-size:.92rem; padding:0; margin:0 auto 16px; line-height:1.55; max-width:100%; text-align:center; border-left:none; }
+      /* Perks centrate */
+      .cta-left .perks { gap:5px; align-items:center; }
+      .cta-left .perks li { font-size:.7rem; gap:6px; line-height:1.4; max-width:none; justify-content:center; }
+      .cta-left .perks .perk-ico { width:15px; height:15px; min-width:15px; font-size:.5rem; }
+
+      /* Mascot vicino alle scritte, sx 20px, bubble a dx della testa */
+      .cta-mascot-col { margin-top:20px; padding-top:0; gap:0; align-items:center; position:relative; z-index:1; transform:translateX(-20px); flex-direction:row; justify-content:center; }
+      .speech-bubble { font-size:.62rem; padding:7px 11px; max-width:130px; line-height:1.3; align-self:flex-start; margin:30px 0 0 8px; position:relative; z-index:5; border-radius:14px 14px 14px 4px; box-shadow:0 4px 14px rgba(0,0,0,.18); order:2; }
+      .speech-bubble::after { content:''; position:absolute; bottom:auto; top:50%; left:-6px; width:10px; height:10px; background:inherit; border-left:1.5px solid var(--bd-light); border-bottom:1.5px solid var(--bd-light); transform:translateY(-50%) rotate(45deg); }
+      .cta-mascot-img { max-width:200px; margin:0; animation:mascotFloatMini 5s ease-in-out infinite; position:relative; z-index:0; order:1; }
+      @keyframes mascotFloatMini { 0%,100% { transform:translateY(-2px); } 50% { transform:translateY(-7px); } }
+      .cta-grid > .f-up { position:relative; z-index:3; margin-top:8px; }
+      /* Form: spostato in alto e compatto */
+      .cta-grid { gap:0 12px !important; }
+      .cta-grid > .f-up { margin-top:-20px; }
+      .form-card { padding:18px 14px; border-radius:14px; }
+      .form-card h3 { font-size:.95rem; margin-bottom:2px; }
+      .form-card .sub { font-size:.6rem; margin-bottom:14px; }
+      .fg { margin-bottom:10px; }
+      .fg label { font-size:.55rem; margin-bottom:4px; letter-spacing:.03em; }
+      .fg input, .fg select, .fg textarea { padding:9px 12px; font-size:.75rem; border-radius:8px; border-width:1px; }
+      .fg textarea { min-height:60px; }
+      .fg-row { gap:10px; }
+      .btn-submit { padding:11px; font-size:.78rem; }
+      .form-note { font-size:.55rem; margin-top:6px; }
+
+      /* Animazioni più rapide su mobile */
+      .f-up, .f-left, .f-right { transition: opacity .4s ease, transform .4s ease !important; }
+      .svc, .ct, .stat, .p-item, .btn { transition-duration: .2s !important; }
+    }
+
+    /* ── Telefoni molto stretti (≤360px) ── */
+    @media(max-width:360px){
+      .nav-inner { padding:0 12px; gap:6px; }
+      .nav-logo img { height:50px; }
+      .nav-cta { padding:8px 18px; }
+      .hero-badge { font-size:.5rem; padding:5px 11px; letter-spacing:.03em; white-space:normal; text-align:center; line-height:1.2; }
+      .hero-title { font-size:1.35rem; }
+      .hero-ctas { gap:6px; }
+      .hero-ctas .btn { padding:9px 4px; font-size:.55rem; gap:3px; }
+      .hero-ctas .btn svg { width:11px; height:11px; flex-shrink:0; }
+    }
+
+    /* ── Speech bubble mascot: animazione fumetto pop ── */
+    @keyframes comic-pop {
+      0%   { transform:scale(0); opacity:0; }
+      8%   { transform:scale(1.18); opacity:1; }
+      14%  { transform:scale(.94); }
+      20%  { transform:scale(1); }
+      82%  { transform:scale(1); opacity:1; }
+      90%  { transform:scale(1.05); opacity:1; }
+      96%  { transform:scale(0); opacity:0; }
+      100% { transform:scale(0); opacity:0; }
+    }
+    .mascot-cta-text {
+      transform-origin:bottom left;
+      animation:comic-pop 5.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="splash-on">
+
+<!-- ===================== SPLASH INTRO ===================== -->
+<div class="splash" id="splash" aria-hidden="true">
+  <img class="splash-logo" src="assets/Logo Completo mascotte + scritta.svg" alt="Matra Energy" onerror="this.src='assets/Logo Completo mascotte + scritta.png'; this.onerror=null;">
+</div>
+<script>
+  setTimeout(function(){
+    var s = document.getElementById('splash');
+    if (s) s.remove();
+    document.body.classList.remove('splash-on');
+  }, 1800);
+</script>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+
+    <!-- logo solo testo — in contenitore bianco per leggibilità sul blu -->
+    <a href="#home" class="nav-logo" title="Matra Energy SRL">
+      <img
+        src="assets/logo-testo.svg"
+        alt="Matra Energy SRL"
+        onerror="this.src='assets/logo.png'; this.onerror=null;"
+      >
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#chi-siamo">Chi Siamo</a></li>
+      <li><a href="#servizi">Servizi</a></li>
+      <li><a href="#progetti">Progetti</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <a href="#preventivo" class="btn btn-red nav-cta" aria-label="Richiedi preventivo gratuito">
+      <svg class="nav-cta-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+      <span class="nav-cta-txt">Preventivo Gratuito</span>
+    </a>
+    <button class="ham" id="ham" aria-label="Apri menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile overlay -->
+<div class="mob-menu" id="mobMenu">
+  <nav class="mob-menu-links">
+    <a href="#chi-siamo"  onclick="closeMenu()">Chi Siamo</a>
+    <a href="#servizi"    onclick="closeMenu()">Servizi</a>
+    <a href="#progetti"   onclick="closeMenu()">Progetti</a>
+    <a href="#recensioni" onclick="closeMenu()">Recensioni</a>
+    <a href="#contatti"   onclick="closeMenu()">Contatti</a>
+  </nav>
+  <a href="#preventivo" class="btn btn-red mob-menu-cta" onclick="closeMenu()">Preventivo Gratuito</a>
+  <div class="mob-menu-social">
+    <a href="https://www.facebook.com/matraenergy" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/matraenergy" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+    <a href="https://wa.me/393247790045" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/></svg>
+    </a>
+  </div>
+</div>
+
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-bg-photo"></div>
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-orb hero-orb-4"></div>
+  </div>
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Testo sinistra -->
+      <div class="hero-txt">
+        <div class="hero-badge">
+          <span class="pulse"></span>
+          Lazio e dintorni &mdash; 25+ anni di esperienza
+        </div>
+        <h1 class="hero-title">
+          Impianti <span class="line-red">Termoidraulici</span><br>
+          e <span class="line-red">Fotovoltaici</span><br>
+          per una casa<br>
+          più confortevole.
+        </h1>
+        <p class="hero-sub">
+          Soluzioni su misura per il benessere della tua famiglia,
+          con offerte chiavi in mano e assistenza garantita nel tempo.
+        </p>
+        <div class="hero-ctas">
+          <a href="#preventivo" class="btn btn-red">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Richiedi Preventivo Gratuito
+          </a>
+          <a href="#servizi" class="btn btn-outline-blue">
+            Scopri i Servizi
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            25+ anni di esperienza
+          </div>
+          <div class="hero-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Offerte chiavi in mano
+          </div>
+          <div class="hero-feat">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg>
+            Assistenza garantita
+          </div>
+        </div>
+      </div>
+
+      <!-- Mascotte destra -->
+      <div class="hero-mascot-col">
+        <div class="mascot-wrapper">
+          <div class="mascot-cta-text">Cosa aspetti?<br>Richiedi un preventivo!</div>
+          <img
+            src="assets/matra.png"
+            alt="Mascotte Matra Energy"
+            class="mascot-hero"
+          >
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats card bianca dentro hero -->
+    <div class="hero-stats-card">
+      <div class="hero-stat">
+        <div class="hero-stat-ico">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div>
+          <div class="hero-stat-n">25+</div>
+          <div class="hero-stat-l">Anni di attività</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-ico">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
+        </div>
+        <div>
+          <div class="hero-stat-n">500+</div>
+          <div class="hero-stat-l">Progetti completati</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-ico">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div>
+          <div class="hero-stat-n">300+</div>
+          <div class="hero-stat-l">Clienti soddisfatti</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== STATS ===================== -->
+<section class="stats" id="numeri">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat f-up">
+        <div class="stat-n"><span class="counter" data-t="25">0</span>+</div>
+        <div class="stat-l">Anni di Esperienza</div>
+        <div class="stat-d">nel settore termoidraulica</div>
+      </div>
+      <div class="stat f-up" style="transition-delay:.1s">
+        <div class="stat-n"><span class="counter" data-t="500">0</span>+</div>
+        <div class="stat-l">Progetti Realizzati</div>
+        <div class="stat-d">tra privati e imprese</div>
+      </div>
+      <div class="stat f-up" style="transition-delay:.2s">
+        <div class="stat-n"><span class="counter" data-t="300">0</span>+</div>
+        <div class="stat-l">Clienti Fidelizzati</div>
+        <div class="stat-d">in tutta la provincia pontina</div>
+      </div>
+      <div class="stat f-up" style="transition-delay:.3s">
+        <div class="stat-n"><span class="counter" data-t="1200">0</span>kW</div>
+        <div class="stat-l">Fotovoltaico Installato</div>
+        <div class="stat-d">di potenza totale cumulata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CHI SIAMO ===================== -->
+<section class="section" id="chi-siamo">
+  <div class="container">
+    <div class="about-grid">
+      <div class="f-left">
+        <span class="tag">Chi Siamo</span>
+        <h2 class="section-title">Passione e tecnica al<br><span>servizio del tuo benessere</span></h2>
+        <p class="subtitle">
+          Matra Energy SRL nasce a Latina con una missione chiara: portare soluzioni energetiche di qualità ed essere sempre presente per le esigenze dei clienti sia per le case che per le aziende nel Lazio e zone limitrofe. Con oltre 25 anni di esperienza, il nostro team di tecnici certificati lavora ogni giorno per garantire efficienza, affidabilità e risparmio reale in bolletta.
+        </p>
+        <ul class="about-list">
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Tecnici certificati</strong> — il nostro personale è costantemente aggiornato su normative e nuove tecnologie.</span>
+          </li>
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Materiali di prima scelta</strong> — utilizziamo solo prodotti certificati dei principali produttori europei.</span>
+          </li>
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Assistenza post-intervento</strong> — supporto e manutenzione garantiti per tutta la vita dell'impianto.</span>
+          </li>
+          <li>
+            <span class="about-icon">✦</span>
+            <span><strong>Zona d'intervento</strong> — Lazio (Latina, Roma, Frosinone, Rieti, Viterbo) e regioni limitrofe: Campania, Abruzzo, Umbria, Toscana, Marche, Molise.</span>
+          </li>
+        </ul>
+        <a href="#preventivo" class="btn btn-blue">Contattaci Ora</a>
+      </div>
+      <div class="f-right">
+        <img src="assets/imagine%20sezione%20chi%20siamo.png" alt="Team Matra Energy al lavoro" class="about-real-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== SERVIZI ===================== -->
+<section class="section services" id="servizi">
+  <div class="container">
+    <div class="services-head f-up">
+      <span class="tag">I Nostri Servizi</span>
+      <h2 class="section-title">Tutto ciò di cui hai bisogno,<br><span>sotto un unico tetto</span></h2>
+      <p class="subtitle">Dal progetto alla messa in opera, seguiamo ogni fase con competenza e attenzione ai dettagli.</p>
+    </div>
+    <div class="services-grid">
+
+      <a href="#preventivo" class="svc f-up" style="transition-delay:.05s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+        </div>
+        <h3>Termoidraulica</h3>
+        <p>Progettazione e installazione di impianti idraulici, di riscaldamento e sanitari per abitazioni e complessi industriali.</p>
+        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="#preventivo" class="svc f-up" style="transition-delay:.1s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </div>
+        <h3>Impianti Fotovoltaici</h3>
+        <p>Installazione chiavi in mano di impianti fotovoltaici residenziali e industriali. Sistema di accumulo, monitoraggio remoto e gestione pratiche GSE inclusa.</p>
+        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="#preventivo" class="svc f-up" style="transition-delay:.15s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1010 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
+        </div>
+        <h3>Climatizzazione</h3>
+        <p>Fornitura e installazione di climatizzatori monosplit, multisplit e canalizzati dei migliori brand. Ricarica gas refrigerante e manutenzione annuale.</p>
+        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+      <a href="#preventivo" class="svc f-up" style="transition-delay:.2s">
+        <div class="svc-ico">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>Manutenzione</h3>
+        <p>Contratti di manutenzione ordinaria e straordinaria per caldaie, impianti solari e climatizzatori. Interventi rapidi.</p>
+        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PORTFOLIO ===================== -->
+<section class="section" id="progetti">
+  <div class="container">
+    <div class="portfolio-head f-up">
+      <span class="tag">Portfolio Progetti</span>
+      <h2 class="section-title">I nostri <span>lavori realizzati</span></h2>
+      <p class="subtitle">Ogni progetto è una storia di fiducia e professionalità. Scopri alcuni dei nostri interventi più significativi.</p>
+    </div>
+    <div class="portfolio-grid">
+
+      <div class="p-item f-up" style="transition-delay:.05s" data-album="fotovoltaico">
+        <div class="p-ph" style="background-image:url('assets/imagine%20impianto%20fotovoltaico.png');background-size:cover;background-position:center 30%">
+          <span class="p-cat">Fotovoltaico</span>
+          <div class="p-overlay"></div>
+          <div class="p-hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Sfoglia album</div>
+          <span class="p-count">1 foto</span>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.1s" data-album="termoidraulica">
+        <div class="p-ph" style="background-image:url('assets/immagine%20pdc%20full%20electric%201%20(principale.jpg');background-size:cover;background-position:center">
+          <span class="p-cat">Termoidraulica</span>
+          <div class="p-overlay"></div>
+          <div class="p-hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Sfoglia album</div>
+          <span class="p-count">4 foto</span>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.15s" data-album="climatizzazione">
+        <div class="p-ph" style="background-image:url('assets/immagine%20climatizzatore%201%20(principale).jpg');background-size:cover;background-position:center">
+          <span class="p-cat">Climatizzazione</span>
+          <div class="p-overlay"></div>
+          <div class="p-hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Sfoglia album</div>
+          <span class="p-count">2 foto</span>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.2s" data-album="industriale">
+        <div class="p-ph" style="background-image:url('assets/imagine%20impianto%20industriale.png');background-size:cover;background-position:center">
+          <span class="p-cat">Impianto Industriale</span>
+          <div class="p-overlay"></div>
+          <div class="p-hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Sfoglia album</div>
+          <span class="p-count">2 foto</span>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.25s" data-album="scaldabagno">
+        <div class="p-ph" style="background-image:url('assets/immagine%20scaldabagno%201%20(principale).jpg');background-size:cover;background-position:center">
+          <span class="p-cat">Scaldabagno</span>
+          <div class="p-overlay"></div>
+          <div class="p-hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Sfoglia album</div>
+          <span class="p-count">3 foto</span>
+        </div>
+      </div>
+
+      <div class="p-item f-up" style="transition-delay:.3s" data-album="ibridi">
+        <div class="p-ph" style="background-image:url('assets/immagine%20caldaia%20ibrida%201%20principale).jpg');background-size:cover;background-position:center">
+          <span class="p-cat">Sistemi Ibridi</span>
+          <div class="p-overlay"></div>
+          <div class="p-hint"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg> Sfoglia album</div>
+          <span class="p-count">5 foto</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== RECENSIONI ===================== -->
+<section class="section reviews" id="recensioni">
+  <div class="container">
+    <div class="reviews-head f-up">
+      <span class="tag on-dark">Recensioni Clienti</span>
+      <h2 class="section-title white">Cosa dicono di <span>noi</span></h2>
+      <p class="subtitle white">La fiducia dei nostri clienti è il risultato del nostro impegno quotidiano verso la qualità.</p>
+    </div>
+    <div class="f-up">
+
+      <div class="c-slide on" id="slide-0"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Nell'installazione della mia pompa di calore ho avuto il piacere di conoscere due professionisti veramente qualificati. Gabriele e Samuele in particolare, bravi, lavoratori e soprattutto seri! Sanno davvero dove mettono le mani e aiutano il cliente in ogni caso a risolvere. Veramente soddisfatto della loro conoscenza. Consigliatissimi!</p><div class="reviewer"><div class="rev-av"><img src="assets/Simone tomaselli.png" alt="Simone Tomaselli" style="width:100%;height:100%;object-fit:cover;"></div><div><div class="rev-name">Simone Tomaselli</div><div class="rev-role">Local Guide</div></div></div></div></div>
+
+      <div class="c-slide" id="slide-1"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ho contattato questo impianto per un'installazione di un boiler combinato solare su acqua calda e relativo impianto con scaldabagno, sono rimasta estremamente soddisfatta. Grande professionalità, competenza e attenzione ai dettagli in ogni fase del lavoro. Il team è stato puntuale, cordiale e propositivo, capace di trovare soluzioni anche che non avrei mai considerato. Consigliatissimi a chi cerca un servizio di alto livello.</p><div class="reviewer"><div class="rev-av"><img src="assets/Gianna Chiavegato.png" alt="Gianna Chiavegato" style="width:100%;height:100%;object-fit:cover;"></div><div><div class="rev-name">Gianna Chiavegato</div><div class="rev-role">1 mese fa</div></div></div></div></div>
+
+      <div class="c-slide" id="slide-2"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ottimo servizio, preciso e pulito! Grazie anche per l'assistenza fornita post installazione, sempre disponibili e gentili.</p><div class="reviewer"><div class="rev-av"><img src="assets/immagine Roberto Delvecchio.png" alt="Roberto Delvecchio" style="width:100%;height:100%;object-fit:cover;"></div><div><div class="rev-name">Roberto Delvecchio</div><div class="rev-role">Local Guide · 6 mesi fa</div></div></div></div></div>
+
+      <div class="c-slide" id="slide-3"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Ditta seria e preparata con soluzioni innovative e massima professionalità. Finalmente una termoidraulica al passo coi tempi!</p><div class="reviewer"><div class="rev-av">VM</div><div><div class="rev-name">Valentina Maia</div><div class="rev-role">8 mesi fa</div></div></div></div></div>
+
+      <div class="c-slide" id="slide-4"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Installatori puntuali, onesti e con esperienza, raccomandati!</p><div class="reviewer"><div class="rev-av"><img src="assets/immagine marco pizzuti.png" alt="Marco Pizzuti" style="width:100%;height:100%;object-fit:cover;"></div><div><div class="rev-name">Marco Pizzuti</div><div class="rev-role">8 mesi fa</div></div></div></div></div>
+
+      <div class="c-slide" id="slide-5"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Persone molto competenti, sono stato seguito dall'inizio alla fine. Molto soddisfatto… CONSIGLIATISSIMO!!</p><div class="reviewer"><div class="rev-av">FP</div><div><div class="rev-name">Fabrizio Pacioni</div><div class="rev-role">11 mesi fa</div></div></div></div></div>
+
+      <div class="c-slide" id="slide-6"><div class="review-card"><div class="review-top"><div class="stars"><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="star"><svg viewBox="0 0 24 24" fill="#FBBC04"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div><div class="google-badge"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57C21.36 18.34 22.56 15.52 22.56 12.25z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg> Recensione Google</div></div><p class="review-txt">Bravissimi, lavoratori, gentili e simpatici. Hanno effettuato l'installazione in tempi rapidi, pulito tutto e dato informazioni dettagliate. Consigliati!</p><div class="reviewer"><div class="rev-av"><img src="assets/immagine daniele landi.png" alt="Daniele Landi" style="width:100%;height:100%;object-fit:cover;"></div><div><div class="rev-name">Daniele Landi</div><div class="rev-role">Local Guide · 1 mese fa</div></div></div></div></div>
+
+      <div class="c-controls">
+        <button class="c-btn" id="cPrev" aria-label="Precedente">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="c-dots" id="cDots">
+          <div class="c-dot on" data-i="0"></div>
+          <div class="c-dot"    data-i="1"></div>
+          <div class="c-dot"    data-i="2"></div>
+          <div class="c-dot"    data-i="3"></div>
+          <div class="c-dot"    data-i="4"></div>
+          <div class="c-dot"    data-i="5"></div>
+          <div class="c-dot"    data-i="6"></div>
+        </div>
+        <button class="c-btn" id="cNext" aria-label="Successivo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CTA / FORM ===================== -->
+<section class="section cta-section" id="preventivo">
+  <div class="container">
+    <div class="cta-grid">
+
+      <!-- Col 1: Titolo + perks -->
+      <div class="cta-left f-left">
+        <span class="tag">Preventivo Gratuito</span>
+        <h2>Inizia a risparmiare<br><span>già da oggi</span></h2>
+        <p>Compila il form: un nostro tecnico ti contatterà entro 24 ore per un sopralluogo gratuito e un preventivo senza impegno.</p>
+        <ul class="perks">
+          <li><span class="perk-ico">✓</span> Sopralluogo gratuito senza impegno</li>
+          <li><span class="perk-ico">✓</span> Preventivo dettagliato entro 24 ore</li>
+          <li><span class="perk-ico">✓</span> Consulenza su incentivi e detrazioni fiscali</li>
+          <li><span class="perk-ico">✓</span> Assistenza dalla progettazione al collaudo</li>
+          <li><span class="perk-ico">✓</span> Garanzia su materiali e manodopera</li>
+        </ul>
+      </div>
+
+      <!-- Col 2: Form -->
+      <div class="f-up">
+        <div class="form-card">
+          <h3>Contattaci Subito</h3>
+          <p class="sub">Risposta garantita entro 24 ore lavorative</p>
+          <form id="contactForm" novalidate>
+            <input type="hidden" name="access_key" value="b7cb4961-7aed-4508-b728-933945ddba89">
+            <input type="hidden" name="subject" value="Nuova richiesta preventivo — Matra Energy">
+            <input type="hidden" name="from_name" value="Sito Matra Energy">
+            <div class="fg-row">
+              <div class="fg">
+                <label for="nome">Nome e Cognome *</label>
+                <input type="text" id="nome" name="nome" autocomplete="name" placeholder="Mario Rossi" required>
+              </div>
+              <div class="fg">
+                <label for="telefono">Telefono *</label>
+                <input type="tel" id="telefono" name="telefono" autocomplete="tel" placeholder="+39 333 1234567" required>
+              </div>
+            </div>
+            <div class="fg">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="mario@email.it">
+            </div>
+            <div class="fg">
+              <label for="servizio">Servizio Richiesto *</label>
+              <select id="servizio" name="servizio" autocomplete="off" required>
+                <option value="" disabled selected>Seleziona un servizio</option>
+                <option value="termoidraulica">Termoidraulica</option>
+                <option value="fotovoltaico">Impianto Fotovoltaico</option>
+                <option value="climatizzazione">Climatizzazione</option>
+                <option value="manutenzione">Manutenzione</option>
+                <option value="altro">Altro / Non so ancora</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="messaggio">Descrivi la tua richiesta</label>
+              <textarea id="messaggio" name="messaggio" autocomplete="off" placeholder="Descrivi brevemente la tua esigenza o il problema riscontrato…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-red btn-submit" id="submitBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Invia Richiesta
+            </button>
+            <p class="form-note">I tuoi dati sono al sicuro. Non riceverai spam.</p>
+            <p id="formErr" style="display:none;color:var(--red);font-size:.82rem;margin-top:10px;text-align:center;">Errore. Riprova o chiamaci al <a href="tel:+393247790045">324 779 0045</a>.</p>
+          </form>
+          <div class="form-ok" id="formOk">
+            <div class="ok-ico">✓</div>
+            <h4>Richiesta inviata!</h4>
+            <p>Ti contatteremo entro 24 ore lavorative.<br>Grazie per aver scelto Matra Energy.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Col 3: Mascotte -->
+      <div class="cta-mascot-col f-right">
+        <div class="speech-bubble">
+          <strong>Pronto ad aiutarti!</strong>
+          Compila il form: ti richiamo entro 24 ore per un sopralluogo gratuito.
+        </div>
+        <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== CONTATTI ===================== -->
+<section class="section contacts" id="contatti">
+  <div class="container">
+    <div class="contacts-head f-up">
+      <span class="tag on-dark">Contatti</span>
+      <h2 class="section-title white">Siamo sempre <span>a tua disposizione</span></h2>
+      <p class="subtitle white">Contattaci nel modo che preferisci. Rispondiamo rapidamente a qualsiasi richiesta.</p>
+    </div>
+    <div class="contacts-grid">
+
+      <div class="ct f-up" style="transition-delay:.05s">
+        <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" class="ct-ico ct-ico-link" aria-label="Scrivici su WhatsApp" style="width:62px;height:62px;background:rgba(37,211,102,.18);border:1px solid rgba(37,211,102,.4);border-radius:14px;margin:0 auto 20px;box-shadow:0 4px 16px rgba(0,0,0,.15);">
+          <svg class="fill-icon" viewBox="0 0 24 24" style="width:28px;height:28px;fill:#25d366;stroke:none;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <h4>Messaggi &amp; Telefono</h4>
+        <a href="tel:+393247790045">+39 324 779 0045</a>
+        <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" style="color:#1ea356;font-size:.85rem;margin-top:4px;font-weight:600;">Scrivici su WhatsApp</a>
+      </div>
+
+      <div class="ct f-up" style="transition-delay:.1s">
+        <a href="mailto:amministrazione@matraenergy.it" class="ct-ico ct-ico-link ct-ico-mail" aria-label="Inviaci un'email" style="width:62px;height:62px;background:rgba(66,133,244,.18);border:1px solid rgba(66,133,244,.45);border-radius:14px;margin:0 auto 20px;box-shadow:0 4px 16px rgba(0,0,0,.15);">
+          <svg viewBox="0 0 24 24" style="stroke:#1a73e8;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <h4>Email</h4>
+        <a href="mailto:amministrazione@matraenergy.it" class="ct-mail-link">amministrazione@matraenergy.it</a>
+      </div>
+
+      <div class="ct f-up" style="transition-delay:.15s; padding:0;">
+        <a href="https://maps.google.com/?q=Strada+Capograssa+544,+04100+Latina+LT" target="_blank" rel="noopener" class="ct-map-wrap" aria-label="Apri in Google Maps">
+          <iframe src="https://maps.google.com/maps?q=Strada+Capograssa+544,+Latina+LT&output=embed&zoom=15" width="100%" height="148" style="border:0;" loading="lazy" title="Mappa sede"></iframe>
+        </a>
+        <div class="ct-map-body">
+          <h4>Sede Operativa</h4>
+          <p>Strada Capograssa 544<br>04100 Latina (LT)</p>
+        </div>
+      </div>
+
+      <div class="ct f-up" style="transition-delay:.2s">
+        <div class="ct-ico ct-ico-hours" style="width:62px;height:62px;background:rgba(237,38,19,.16);border:1px solid rgba(237,38,19,.42);border-radius:14px;margin:0 auto 20px;box-shadow:0 4px 16px rgba(0,0,0,.15);">
+          <svg viewBox="0 0 24 24" style="stroke:var(--red);"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>Orari</h4>
+        <div class="ct-hours">
+          <span>Lun – Ven</span><span>8:00 – 18:00</span>
+          <span>Sabato</span><span>8:00 – 13:00</span>
+          <span>Dom e festivi</span><span class="chiuso">Chiusi</span>
+        </div>
+        <p style="margin-top:10px;"><span style="color:var(--red);font-size:.82rem;">Urgenze 24/7 su WhatsApp</span></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand col: logo-testo + mascotte piccola + social -->
+      <div class="f-brand">
+        <a href="#home" class="f-logo-wrap" aria-label="Torna in cima">
+          <img
+            src="assets/logo-testo.svg"
+            alt="Matra Energy SRL"
+            onerror="this.src='assets/logo.png'; this.onerror=null;"
+          >
+        </a>
+        <p class="f-brand-desc">Specialisti in termoidraulica, fotovoltaico e climatizzazione nel Lazio e dintorni con 25+ anni di esperienza nel settore.</p>
+
+        <div class="f-social">
+          <a href="https://facebook.com/matraenergy" target="_blank" rel="noopener" class="soc" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://instagram.com/matraenergy" target="_blank" rel="noopener" class="soc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=393247790045" target="_blank" rel="noopener" class="soc" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="f-col">
+        <h5>Servizi</h5>
+        <ul class="f-links">
+          <li><a href="#servizi">Termoidraulica</a></li>
+          <li><a href="#servizi">Impianti Fotovoltaici</a></li>
+          <li><a href="#servizi">Climatizzazione</a></li>
+          <li><a href="#servizi">Manutenzione</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Azienda</h5>
+        <ul class="f-links">
+          <li><a href="#chi-siamo">Chi Siamo</a></li>
+          <li><a href="#progetti">Progetti</a></li>
+          <li><a href="#recensioni">Recensioni</a></li>
+          <li><a href="#preventivo">Preventivo Gratuito</a></li>
+        </ul>
+      </div>
+
+      <div class="f-col">
+        <h5>Assistenza</h5>
+        <p style="color:var(--txt-sub-dark);font-size:.88rem;line-height:1.6;margin-bottom:16px">Serve ancora assistenza?</p>
+        <a href="mailto:amministrazione@matraenergy.it?subject=Richiesta%20Assistenza" class="btn btn-red" style="font-size:.8rem;padding:10px 18px">Richiedi Assistenza</a>
+      </div>
+
+    </div>
+
+    <div class="f-bottom">
+      <p>© 2026 Matra Energy SRL — Tutti i diritti riservati</p>
+      <p>P.IVA 03356610596 &nbsp;|&nbsp; REA LT-334019 &nbsp;|&nbsp; Strada Capograssa 544, 04100 Latina (LT) &nbsp;|&nbsp; <button class="f-legal-link" onclick="openPrivacy('privacy')">Privacy Policy</button> &nbsp;|&nbsp; <button class="f-legal-link" onclick="openPrivacy('cookie')">Cookie Policy</button></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== PRIVACY / COOKIE MODAL ===================== -->
+<div class="prv-overlay" id="prvOverlay">
+  <div class="prv-box" role="dialog" aria-modal="true">
+    <div class="prv-head">
+      <h3 id="prvTitle">Informativa Privacy</h3>
+      <button class="prv-close" onclick="closePrivacy()" aria-label="Chiudi">×</button>
+    </div>
+    <div class="prv-tabs">
+      <button class="prv-tab active" id="tabPrivacy" onclick="switchTab('privacy')">Privacy Policy</button>
+      <button class="prv-tab" id="tabCookie" onclick="switchTab('cookie')">Cookie Policy</button>
+    </div>
+    <div class="prv-body" id="prvBody"></div>
+  </div>
+</div>
+
+<!-- ===================== LIGHTBOX ===================== -->
+<div class="lb-overlay" id="lb" role="dialog" aria-modal="true" aria-label="Galleria foto">
+  <button class="lb-close" id="lbClose" aria-label="Chiudi">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Foto precedente">&#8249;</button>
+  <div class="lb-content" id="lbContent"></div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Foto successiva">&#8250;</button>
+  <div class="lb-footer">
+    <span class="lb-cat" id="lbCat"></span>
+    <span id="lbCounter"></span>
+    <div class="lb-dots" id="lbDots"></div>
+  </div>
+</div>
+
+<button class="go-top" id="goTop" aria-label="Torna in cima">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+  /* Hero canvas — particelle calore */
+  (function(){
+    const cv = document.getElementById('hero-canvas');
+    if(!cv) return;
+    const ctx = cv.getContext('2d');
+    let W, H, pts = [];
+    function resize(){ W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function mkPt(){
+      return {
+        x: Math.random() * W,
+        y: H + Math.random() * 60,
+        r: Math.random() * 2.2 + 0.6,
+        sp: Math.random() * 0.55 + 0.2,
+        wo: (Math.random() - 0.5) * 0.4,
+        op: Math.random() * 0.5 + 0.15,
+        /* colori: bianco, ambra, rosso-arancio brand */
+        col: [
+          'rgba(255,255,255,',
+          'rgba(255,160,60,',
+          'rgba(237,80,30,',
+          'rgba(180,210,255,'
+        ][Math.floor(Math.random()*4)]
+      };
+    }
+    for(let i=0;i<80;i++){ const p=mkPt(); p.y=Math.random()*H; pts.push(p); }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = p.col + p.op + ')';
+        ctx.fill();
+        p.y  -= p.sp;
+        p.x  += p.wo;
+        p.op -= 0.0008;
+        if(p.y < -10 || p.op <= 0){ const n=mkPt(); Object.assign(p,n); }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  /* Navbar scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 48), { passive: true });
+
+  /* Preventivo link su mobile: scroll esatto su mascot+bubble+form */
+  document.querySelectorAll('a[href="#preventivo"]').forEach(a => {
+    a.addEventListener('click', e => {
+      if (window.innerWidth > 520) return;
+      const tgt = document.querySelector('#preventivo .cta-mascot-col');
+      if (!tgt) return;
+      e.preventDefault();
+      const y = tgt.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top:y, behavior:'smooth' });
+      if (typeof closeMenu === 'function') closeMenu();
+    });
+  });
+
+  /* Hamburger */
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mobMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('on');
+    mob.classList.toggle('on');
+    const open = mob.classList.contains('on');
+    document.body.style.overflow = open ? 'hidden' : '';
+    document.body.classList.toggle('menu-open', open);
+  });
+  function closeMenu(){ ham.classList.remove('on'); mob.classList.remove('on'); document.body.style.overflow = ''; document.body.classList.remove('menu-open'); }
+
+  /* Scroll animations */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('on'); }
+      else { e.target.classList.remove('on'); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.f-up,.f-left,.f-right').forEach(el => io.observe(el));
+
+  /* Counters */
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ runCounter(e.target); cio.unobserve(e.target); } });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('.counter').forEach(el => cio.observe(el));
+
+  function runCounter(el){
+    const t = +el.dataset.t, dur = 1800, step = t / (dur / 16);
+    let c = 0;
+    const iv = setInterval(() => {
+      c = Math.min(c + step, t);
+      el.textContent = Math.floor(c).toLocaleString('it-IT');
+      if(c >= t) clearInterval(iv);
+    }, 16);
+  }
+
+  /* Carousel */
+  let cur = 0;
+  const slides = document.querySelectorAll('.c-slide');
+  const dots   = document.querySelectorAll('.c-dot');
+  const n = slides.length;
+  let ap;
+  function goTo(i){
+    slides[cur].classList.remove('on'); dots[cur].classList.remove('on');
+    cur = (i + n) % n;
+    slides[cur].classList.add('on'); dots[cur].classList.add('on');
+  }
+  function resetAp(){ clearInterval(ap); ap = setInterval(() => goTo(cur+1), 5200); }
+  document.getElementById('cNext').addEventListener('click', () => { goTo(cur+1); resetAp(); });
+  document.getElementById('cPrev').addEventListener('click', () => { goTo(cur-1); resetAp(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.i); resetAp(); }));
+  resetAp();
+
+  /* Form — invio a amministrazione@matraenergy.it via Web3Forms */
+  document.getElementById('contactForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const nome     = document.getElementById('nome').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const servizio = document.getElementById('servizio').value;
+    let ok = true;
+    [{id:'nome',v:nome},{id:'telefono',v:telefono},{id:'servizio',v:servizio}].forEach(({id,v}) => {
+      const el = document.getElementById(id);
+      if(!v){ el.style.borderColor='var(--red)'; ok=false; el.addEventListener('input',()=>el.style.borderColor='',{once:true}); }
+    });
+    if(!ok) return;
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.textContent = 'Invio in corso…';
+    document.getElementById('formErr').style.display = 'none';
+    try {
+      const res  = await fetch('https://api.web3forms.com/submit', { method:'POST', body: new FormData(this) });
+      const data = await res.json();
+      if(data.success){ this.style.display='none'; document.getElementById('formOk').classList.add('show'); }
+      else { throw new Error(data.message); }
+    } catch(err) {
+      document.getElementById('formErr').style.display = 'block';
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Invia Richiesta';
+    }
+  });
+
+  /* Scroll top */
+  /* ===== LIGHTBOX / ALBUM ===== */
+  const albums = {
+    fotovoltaico:   { label:'Fotovoltaico',          photos:['assets/imagine impianto fotovoltaico.png'] },
+    termoidraulica: { label:'Termoidraulica',        photos:[
+      'assets/immagine pdc full electric 1 (principale.jpg',
+      'assets/immagine pdc full electric 2.jpg',
+      'assets/immagine pdc full electric 3.jpg',
+      'assets/immagine solare termico.jpg'
+    ] },
+    climatizzazione:{ label:'Climatizzazione',       photos:[
+      'assets/immagine climatizzatore 1 (principale).jpg',
+      'assets/immagine climatizzatore 2.jpg'
+    ] },
+    industriale:    { label:'Impianto Industriale',  photos:[
+      'assets/imagine impianto industriale.png',
+      'assets/immagine industriale 2.jpg'
+    ] },
+    scaldabagno:    { label:'Scaldabagno',           photos:[
+      'assets/immagine scaldabagno 1 (principale).jpg',
+      'assets/immagine scaldabagno 2.jpg',
+      'assets/immagine scaldabagno 3.jpg'
+    ] },
+    ibridi:         { label:'Sistemi Ibridi',        photos:[
+      'assets/immagine caldaia ibrida 1 principale).jpg',
+      'assets/immagine caldaia ibrida 2.jpg',
+      'assets/immagine caldaia ibrida 3.jpg',
+      'assets/immagine caldaia ibrida 4.jpg',
+      'assets/Immagine caldaia ibrida 5.jpg'
+    ] }
+  };
+
+  let lbAlbum = null, lbIdx = 0;
+  const lb      = document.getElementById('lb');
+  const lbCont  = document.getElementById('lbContent');
+  const lbCat   = document.getElementById('lbCat');
+  const lbCtr   = document.getElementById('lbCounter');
+  const lbDots  = document.getElementById('lbDots');
+  const lbPrev  = document.getElementById('lbPrev');
+  const lbNext  = document.getElementById('lbNext');
+
+  function lbRender() {
+    const al = albums[lbAlbum];
+    lbCat.textContent = al.label;
+    lbCont.innerHTML = '';
+    if (al.photos.length === 0) {
+      lbCont.innerHTML = `<div class="lb-ph-box"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg><strong style="color:rgba(255,255,255,.7)">Foto in arrivo</strong><span>Stiamo raccogliendo le immagini per questa categoria.</span></div>`;
+      lbCtr.textContent = '';
+      lbDots.innerHTML = '';
+      lbPrev.disabled = true; lbNext.disabled = true;
+      return;
+    }
+    const img = document.createElement('img');
+    img.className = 'lb-img';
+    img.src = al.photos[lbIdx];
+    img.alt = al.label + ' — foto ' + (lbIdx+1);
+    lbCont.appendChild(img);
+    lbCtr.textContent = (al.photos.length > 1) ? (lbIdx+1) + ' / ' + al.photos.length : '';
+    lbPrev.disabled = lbIdx === 0;
+    lbNext.disabled = lbIdx === al.photos.length - 1;
+    lbDots.innerHTML = al.photos.map((_, i) =>
+      `<button class="lb-dot${i===lbIdx?' active':''}" data-i="${i}" aria-label="Foto ${i+1}"></button>`
+    ).join('');
+    lbDots.querySelectorAll('.lb-dot').forEach(d =>
+      d.addEventListener('click', () => { lbIdx = +d.dataset.i; lbRender(); })
+    );
+  }
+
+  function lbOpen(album) {
+    lbAlbum = album; lbIdx = 0;
+    lbRender();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbClose() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.p-item[data-album]').forEach(el =>
+    el.addEventListener('click', () => lbOpen(el.dataset.album))
+  );
+  document.getElementById('lbClose').addEventListener('click', lbClose);
+  lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+  lbPrev.addEventListener('click', () => { lbIdx--; lbRender(); });
+  lbNext.addEventListener('click', () => { lbIdx++; lbRender(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft'  && !lbPrev.disabled) { lbIdx--; lbRender(); }
+    if (e.key === 'ArrowRight' && !lbNext.disabled) { lbIdx++; lbRender(); }
+  });
+
+  /* Swipe touch lightbox */
+  let lbTouchX = null, lbTouchY = null;
+  lbCont.addEventListener('touchstart', e => {
+    if (!lb.classList.contains('open')) return;
+    lbTouchX = e.touches[0].clientX;
+    lbTouchY = e.touches[0].clientY;
+  }, {passive:true});
+  lbCont.addEventListener('touchend', e => {
+    if (lbTouchX === null) return;
+    const dx = e.changedTouches[0].clientX - lbTouchX;
+    const dy = e.changedTouches[0].clientY - lbTouchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0 && !lbNext.disabled) { lbIdx++; lbRender(); }
+      else if (dx > 0 && !lbPrev.disabled) { lbIdx--; lbRender(); }
+    }
+    lbTouchX = lbTouchY = null;
+  }, {passive:true});
+
+  /* ===== PRIVACY / COOKIE MODAL ===== */
+  const privacyContent = {
+    privacy: `
+      <h4>Titolare del Trattamento</h4>
+      <p><strong>Matra Energy SRL</strong><br>
+      Sede legale e operativa: Strada Capograssa 544, 04100 Latina (LT)<br>
+      P.IVA: 03356610596 — REA: LT-334019<br>
+      Email: <a href="mailto:amministrazione@matraenergy.it">amministrazione@matraenergy.it</a><br>
+      Tel: <a href="tel:+393247790045">+39 324 779 0045</a></p>
+
+      <h4>Dati Raccolti</h4>
+      <p>Raccogliamo esclusivamente i dati che l'utente fornisce volontariamente tramite il modulo di contatto/preventivo:</p>
+      <ul>
+        <li>Nome e cognome</li>
+        <li>Numero di telefono</li>
+        <li>Indirizzo email (opzionale)</li>
+        <li>Tipo di servizio richiesto</li>
+        <li>Descrizione della richiesta</li>
+      </ul>
+      <p>Non raccogliamo dati sensibili né dati di navigazione per finalità di profilazione.</p>
+
+      <h4>Finalità del Trattamento</h4>
+      <p>I dati raccolti sono utilizzati esclusivamente per:</p>
+      <ul>
+        <li>Rispondere alle richieste di preventivo e contatto</li>
+        <li>Fornire il servizio richiesto dall'utente</li>
+        <li>Adempiere ad obblighi di legge</li>
+      </ul>
+
+      <h4>Base Giuridica</h4>
+      <p>Il trattamento è fondato sul consenso dell'interessato (art. 6, par. 1, lett. a GDPR) e sull'esecuzione di misure precontrattuali (art. 6, par. 1, lett. b GDPR).</p>
+
+      <h4>Conservazione</h4>
+      <p>I dati sono conservati per il tempo strettamente necessario a gestire la richiesta e, successivamente, per i soli adempimenti fiscali e contabili previsti dalla legge (max 10 anni).</p>
+
+      <h4>Condivisione con Terze Parti</h4>
+      <p>I dati non vengono venduti né ceduti a terzi. Vengono trasmessi esclusivamente al servizio di invio email <strong>Web3Forms</strong> (web3forms.com) come responsabile del trattamento, al solo scopo di recapitare la richiesta al nostro indirizzo email. Web3Forms è conforme al GDPR.</p>
+
+      <h4>Diritti dell'Interessato</h4>
+      <p>L'utente ha diritto di: accedere ai propri dati, rettificarli, cancellarli, limitarne il trattamento, opporsi al trattamento e portarli ad altro titolare. Per esercitare i propri diritti scrivere a: <a href="mailto:amministrazione@matraenergy.it">amministrazione@matraenergy.it</a></p>
+      <p>Ha inoltre il diritto di proporre reclamo al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>).</p>
+
+      <h4>Aggiornamento</h4>
+      <p>Informativa aggiornata al <strong>maggio 2026</strong>. Ci riserviamo di aggiornare questo documento in caso di modifiche normative o operative.</p>
+    `,
+    cookie: `
+      <h4>Cosa sono i Cookie</h4>
+      <p>I cookie sono piccoli file di testo salvati sul dispositivo dell'utente durante la navigazione. Permettono al sito di ricordare le preferenze e migliorare l'esperienza di utilizzo.</p>
+
+      <h4>Cookie Utilizzati da Questo Sito</h4>
+      <p>Il sito <strong>matraenergy.it</strong> utilizza esclusivamente cookie tecnici strettamente necessari al funzionamento delle pagine. Non utilizziamo cookie di profilazione, cookie di tracciamento commerciale né cookie di terze parti a fini pubblicitari.</p>
+
+      <p><strong>Cookie tecnici presenti:</strong></p>
+      <ul>
+        <li><strong>Sessione browser</strong> — necessari per il corretto funzionamento del modulo di contatto. Non raccolgono dati personali identificativi.</li>
+      </ul>
+
+      <h4>Cookie di Terze Parti</h4>
+      <p>Il sito carica risorse da server esterni:</p>
+      <ul>
+        <li><strong>Google Fonts</strong> (fonts.googleapis.com) — carica i caratteri tipografici. Potrebbe registrare l'indirizzo IP a fini tecnici. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+        <li><strong>Web3Forms</strong> (api.web3forms.com) — elabora i dati del modulo di contatto. Non installa cookie. Privacy policy: <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">web3forms.com/privacy</a></li>
+      </ul>
+
+      <h4>Come Disabilitare i Cookie</h4>
+      <p>È possibile disabilitare i cookie direttamente dalle impostazioni del proprio browser. Disabilitare i cookie tecnici potrebbe compromettere alcune funzionalità del sito.</p>
+      <ul>
+        <li>Chrome: Impostazioni → Privacy e sicurezza → Cookie</li>
+        <li>Firefox: Impostazioni → Privacy e sicurezza</li>
+        <li>Safari: Preferenze → Privacy</li>
+        <li>Edge: Impostazioni → Cookie e autorizzazioni sito</li>
+      </ul>
+
+      <h4>Aggiornamento</h4>
+      <p>Cookie policy aggiornata al <strong>maggio 2026</strong>.</p>
+    `
+  };
+
+  let currentTab = 'privacy';
+  function openPrivacy(tab) {
+    currentTab = tab || 'privacy';
+    renderPrivacy();
+    document.getElementById('prvOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePrivacy() {
+    document.getElementById('prvOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function switchTab(tab) {
+    currentTab = tab;
+    renderPrivacy();
+  }
+  function renderPrivacy() {
+    document.getElementById('tabPrivacy').classList.toggle('active', currentTab==='privacy');
+    document.getElementById('tabCookie').classList.toggle('active', currentTab==='cookie');
+    document.getElementById('prvTitle').textContent = currentTab==='privacy' ? 'Informativa Privacy' : 'Cookie Policy';
+    document.getElementById('prvBody').innerHTML = privacyContent[currentTab];
+  }
+  document.getElementById('prvOverlay').addEventListener('click', e => { if(e.target===document.getElementById('prvOverlay')) closePrivacy(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape' && document.getElementById('prvOverlay').classList.contains('open')) closePrivacy(); });
+
+  const goTop = document.getElementById('goTop');
+  window.addEventListener('scroll', () => goTop.classList.toggle('show', window.scrollY > 480), { passive: true });
+  goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Active nav */
+  const secs = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const id = e.target.id;
+        navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+id ? 'var(--red)' : ''; });
+      }
+    });
+  }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' }).observe || secs.forEach(s => {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+e.target.id ? 'var(--red)' : ''; });
+        }
+      });
+    }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' }).observe(s);
+  });
+  // Fix: usa un solo observer
+  const navIO = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navAs.forEach(a => { a.style.color = a.getAttribute('href')==='#'+e.target.id ? 'var(--red)' : ''; });
+      }
+    });
+  }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' });
+  secs.forEach(s => navIO.observe(s));
+</script>
+
+</body>
+</html>

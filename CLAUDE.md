@@ -42,14 +42,23 @@ IMPORTANTE: mai usare sed su index.html — svuota il file. Usare SOLO Edit tool
 
 ---
 
-DEPLOY ONLINE — COSA CARICARE
-Sul server/hosting carica SOLO:
-- index.html
-- assets/ (intera cartella)
+DEPLOY ONLINE — PIPELINE AUTOMATICA (ATTIVA)
+Il deploy è completamente automatico tramite GitHub Action:
 
-NON caricare:
-- server.js, package.json, package-lock.json, node_modules/, remove-bg.js (sono dev locale)
-- CLAUDE.md, .gitignore, .git/
+1. Modifica index.html con Edit tool
+2. Commit + push su branch `main`
+3. GitHub Action (`deploy-site-live.yml`) parte in automatico
+4. Copia index.html + assets/ su branch `site-live` (orphan, pulito)
+5. Hostinger legge `site-live` → aggiorna matraenergy.it in ~1 minuto
+
+NON pushare mai su `site-live` manualmente — è gestito dalla Action.
+NON caricare file manualmente su Hostinger — tutto è automatico.
+
+Hostinger configurato: repo SITO-MATRA-ENERGY / branch site-live / directory public_html
+
+File che la Action copia su site-live (tutto il resto è escluso):
+- index.html
+- assets/*.png, *.jpg, *.jpeg, *.svg, *.webp
 
 ---
 

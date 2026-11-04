@@ -7,21 +7,24 @@
 
 ## Workflow Claude
 
-**Flusso standard per ogni richiesta (adattato al sito statico):**
+### Principio hub (VINCOLO ARCHITETTURALE — precede ogni altro step)
+
+**Questa chat è l'hub orchestratore, NON il luogo di esecuzione.** La sessione in cui l'utente scrive non è mai quella in cui vengono applicate le variazioni (edit a `index.html`/`assets`, commit, push). L'hub riformula, pianifica, coordina gli agenti e riporta l'esito. **Tutto il lavoro di modifica è delegato a un agente laterale.** L'hub può usare strumenti di sola lettura (letture mirate, `rg`, verifica stato git/Action) per orchestrare e riferire, ma non scrive mai direttamente nel repo né esegue comandi che mutano stato. Se sto per fare un edit/commit/push da questa chat, è un errore: va delegato.
+
+**Flusso standard per ogni richiesta:**
 
 **Step 1 — Riformulazione**
 Claude riscrive la richiesta dell'utente in modo tecnico e preciso, senza alterarne il contenuto. È la prima cosa visibile nella risposta.
 
 **Step 2 — Piano**
-Per task non banali, Claude definisce il piano (sezione/i di `index.html` da toccare, logica, ordine). Per modifiche piccole e circoscritte il piano può essere una riga.
+Per task non banali, l'hub definisce il piano (sezione/i di `index.html` da toccare, logica, ordine). Per modifiche piccole e circoscritte il piano può essere una riga.
 
 **Step 3 — Revisione piano (solo se il task è grande o rischioso)**
 Per interventi ampi o che toccano più sezioni, lanciare un agente `general-purpose` indipendente che verifica la fedeltà del piano alla richiesta prima di eseguire. Per task piccoli si salta.
 
-**Step 4 — Esecuzione**
-- Task piccolo/medio: Claude esegue direttamente con Edit tool, poi commit + push.
-- Task grande o indipendente: delegare a un agente laterale che esegue edit, commit, push e riporta l'esito.
-- MAI usare sed/bash su `index.html` — solo Edit tool.
+**Step 4 — Esecuzione delegata ad agente laterale (OBBLIGATORIO)**
+L'hub **non esegue mai le modifiche in prima persona**. Lancia un agente di esecuzione (`general-purpose`) a cui passa riformulazione, piano approvato e autorizzazioni. L'agente esegue in autonomia completa — edit con Edit tool, commit, push su `main` — senza conferme intermedie, e restituisce l'esito (file toccati, SHA, stato Action). L'hub riceve il report, fa la verifica di sola lettura (una volta) e produce il report finale. Se il lavoro è grande o indipendente, si suddivide su più agenti.
+- MAI usare sed/bash su `index.html` — solo Edit tool (anche dentro l'agente).
 
 ---
 

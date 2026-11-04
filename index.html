@@ -782,36 +782,38 @@
 
     /* ===================== CONTATTI ===================== */
     .contacts {
-      background: var(--bg);
+      background: var(--white);
+      border-top:1px solid var(--border);
     }
     .contacts-head { text-align:center; margin-bottom:52px; }
     .contacts-head .subtitle { margin:0 auto; text-align:center; }
     .contacts-grid { display:grid; grid-template-columns:1fr 1.1fr 1.2fr 1.35fr; gap:18px; }
     .ct {
-      background:var(--navy);
-      border:1px solid rgba(255,255,255,.12);
+      background:#fff;
+      border:2px solid var(--navy);
       border-radius:16px; padding:34px 28px; text-align:center;
       transition:.3s var(--ease); position:relative; overflow:hidden;
-      box-shadow:0 10px 30px rgba(1,30,60,.22);
+      box-shadow:0 6px 20px rgba(1,54,107,.10);
     }
     .ct:hover {
-      border-color:rgba(255,255,255,.3);
+      border-color:var(--navy);
       transform:translateY(-6px);
-      box-shadow:0 22px 55px rgba(1,30,60,.4), 0 0 0 1px rgba(255,255,255,.12);
-      background:#01408a;
+      box-shadow:0 16px 40px rgba(1,54,107,.2);
+      background:#fafcff;
     }
     .ct-ico {
       width:62px; height:62px;
-      background:rgba(255,255,255,.1);
-      border:1px solid rgba(255,255,255,.2); border-radius:14px;
+      background:#f0f6ff;
+      border:1px solid #d6e1f0; border-radius:14px;
       display:flex; align-items:center; justify-content:center; margin:0 auto 20px;
-      box-shadow:none;
+      box-shadow:0 3px 10px rgba(1,54,107,.08);
     }
-    .ct-ico svg { width:26px; height:26px; stroke:#fff; fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
-    .ct h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.6); margin-bottom:10px; }
-    .ct a  { color:#fff; font-size:.92rem; font-weight:600; text-decoration:none; line-height:1.55; display:block; }
-    .ct a:hover { color:#bcd8ff; }
-    .ct p  { color:rgba(255,255,255,.82); font-size:.9rem; line-height:1.65; }
+    .ct-ico svg { width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+    .ct h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--navy); margin-bottom:10px; }
+    .ct a  { color:var(--blue); font-size:.92rem; font-weight:600; text-decoration:none; line-height:1.55; display:block; }
+    .ct a:hover { color:var(--navy); }
+    .ct p  { color:#5a6478; font-size:.9rem; line-height:1.65; }
+    .ct a[href^="tel:"], .ct-mail-link { display:none; }
     .ct-ico-link { text-decoration:none; display:flex !important; align-items:center; justify-content:center; transition:.22s var(--ease); }
     .ct-ico-link:hover { transform:scale(1.08); filter:brightness(.95); }
     .ct-ico-link svg { width:26px; height:26px; fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
@@ -823,14 +825,14 @@
     .ct-map-pin { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
     .ct-map-pin svg { width:36px; height:36px; fill:var(--accent); stroke:none; filter:drop-shadow(0 3px 10px rgba(0,0,0,.5)); transition:.2s; }
     .ct-map-wrap:hover .ct-map-pin svg { transform:scale(1.15); }
-    .ct-map-body { padding:22px 28px 28px; background:var(--navy); }
-    .ct-map-body h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.6); margin-bottom:8px; }
-    .ct-map-body p { color:rgba(255,255,255,.82); font-size:.9rem; line-height:1.6; }
+    .ct-map-body { padding:22px 28px 28px; background:#fff; }
+    .ct-map-body h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#7a8aa3; margin-bottom:8px; }
+    .ct-map-body p { color:#5a6478; font-size:.9rem; line-height:1.6; }
 
     .ct-hours { display:grid; grid-template-columns:auto auto; gap:6px 16px; margin:0; justify-content:start; }
-    .ct-hours span { color:rgba(255,255,255,.82); font-size:.9rem; line-height:1.6; white-space:nowrap; }
-    .ct-hours span:nth-child(even) { color:#fff; font-weight:600; }
-    .ct-hours .chiuso { color:rgba(255,255,255,.4); }
+    .ct-hours span { color:#5a6478; font-size:.9rem; line-height:1.6; white-space:nowrap; }
+    .ct-hours span:nth-child(even) { color:var(--blue); font-weight:600; }
+    .ct-hours .chiuso { color:#a4adbf; }
     /* Email link mobile-friendly (no overflow) */
     .ct-mail-link { font-size:.82rem; white-space:normal; word-break:break-all; max-width:100%; line-height:1.5; }
     .ct-mail-link:hover { color:#1a73e8 !important; }
@@ -1337,8 +1339,7 @@
       .nav-inner { position:relative; }
       .nav-logo { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
 
-      /* Contatti: solo bottone, nessun dato scritto; etichette piu' grandi/grassetto */
-      .ct a[href^="tel:"], .ct-mail-link { display:none; }
+      /* Contatti: etichette piu' grandi/grassetto */
       .ct h4 { font-size:.82rem; font-weight:800; letter-spacing:.04em; margin-bottom:8px; }
 
       /* Footer centrato (solo mobile) */
@@ -1547,7 +1548,7 @@
     <div class="about-grid">
       <div class="f-left">
         <span class="tag">Chi Siamo</span>
-        <h2 class="section-title">Passione e tecnica al<br><span>servizio del tuo benessere</span></h2>
+        <h2 class="section-title">Al <span>servizio del tuo benessere</span></h2>
         <p class="subtitle">
           Matra Energy SRL nasce a Latina con una missione chiara: portare soluzioni energetiche di qualità ed essere sempre presente per le esigenze dei clienti sia per le case che per le aziende nel Lazio e zone limitrofe. Con oltre 25 anni di esperienza, il nostro team di tecnici certificati lavora ogni giorno per garantire efficienza, affidabilità e risparmio reale in bolletta.
         </p>

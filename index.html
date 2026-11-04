@@ -111,12 +111,7 @@
     }
     .section-title span { color:var(--accent); }
     .section-title.white { color:var(--white); }
-    .section-title.white span {
-      background-image: var(--headline-gradient-dark-fallback);
-      background-image: var(--headline-gradient-dark);
-      -webkit-background-clip:text; background-clip:text;
-      color:transparent; -webkit-text-fill-color:transparent;
-    }
+    .section-title.white span { color:#fff; }
 
     .subtitle {
       font-size:1rem; color:var(--txt-sub-light);
@@ -134,8 +129,8 @@
     }
     .btn-blue  { background:var(--blue); color:var(--white); }
     .btn-blue:hover  { background:var(--blue-mid); transform:translateY(-2px); box-shadow:0 8px 24px rgba(1,54,107,.35); }
-    .btn-red   { background-image:var(--headline-gradient-fallback); background-image:var(--headline-gradient); color:var(--white); }
-    .btn-red:hover   { background-image:var(--headline-gradient-hover-fallback); background-image:var(--headline-gradient-hover); transform:translateY(-2px); box-shadow:0 8px 24px rgba(214,32,18,.45); }
+    .btn-red   { background:var(--cta); color:var(--white); }
+    .btn-red:hover   { background:var(--cta-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(214,32,18,.35); }
     .btn-accent  { background:var(--accent); color:var(--white); }
     .btn-accent:hover  { background:var(--accent-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(1,54,107,.35); }
     .btn-outline-white {
@@ -214,6 +209,9 @@
       display:inline-flex; align-items:center; gap:8px;
     }
     .nav-cta-ico { display:none; }
+    @media (min-width:1041px) {
+      .nav-cta { display:none; }
+    }
 
     /* Hamburger */
     .ham {
@@ -496,10 +494,7 @@
       width:1px; background:rgba(255,255,255,.1);
     }
     .stat-n { font-size:clamp(2.4rem,4.8vw,3.4rem); font-weight:900; line-height:1; letter-spacing:-.025em; margin-bottom:8px;
-      background-image: var(--headline-gradient-dark-fallback);
-      background-image: var(--headline-gradient-dark);
-      -webkit-background-clip:text; background-clip:text;
-      color:transparent; -webkit-text-fill-color:transparent;
+      color:#fff;
     }
     .stat-l { font-size:.82rem; color:rgba(255,255,255,.85); font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
     .stat-d { font-size:.74rem; color:rgba(255,255,255,.4); margin-top:4px; }

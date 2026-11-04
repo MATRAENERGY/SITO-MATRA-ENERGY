@@ -256,3 +256,12 @@ TECH RAPIDO
 - Breakpoint: 1040px | 768px | 620px | 520px | 416px
 - Form endpoint: https://api.web3forms.com/submit
 - REGOLA CRITICA: NON usare sed/bash per modificare index.html → usa Edit tool
+
+---
+
+ZONE RESPONSIVE ISOLATE (index.html)
+In fondo al blocco <style> ci sono 3 zone isolate, media query mutuamente esclusive:
+- DESKTOP: @media (min-width:1041px)
+- TABLET:  @media (min-width:621px) and (max-width:1040px)
+- MOBILE:  @media (max-width:620px)
+REGOLA: ogni modifica di LAYOUT specifica per un device va scritta SOLO nella sua zona. Cosi' modificare un device non tocca gli altri. Gli stili sopra le zone sono la base condivisa (colori, tipografia, componenti) + la baseline responsive legacy; si migrano nelle zone man mano che si lavora una sezione. Breakpoint: Desktop >=1041 / Tablet 621-1040 / Mobile <=620.

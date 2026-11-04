@@ -209,9 +209,6 @@
       display:inline-flex; align-items:center; gap:8px;
     }
     .nav-cta-ico { display:none; }
-    @media (min-width:1041px) {
-      .nav-cta { display:none; }
-    }
 
     /* Hamburger */
     .ham {
@@ -1301,6 +1298,30 @@
     .mascot-cta-text {
       transform-origin:bottom left;
       animation:comic-pop 5.5s ease-in-out infinite;
+    }
+
+    /* ================================================================
+       ZONE RESPONSIVE ISOLATE
+       Punto unico per il layout per-device. Ogni device ha la sua media
+       query mutuamente esclusiva: modifiche in una NON toccano le altre.
+       Gli stili sopra restano come base condivisa (look) + baseline responsive.
+       Regola operativa: per modifiche di layout a un device, scrivere SOLO
+       nella zona corrispondente qui sotto.
+       ================================================================ */
+
+    /* ===== DESKTOP (>=1041px) ===== */
+    @media (min-width:1041px) {
+      .nav-cta { display:none; }
+    }
+
+    /* ===== TABLET (621px - 1040px) ===== */
+    @media (min-width:621px) and (max-width:1040px) {
+      /* layout TABLET — scrivi qui */
+    }
+
+    /* ===== MOBILE (<=620px) ===== */
+    @media (max-width:620px) {
+      /* layout MOBILE — scrivi qui */
     }
   </style>
 </head>

@@ -1,35 +1,53 @@
-## Ultra Caveman Output
+# Matra Energy Sito — Guida operativa Claude
 
-Speak less.
+> Punto d'ingresso ChatGPT: `CHATGPT.md`. Stato corrente e task aperti: `HANDOFF.md`.
+> Questo file è la guida operativa viva: workflow, vincoli, stato dettagliato delle sezioni.
 
-Default answer:
-- max 5 short lines
-- no long explanation
-- no theory
-- no options unless needed
-- no repeated warnings
-- no big summaries
+---
 
-Use this format:
+## Workflow Claude
 
-Status:
-Done / Not done / Risk
+**Flusso standard per ogni richiesta (adattato al sito statico):**
 
-Next:
-One command or one action
+**Step 1 — Riformulazione**
+Claude riscrive la richiesta dell'utente in modo tecnico e preciso, senza alterarne il contenuto. È la prima cosa visibile nella risposta.
 
-Ask:
-Only if truly blocked
+**Step 2 — Piano**
+Per task non banali, Claude definisce il piano (sezione/i di `index.html` da toccare, logica, ordine). Per modifiche piccole e circoscritte il piano può essere una riga.
 
-When coding:
-- say file touched
-- say section touched
-- say result
-- stop
+**Step 3 — Revisione piano (solo se il task è grande o rischioso)**
+Per interventi ampi o che toccano più sezioni, lanciare un agente `general-purpose` indipendente che verifica la fedeltà del piano alla richiesta prima di eseguire. Per task piccoli si salta.
 
-Do not write paragraphs.
-Do not over-explain.
-Do not teach unless user asks.
+**Step 4 — Esecuzione**
+- Task piccolo/medio: Claude esegue direttamente con Edit tool, poi commit + push.
+- Task grande o indipendente: delegare a un agente laterale che esegue edit, commit, push e riporta l'esito.
+- MAI usare sed/bash su `index.html` — solo Edit tool.
+
+---
+
+**Autorizzazioni:**
+- Il trigger `"leggi .md"` implica autorizzazione a commit + push per la richiesta corrente.
+- Push solo su `main`. Il branch `site-live` è gestito dalla GitHub Action — MAI toccarlo a mano.
+- Se l'autorizzazione è già nella richiesta iniziale, Claude procede senza richiederla di nuovo.
+
+**Sessione:**
+- Stessa sessione per interventi consecutivi collegati; nuova sessione per obiettivi indipendenti.
+- Le correzioni dello stesso obiettivo continuano nella stessa sessione anche dopo il push.
+- Letture mirate; nessun refactoring accessorio non richiesto.
+
+**Verifica deploy (una sola volta dopo il push):**
+- Confermare che la GitHub Action `deploy-site-live.yml` sia partita e che `main` sia aggiornato.
+- Non fare polling ripetuto fino a completamento: il ciclo dura ~1 minuto, l'utente verifica il live in autonomia.
+
+**Report finale — formato obbligatorio:**
+```
+SHA origin/main:   <hash>
+Action site-live:  avviata sì / no
+Sito live:         da verificare (~1 min)
+```
+Se un elemento non è verificabile, dichiararlo esplicitamente.
+
+**Frontend:** prima di progettare o ridisegnare interfacce, caricare la skill `frontend-design`. Verifica visiva desktop/mobile quando disponibile (estensione Claude in Chrome).
 
 ---
 

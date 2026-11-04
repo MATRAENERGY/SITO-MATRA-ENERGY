@@ -59,29 +59,6 @@
       position:relative;
     }
 
-    /* ===== SPLASH INTRO ===== */
-    .splash {
-      position:fixed; inset:0; z-index:9999;
-      background:radial-gradient(circle at center, #ffffff 0%, #eaf2fb 70%, #d8e6f5 100%);
-      display:flex; align-items:center; justify-content:center;
-      animation: splashFade .5s ease 1.2s forwards;
-    }
-    .splash-logo {
-      max-width:min(420px, 70vw); width:100%; height:auto; display:block;
-      opacity:0; transform:scale(.7);
-      animation: splashZoom 1.4s linear forwards;
-      filter:drop-shadow(0 18px 40px rgba(1,54,107,.25));
-    }
-    @keyframes splashZoom {
-      0%   { opacity:0; transform:scale(.7); }
-      25%  { opacity:1; transform:scale(.85); }
-      100% { opacity:1; transform:scale(1.25); }
-    }
-    @keyframes splashFade {
-      to { opacity:0; visibility:hidden; pointer-events:none; }
-    }
-    body.splash-on { overflow:hidden; }
-
     /* ===== UTILS ===== */
     .container { max-width:1180px; margin:0 auto; padding:0 24px; }
     .section   { padding:96px 0; }
@@ -1280,19 +1257,7 @@
     }
   </style>
 </head>
-<body class="splash-on">
-
-<!-- ===================== SPLASH INTRO ===================== -->
-<div class="splash" id="splash" aria-hidden="true">
-  <img class="splash-logo" src="assets/Logo Completo mascotte + scritta.svg" alt="Matra Energy" onerror="this.src='assets/Logo Completo mascotte + scritta.png'; this.onerror=null;">
-</div>
-<script>
-  setTimeout(function(){
-    var s = document.getElementById('splash');
-    if (s) s.remove();
-    document.body.classList.remove('splash-on');
-  }, 1800);
-</script>
+<body>
 
 <!-- ===================== NAVBAR ===================== -->
 <nav class="nav" id="nav">

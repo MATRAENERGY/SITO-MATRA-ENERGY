@@ -31,6 +31,8 @@
       --slate:      #4A5568;      /* testo corrente */
       --border:     #DDE3EA;
       --bg:         #F5F7FA;
+      --headline-gradient: linear-gradient(90deg in oklab, #01366B 0%, #01366B 35%, #ED2613 100%);
+      --headline-gradient-fallback: linear-gradient(90deg, #01366B 0%, #01366B 35%, #ED2613 100%);
 
       /* Alias legacy -> nuova palette */
       --blue:       var(--navy);
@@ -310,11 +312,12 @@
       0%   { background-position:-200% center; }
       100% { background-position:200% center; }
     }
+    .text-gradient,
     .section-title span {
-      background:linear-gradient(90deg, var(--accent) 0%, #7CB6F0 30%, var(--accent) 60%, var(--accent-dark) 100%);
-      background-size:200% auto;
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-      animation:shimmer-slide 4s linear infinite;
+      background-image: var(--headline-gradient-fallback);
+      background-image: var(--headline-gradient);
+      -webkit-background-clip:text; background-clip:text;
+      color:transparent; -webkit-text-fill-color:transparent;
     }
 
     @keyframes card-float {
@@ -359,7 +362,12 @@
       font-weight:900; line-height:1.12; letter-spacing:-.025em;
       color:#0a1d3d; margin-bottom:18px;
     }
-    .hero-title .line-red { color:var(--accent); }
+    .hero-title .line-red {
+      background-image: var(--headline-gradient-fallback);
+      background-image: var(--headline-gradient);
+      -webkit-background-clip:text; background-clip:text;
+      color:transparent; -webkit-text-fill-color:transparent;
+    }
 
     .hero-sub {
       font-size:clamp(.95rem,1.2vw,1.05rem);

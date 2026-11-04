@@ -265,3 +265,4 @@ In fondo al blocco <style> ci sono 3 zone isolate, media query mutuamente esclus
 - TABLET:  @media (min-width:621px) and (max-width:1040px)
 - MOBILE:  @media (max-width:620px)
 REGOLA: ogni modifica di LAYOUT specifica per un device va scritta SOLO nella sua zona. Cosi' modificare un device non tocca gli altri. Gli stili sopra le zone sono la base condivisa (colori, tipografia, componenti) + la baseline responsive legacy; si migrano nelle zone man mano che si lavora una sezione. Breakpoint: Desktop >=1041 / Tablet 621-1040 / Mobile <=620.
+NB: le modifiche NON di layout (colori, testo, visibilita', bordi, sfondi) vanno nelle regole BASE cosi' valgono su tutti e 3 i device. Solo le modifiche che spostano o ridimensionano oggetti (griglie, posizioni, dimensioni) vanno separate nelle 3 zone, per non rischiare di rompere la visualizzazione su un device mentre si lavora da desktop.

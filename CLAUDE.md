@@ -25,6 +25,11 @@ Per interventi ampi o che toccano più sezioni, lanciare un agente `general-purp
 
 ---
 
+**Autonomia (default):**
+- Ogni intervento si esegue in autonomia completa, fino alla conclusione: edit → commit → push, senza conferme intermedie e senza attendere riattivazioni manuali a ogni passo.
+- Un task è "concluso" solo quando è committato e pushato su `main` e l'esito è riportato. Non lasciare modifiche a metà.
+- L'utente verifica i risultati direttamente sul sito live.
+
 **Autorizzazioni:**
 - Il trigger `"leggi .md"` implica autorizzazione a commit + push per la richiesta corrente.
 - Push solo su `main`. Il branch `site-live` è gestito dalla GitHub Action — MAI toccarlo a mano.

@@ -133,6 +133,8 @@
     .btn-red:hover   { background:var(--cta-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(214,32,18,.35); }
     .btn-accent  { background:var(--accent); color:var(--white); }
     .btn-accent:hover  { background:var(--accent-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(1,54,107,.35); }
+    .btn-white  { background:#fff; color:var(--navy); }
+    .btn-white:hover  { background:#e6edf6; transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.2); }
     .btn-outline-white {
       background:transparent; color:var(--white);
       border:2px solid rgba(255,255,255,.55);
@@ -528,7 +530,7 @@
       background:var(--white); border:1px solid var(--bd-light);
       border-radius:var(--r2); padding:34px 28px;
       transition:.3s var(--ease); position:relative; overflow:hidden;
-      display:flex; flex-direction:column;
+      display:flex; flex-direction:column; align-items:center; text-align:center;
       text-decoration:none; color:inherit; cursor:pointer;
     }
     .svc::before {
@@ -540,17 +542,19 @@
     .svc-ico {
       width:54px; height:54px; background:var(--accent-tint);
       border:1px solid var(--bd-accent); border-radius:13px;
-      display:flex; align-items:center; justify-content:center; margin-bottom:22px;
+      display:flex; align-items:center; justify-content:center; margin:0 auto 22px;
     }
     .svc-ico svg { width:26px; height:26px; stroke:var(--accent); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
     .svc h3 { font-size:1.1rem; font-weight:700; margin-bottom:10px; color:var(--blue); }
     .svc p  { font-size:.87rem; color:var(--txt-sub-light); line-height:1.7; flex:1; }
     .svc-link {
-      display:inline-flex; align-items:center; gap:5px;
-      margin-top:22px; font-size:.82rem; font-weight:600;
-      color:var(--navy); text-decoration:none; transition:gap .22s;
+      display:inline-flex; align-items:center; justify-content:center;
+      margin:22px auto 0; width:46px; height:46px; border-radius:50%;
+      background:var(--accent-tint); border:1px solid var(--bd-accent);
+      color:var(--navy); text-decoration:none;
+      transition:background .22s, color .22s, transform .22s;
     }
-    .svc:hover .svc-link { gap:9px; }
+    .svc:hover .svc-link { background:var(--navy); color:#fff; transform:translateY(-3px); }
 
 
     /* ===================== PORTFOLIO ===================== */
@@ -579,6 +583,7 @@
     }
     .p-item:hover .p-hint { opacity:1; }
     .p-count {
+      display:none;
       position:absolute; bottom:10px; right:10px; z-index:2;
       background:rgba(0,0,0,.55); backdrop-filter:blur(6px);
       color:#fff; font-size:.65rem; font-weight:700; letter-spacing:.07em;
@@ -738,8 +743,8 @@
       border-radius:var(--r2); padding:38px 44px;
       box-shadow:0 12px 50px rgba(1,54,107,.11);
     }
-    .form-card h3 { font-size:1.3rem; font-weight:700; color:var(--blue); margin-bottom:4px; }
-    .form-card .sub { color:var(--txt-muted-light); font-size:.84rem; margin-bottom:28px; }
+    .form-card h3 { font-size:1.3rem; font-weight:700; color:var(--blue); margin-bottom:4px; text-align:center; }
+    .form-card .sub { color:var(--txt-muted-light); font-size:.84rem; margin-bottom:28px; text-align:center; }
     .fg { margin-bottom:22px; }
     .fg label { display:block; font-size:.77rem; font-weight:600; color:var(--txt-sub-light); margin-bottom:9px; text-transform:uppercase; letter-spacing:.04em; }
     .fg input, .fg select, .fg textarea {
@@ -758,7 +763,7 @@
       background-repeat:no-repeat; background-position:right 14px center;
     }
     .fg select option { background:var(--white); color:var(--blue); }
-    .fg textarea { resize:vertical; min-height:88px; }
+    .fg textarea { resize:none; min-height:120px; overflow-y:auto; }
     .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
     .fg-row .fg { margin-bottom:0; }
     .btn-submit { width:100%; justify-content:center; padding:15px; font-size:.97rem; font-weight:700; margin-top:6px; }
@@ -1319,12 +1324,31 @@
 
     /* ===== TABLET (621px - 1040px) ===== */
     @media (min-width:621px) and (max-width:1040px) {
-      /* layout TABLET — scrivi qui */
+      /* Navbar: niente CTA in alto a destra, logo centrato */
+      .nav-cta { display:none; }
+      .nav-inner { position:relative; }
+      .nav-logo { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
     }
 
     /* ===== MOBILE (<=620px) ===== */
     @media (max-width:620px) {
-      /* layout MOBILE — scrivi qui */
+      /* Navbar: niente CTA in alto a destra, logo centrato */
+      .nav-cta { display:none; }
+      .nav-inner { position:relative; }
+      .nav-logo { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+
+      /* Contatti: solo bottone, nessun dato scritto; etichette piu' grandi/grassetto */
+      .ct a[href^="tel:"], .ct-mail-link { display:none; }
+      .ct h4 { font-size:.82rem; font-weight:800; letter-spacing:.04em; margin-bottom:8px; }
+
+      /* Footer centrato (solo mobile) */
+      .footer-top { grid-template-columns:1fr; text-align:center; justify-items:center; }
+      .footer-top .f-brand, .footer-top .f-col { grid-column:1 / -1; }
+      .f-brand { display:flex; flex-direction:column; align-items:center; }
+      .f-brand-desc { margin-left:auto; margin-right:auto; }
+      .f-social { justify-content:center; }
+      .f-links { align-items:center; }
+      .f-bottom { text-align:center; justify-content:center; }
     }
   </style>
 </head>
@@ -1571,7 +1595,7 @@
         </div>
         <h3>Termoidraulica</h3>
         <p>Progettazione e installazione di impianti idraulici, di riscaldamento e sanitari per abitazioni e complessi industriali.</p>
-        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="svc-link" aria-label="Scopri di più"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
 
       <a href="#preventivo" class="svc f-up" style="transition-delay:.1s">
@@ -1580,7 +1604,7 @@
         </div>
         <h3>Impianti Fotovoltaici</h3>
         <p>Installazione chiavi in mano di impianti fotovoltaici residenziali e industriali. Sistema di accumulo, monitoraggio remoto e gestione pratiche GSE inclusa.</p>
-        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="svc-link" aria-label="Scopri di più"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
 
       <a href="#preventivo" class="svc f-up" style="transition-delay:.15s">
@@ -1589,7 +1613,7 @@
         </div>
         <h3>Climatizzazione</h3>
         <p>Fornitura e installazione di climatizzatori monosplit, multisplit e canalizzati dei migliori brand. Ricarica gas refrigerante e manutenzione annuale.</p>
-        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="svc-link" aria-label="Scopri di più"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
 
       <a href="#preventivo" class="svc f-up" style="transition-delay:.2s">
@@ -1598,7 +1622,7 @@
         </div>
         <h3>Manutenzione</h3>
         <p>Contratti di manutenzione ordinaria e straordinaria per caldaie, impianti solari e climatizzatori. Interventi rapidi.</p>
-        <span class="svc-link">Richiedi preventivo <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+        <span class="svc-link" aria-label="Scopri di più"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
 
     </div>
@@ -1778,7 +1802,7 @@
               <label for="messaggio">Descrivi la tua richiesta</label>
               <textarea id="messaggio" name="messaggio" autocomplete="off" placeholder="Descrivi brevemente la tua esigenza o il problema riscontrato…"></textarea>
             </div>
-            <button type="submit" class="btn btn-red btn-submit" id="submitBtn">
+            <button type="submit" class="btn btn-blue btn-submit" id="submitBtn">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               Invia Richiesta
             </button>
@@ -1855,7 +1879,6 @@
           <span>Sabato</span><span>8:00 – 13:00</span>
           <span>Dom e festivi</span><span class="chiuso">Chiusi</span>
         </div>
-        <p style="margin-top:10px;"><span style="color:var(--navy);font-size:.82rem;">Urgenze 24/7 su WhatsApp</span></p>
       </div>
 
     </div>
@@ -1915,7 +1938,7 @@
       <div class="f-col">
         <h5>Assistenza</h5>
         <p style="color:var(--txt-sub-dark);font-size:.88rem;line-height:1.6;margin-bottom:16px">Serve ancora assistenza?</p>
-        <a href="mailto:amministrazione@matraenergy.it?subject=Richiesta%20Assistenza" class="btn btn-accent" style="font-size:.8rem;padding:10px 18px">Richiedi Assistenza</a>
+        <a href="mailto:amministrazione@matraenergy.it?subject=Richiesta%20Assistenza" class="btn btn-white" style="font-size:.8rem;padding:10px 18px">Richiedi Assistenza</a>
       </div>
 
     </div>

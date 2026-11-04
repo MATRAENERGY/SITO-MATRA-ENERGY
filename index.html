@@ -111,7 +111,7 @@
     }
     .section-title span { color:var(--accent); }
     .section-title.white { color:var(--white); }
-    .section-title.white span { color:#fff; }
+    .section-title.white span { background:none; -webkit-text-fill-color:#fff; color:#fff; }
 
     .subtitle {
       font-size:1rem; color:var(--txt-sub-light);
@@ -777,41 +777,36 @@
 
     /* ===================== CONTATTI ===================== */
     .contacts {
-      background: #010c24;
-      background-image:
-        radial-gradient(ellipse at 15% 60%, rgba(24,85,200,.35) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 20%, rgba(1,54,107,.6) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 100%, rgba(10,40,100,.5) 0%, transparent 60%),
-        linear-gradient(150deg, #010c24 0%, #012040 50%, #01366b 100%);
+      background: var(--bg);
     }
     .contacts-head { text-align:center; margin-bottom:52px; }
     .contacts-head .subtitle { margin:0 auto; text-align:center; }
     .contacts-grid { display:grid; grid-template-columns:1fr 1.1fr 1.2fr 1.35fr; gap:18px; }
     .ct {
-      background:#ffffff;
-      border:1px solid #e3ebf6;
+      background:var(--navy);
+      border:1px solid rgba(255,255,255,.12);
       border-radius:16px; padding:34px 28px; text-align:center;
       transition:.3s var(--ease); position:relative; overflow:hidden;
-      box-shadow:0 8px 24px rgba(0,0,0,.18);
+      box-shadow:0 10px 30px rgba(1,30,60,.22);
     }
     .ct:hover {
-      border-color:rgba(1,54,107,.4);
+      border-color:rgba(255,255,255,.3);
       transform:translateY(-6px);
-      box-shadow:0 20px 50px rgba(0,0,0,.28), 0 0 0 1px rgba(1,54,107,.15);
-      background:#fafcff;
+      box-shadow:0 22px 55px rgba(1,30,60,.4), 0 0 0 1px rgba(255,255,255,.12);
+      background:#01408a;
     }
     .ct-ico {
       width:62px; height:62px;
-      background:#f0f6ff;
-      border:1px solid #d6e1f0; border-radius:14px;
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.2); border-radius:14px;
       display:flex; align-items:center; justify-content:center; margin:0 auto 20px;
-      box-shadow:0 3px 10px rgba(1,54,107,.08);
+      box-shadow:none;
     }
-    .ct-ico svg { width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
-    .ct h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#7a8aa3; margin-bottom:10px; }
-    .ct a  { color:var(--blue); font-size:.92rem; font-weight:600; text-decoration:none; line-height:1.55; display:block; }
-    .ct a:hover { color:var(--navy); }
-    .ct p  { color:#5a6478; font-size:.9rem; line-height:1.65; }
+    .ct-ico svg { width:26px; height:26px; stroke:#fff; fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
+    .ct h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.6); margin-bottom:10px; }
+    .ct a  { color:#fff; font-size:.92rem; font-weight:600; text-decoration:none; line-height:1.55; display:block; }
+    .ct a:hover { color:#bcd8ff; }
+    .ct p  { color:rgba(255,255,255,.82); font-size:.9rem; line-height:1.65; }
     .ct-ico-link { text-decoration:none; display:flex !important; align-items:center; justify-content:center; transition:.22s var(--ease); }
     .ct-ico-link:hover { transform:scale(1.08); filter:brightness(.95); }
     .ct-ico-link svg { width:26px; height:26px; fill:none; stroke-width:1.75; stroke-linecap:round; stroke-linejoin:round; }
@@ -823,14 +818,14 @@
     .ct-map-pin { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
     .ct-map-pin svg { width:36px; height:36px; fill:var(--accent); stroke:none; filter:drop-shadow(0 3px 10px rgba(0,0,0,.5)); transition:.2s; }
     .ct-map-wrap:hover .ct-map-pin svg { transform:scale(1.15); }
-    .ct-map-body { padding:22px 28px 28px; background:#fff; }
-    .ct-map-body h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#7a8aa3; margin-bottom:8px; }
-    .ct-map-body p { color:#5a6478; font-size:.9rem; line-height:1.6; }
+    .ct-map-body { padding:22px 28px 28px; background:var(--navy); }
+    .ct-map-body h4 { font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:rgba(255,255,255,.6); margin-bottom:8px; }
+    .ct-map-body p { color:rgba(255,255,255,.82); font-size:.9rem; line-height:1.6; }
 
     .ct-hours { display:grid; grid-template-columns:auto auto; gap:6px 16px; margin:0; justify-content:start; }
-    .ct-hours span { color:#5a6478; font-size:.9rem; line-height:1.6; white-space:nowrap; }
-    .ct-hours span:nth-child(even) { color:var(--blue); font-weight:600; }
-    .ct-hours .chiuso { color:#a4adbf; }
+    .ct-hours span { color:rgba(255,255,255,.82); font-size:.9rem; line-height:1.6; white-space:nowrap; }
+    .ct-hours span:nth-child(even) { color:#fff; font-weight:600; }
+    .ct-hours .chiuso { color:rgba(255,255,255,.4); }
     /* Email link mobile-friendly (no overflow) */
     .ct-mail-link { font-size:.82rem; white-space:normal; word-break:break-all; max-width:100%; line-height:1.5; }
     .ct-mail-link:hover { color:#1a73e8 !important; }
@@ -928,14 +923,16 @@
     /* ===================== SCROLL TOP ===================== */
     .go-top {
       position:fixed; bottom:28px; right:28px;
-      width:42px; height:42px; background:var(--accent); color:#fff;
+      width:42px; height:42px; background:var(--navy); color:#fff;
       border:none; border-radius:50%; cursor:pointer;
       display:flex; align-items:center; justify-content:center;
-      opacity:0; transform:translateY(16px); transition:.28s var(--ease);
+      opacity:0; transform:translateY(16px);
+      transition:opacity .28s var(--ease), transform .28s var(--ease), background .28s ease, color .28s ease;
       z-index:90; box-shadow:0 4px 18px rgba(1,54,107,.4);
     }
     .go-top.show { opacity:1; transform:none; }
-    .go-top:hover { background:var(--accent-dark); transform:translateY(-3px); }
+    .go-top:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,.3); }
+    .go-top.on-dark { background:#fff; color:var(--navy); box-shadow:0 4px 18px rgba(0,0,0,.35); }
 
     /* ===================== RESPONSIVE ===================== */
 
@@ -1814,9 +1811,9 @@
 <section class="section contacts" id="contatti">
   <div class="container">
     <div class="contacts-head f-up">
-      <span class="tag on-dark">Contatti</span>
-      <h2 class="section-title white">Siamo sempre <span>a tua disposizione</span></h2>
-      <p class="subtitle white">Contattaci nel modo che preferisci. Rispondiamo rapidamente a qualsiasi richiesta.</p>
+      <span class="tag">Contatti</span>
+      <h2 class="section-title">Siamo sempre <span>a tua disposizione</span></h2>
+      <p class="subtitle">Contattaci nel modo che preferisci. Rispondiamo rapidamente a qualsiasi richiesta.</p>
     </div>
     <div class="contacts-grid">
 
@@ -2326,6 +2323,22 @@
   const goTop = document.getElementById('goTop');
   window.addEventListener('scroll', () => goTop.classList.toggle('show', window.scrollY > 480), { passive: true });
   goTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  (function(){
+    var gt = document.getElementById('goTop');
+    if(!gt) return;
+    var darks = document.querySelectorAll('.stats, .reviews, .footer');
+    function goTopTheme(){
+      var y = window.innerHeight - 40, onDark = false;
+      darks.forEach(function(s){
+        var r = s.getBoundingClientRect();
+        if(r.top <= y && r.bottom >= y) onDark = true;
+      });
+      gt.classList.toggle('on-dark', onDark);
+    }
+    window.addEventListener('scroll', goTopTheme, {passive:true});
+    window.addEventListener('resize', goTopTheme);
+    goTopTheme();
+  })();
 
   /* Active nav */
   const secs = document.querySelectorAll('section[id]');

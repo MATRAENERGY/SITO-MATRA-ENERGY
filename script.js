@@ -404,3 +404,27 @@
     });
   }, { threshold: 0.35, rootMargin: '-72px 0px 0px 0px' });
   secs.forEach(s => navIO.observe(s));
+
+  /* Contatti — copia negli appunti (numero / email) */
+  (function(){
+    const btns = document.querySelectorAll('.ct-copybtn');
+    if(!btns.length) return;
+    btns.forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const val = btn.getAttribute('data-copy') || '';
+        try {
+          if(navigator.clipboard && navigator.clipboard.writeText){
+            await navigator.clipboard.writeText(val);
+          } else {
+            const ta = document.createElement('textarea');
+            ta.value = val; ta.style.position='fixed'; ta.style.opacity='0';
+            document.body.appendChild(ta); ta.select();
+            document.execCommand('copy'); document.body.removeChild(ta);
+          }
+          btn.classList.add('copied');
+          clearTimeout(btn._copyT);
+          btn._copyT = setTimeout(() => btn.classList.remove('copied'), 1600);
+        } catch(e){ /* no-op */ }
+      });
+    });
+  })();

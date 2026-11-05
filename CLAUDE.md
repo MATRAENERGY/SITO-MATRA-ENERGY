@@ -59,22 +59,31 @@ Se un elemento non è verificabile, dichiararlo esplicitamente.
 
 ---
 
+## Struttura file & ottimizzazioni operative
+
+- **Struttura:** `index.html` (HTML) + `style.css` (CSS, incluse le 3 zone responsive isolate in fondo) + `script.js` (JS), tutti in root; `assets/` per le immagini; `server.js` locale (porta 8080, solo sviluppo).
+- **Dove lavorare:** modifiche di stile → `style.css`; di comportamento → `script.js`; di contenuto/struttura → `index.html`. File più piccoli e mirati = interventi più rapidi e meno rischio di toccare ciò che non serve.
+- **Verifica visiva:** farla solo quando c'è un dubbio reale sul risultato visivo, non sistematicamente a ogni micro-modifica.
+- **Modifiche multiple:** quando l'utente chiede più modifiche insieme, raggrupparle in un unico ciclo (edit → commit → push) invece di una per volta.
+
+---
+
 MATRA ENERGY SRL — STATO PROGETTO
 Data aggiornamento: 25 maggio 2026 (versione production-ready)
-File: index.html (tutto in uno — HTML + CSS + JS insieme)
+File: struttura a 3 file separati in root — `index.html` (solo HTML, con `<link rel="stylesheet" href="style.css">` nel <head> e `<script src="script.js"></script>` in fondo al body) + `style.css` (tutto il CSS) + `script.js` (tutto il JS)
 Start LOCALE: node server.js → http://localhost:8080
-ONLINE: sito statico, basta caricare `index.html` + cartella `assets/` su qualsiasi hosting (Netlify, Vercel, Aruba, ecc.). server.js NON serve online.
-IMPORTANTE: mai usare sed su index.html — svuota il file. Usare SOLO Edit tool.
+ONLINE: sito statico, basta caricare `index.html` + `style.css` + `script.js` + cartella `assets/` su qualsiasi hosting (Netlify, Vercel, Aruba, ecc.). server.js NON serve online.
+IMPORTANTE: mai usare sed/bash su `index.html`, `style.css`, `script.js` — svuota il file. Usare SOLO Edit tool su tutti e tre.
 
 ---
 
 DEPLOY ONLINE — PIPELINE AUTOMATICA (ATTIVA)
 Il deploy è completamente automatico tramite GitHub Action:
 
-1. Modifica index.html con Edit tool
+1. Modifica index.html / style.css / script.js con Edit tool
 2. Commit + push su branch `main`
 3. GitHub Action (`deploy-site-live.yml`) parte in automatico
-4. Copia index.html + assets/ su branch `site-live` (orphan, pulito)
+4. Copia index.html + style.css + script.js + assets/ su branch `site-live` (orphan, pulito)
 5. Hostinger legge `site-live` → aggiorna matraenergy.it in ~1 minuto
 
 NON pushare mai su `site-live` manualmente — è gestito dalla Action.
@@ -84,6 +93,8 @@ Hostinger configurato: repo SITO-MATRA-ENERGY / branch site-live / directory pub
 
 File che la Action copia su site-live (tutto il resto è escluso):
 - index.html
+- style.css (root)
+- script.js (root)
 - assets/*.png, *.jpg, *.jpeg, *.svg, *.webp
 
 ---
@@ -246,21 +257,21 @@ Tecnici minori:
 ---
 
 TECH RAPIDO
-- File unico: index.html (HTML + CSS + JS inline)
+- Struttura 3 file separati in root: index.html (HTML) + style.css (CSS) + script.js (JS)
 - Server locale: node server.js → http://localhost:8080
-- Online: sito statico, carica index.html + assets/
+- Online: sito statico, carica index.html + style.css + script.js + assets/
 - Font: Poppins (Google CDN)
 - CSS vars: --blue #01366b | --red #ed2613 | --blue-bg #eef4fa | --blue-dark #012554
 - Sfondo sezioni scure: #010c24 con radial gradient (stats, recensioni, contatti, footer)
 - Navbar h: 106px
 - Breakpoint: 1040px | 768px | 620px | 520px | 416px
 - Form endpoint: https://api.web3forms.com/submit
-- REGOLA CRITICA: NON usare sed/bash per modificare index.html → usa Edit tool
+- REGOLA CRITICA: NON usare sed/bash per modificare index.html / style.css / script.js → usa SOLO Edit tool su tutti e tre
 
 ---
 
-ZONE RESPONSIVE ISOLATE (index.html)
-In fondo al blocco <style> ci sono 3 zone isolate, media query mutuamente esclusive:
+ZONE RESPONSIVE ISOLATE (style.css)
+In fondo a `style.css` ci sono 3 zone isolate, media query mutuamente esclusive:
 - DESKTOP: @media (min-width:1041px)
 - TABLET:  @media (min-width:621px) and (max-width:1040px)
 - MOBILE:  @media (max-width:620px)

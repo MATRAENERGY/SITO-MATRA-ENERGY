@@ -675,17 +675,23 @@
 
     .cta-body {
       display:grid;
-      grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
-      align-items:start;
+      grid-template-columns:minmax(0,1.85fr) minmax(0,0.75fr);
+      align-items:center;
       gap:40px;
     }
 
-    /* COLONNA SINISTRA = form (allargato) */
-    .cta-form-col { min-width:0; }
+    /* CARD BIANCA UNICA: griglia interna form (sx) + vantaggi (dx), nessun divisore */
+    .form-card-inner {
+      display:grid;
+      grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+      align-items:center;
+      gap:40px;
+    }
+    .form-card-form { min-width:0; }
+    .form-card-perks { min-width:0; }
     .form-card-title { font-size:1.25rem; font-weight:800; color:var(--blue); margin-bottom:22px; letter-spacing:-.01em; }
 
-    /* COLONNA DESTRA = vantaggi (sopra) + mascotte (sotto) */
-    .cta-side-col { display:flex; flex-direction:column; gap:28px; min-width:0; }
+    /* COLONNA 2 = mascotte (fuori dalla card, sfondo chiaro sezione) */
     .cta-mascot-col { display:flex; flex-direction:column; align-items:center; gap:14px; width:100%; }
     .cta-mascot-img {
       width:100%; max-width:230px;
@@ -710,10 +716,10 @@
       color:var(--navy); font-size:.65rem; font-weight:700;
     }
 
-    /* Form — compatto e sobrio su sfondo chiaro */
+    /* Card bianca unica (rettangolare) — form + vantaggi sullo stesso sfondo */
     .form-card {
       background:var(--white); border:1.5px solid var(--bd-light);
-      border-radius:var(--r2); padding:30px 32px;
+      border-radius:var(--r2); padding:38px 44px;
       box-shadow:0 18px 44px rgba(1,54,107,.12);
     }
     .fg { margin-bottom:18px; }
@@ -1008,17 +1014,17 @@
       .rev-role { font-size:.68rem; }
       .c-controls { margin-top:24px; }
 
-      /* PREVENTIVO: header centrato, poi form full-width, poi vantaggi+mascotte */
-      .cta-body { grid-template-columns:1fr; gap:30px; }
+      /* PREVENTIVO: card (form sopra + vantaggi sotto) impilata, mascotte sotto */
+      .cta-body { grid-template-columns:1fr; gap:30px; justify-items:center; }
       .cta-head { margin-bottom:34px; }
-      .cta-side-col { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; }
-      .cta-side-col .perks { flex:1 1 300px; }
-      .cta-mascot-col { width:200px; gap:12px; flex:0 0 auto; }
+      .form-card { width:100%; }
+      .form-card-inner { grid-template-columns:1fr; gap:26px; align-items:start; }
+      .cta-mascot-col { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:center; width:auto; max-width:460px; gap:18px; }
       .cta-mascot-img { max-width:200px; }
+      .speech-bubble { font-size:.78rem; padding:10px 14px; line-height:1.45; width:auto; max-width:230px; }
+      .speech-bubble strong { font-size:.82rem; margin-bottom:3px; }
       .perks { gap:9px; }
       .perks li { font-size:.86rem; gap:9px; line-height:1.4; }
-      .speech-bubble { font-size:.78rem; padding:10px 14px; line-height:1.45; }
-      .speech-bubble strong { font-size:.82rem; margin-bottom:3px; }
 
       /* FOOTER: brand full | Servizi+Azienda 2col | Assistenza full */
       .footer-top { grid-template-columns:1fr 1fr; gap:28px 24px; }
@@ -1185,15 +1191,16 @@
       .c-controls { margin-top:12px; gap:10px; }
       .c-btn { width:32px; height:32px; }
 
-      /* Preventivo: header centrato, form full-width, poi vantaggi+mascotte impilati */
+      /* Preventivo: card (form + vantaggi impilati) full-width, poi mascotte sotto */
       #preventivo { padding:40px 0; }
       .cta-body { grid-template-columns:1fr; gap:24px; }
       .cta-head { margin-bottom:26px; }
       .cta-head .section-title { font-size:1.4rem; }
       .cta-head .subtitle { font-size:.8rem; }
+      .form-card { padding:22px 20px; }
+      .form-card-inner { grid-template-columns:1fr; gap:22px; align-items:start; }
       .form-card-title { font-size:1.02rem; margin-bottom:16px; }
 
-      .cta-side-col { flex-direction:column; align-items:center; gap:18px; }
       .cta-mascot-col { width:auto; flex-direction:row; align-items:center; justify-content:center; gap:0; position:relative; transform:translateX(-10px); }
       .speech-bubble { font-size:.64rem; padding:7px 11px; max-width:140px; line-height:1.35; align-self:flex-start; margin:24px 0 0 8px; position:relative; z-index:5; border-radius:14px 14px 14px 4px; box-shadow:0 4px 14px rgba(1,54,107,.12); order:2; }
       .speech-bubble::after { content:''; position:absolute; bottom:auto; top:50%; left:-6px; width:10px; height:10px; background:inherit; border-left:1.5px solid var(--bd-light); border-bottom:1.5px solid var(--bd-light); transform:translateY(-50%) rotate(45deg); }
@@ -1670,9 +1677,12 @@
 
     <div class="cta-body">
 
-      <!-- COLONNA SINISTRA: FORM (allargato) -->
-      <div class="cta-form-col f-up">
-        <div class="form-card">
+      <!-- COLONNA 1: CARD BIANCA UNICA con form (sx) + vantaggi (dx) -->
+      <div class="form-card f-up">
+        <div class="form-card-inner">
+
+          <!-- Sotto-colonna sinistra: FORM -->
+          <div class="form-card-form">
           <h3 class="form-card-title">Richiedi il tuo preventivo</h3>
           <form id="contactForm" novalidate>
             <input type="hidden" name="access_key" value="b7cb4961-7aed-4508-b728-933945ddba89">
@@ -1719,25 +1729,29 @@
             <h4>Richiesta inviata!</h4>
             <p>Ti contatteremo entro 24 ore lavorative.<br>Grazie per aver scelto Matra Energy.</p>
           </div>
-        </div>
-      </div>
+          </div><!-- /form-card-form -->
 
-      <!-- COLONNA DESTRA: vantaggi (sopra) + mascotte (sotto) -->
-      <div class="cta-side-col f-right">
-        <ul class="perks">
-          <li><span class="perk-ico">✓</span> Sopralluogo gratuito senza impegno</li>
-          <li><span class="perk-ico">✓</span> Preventivo dettagliato entro 24 ore</li>
-          <li><span class="perk-ico">✓</span> Consulenza su incentivi e detrazioni fiscali</li>
-          <li><span class="perk-ico">✓</span> Assistenza dalla progettazione al collaudo</li>
-          <li><span class="perk-ico">✓</span> Garanzia su materiali e manodopera</li>
-        </ul>
-        <div class="cta-mascot-col">
-          <div class="speech-bubble">
-            <strong>Pronto ad aiutarti!</strong>
-            Ti richiamo entro 24 ore per un sopralluogo gratuito.
+          <!-- Sotto-colonna destra: VANTAGGI (stesso sfondo bianco, nessun divisore) -->
+          <div class="form-card-perks">
+            <ul class="perks">
+              <li><span class="perk-ico">✓</span> Sopralluogo gratuito senza impegno</li>
+              <li><span class="perk-ico">✓</span> Preventivo dettagliato entro 24 ore</li>
+              <li><span class="perk-ico">✓</span> Consulenza su incentivi e detrazioni fiscali</li>
+              <li><span class="perk-ico">✓</span> Assistenza dalla progettazione al collaudo</li>
+              <li><span class="perk-ico">✓</span> Garanzia su materiali e manodopera</li>
+            </ul>
           </div>
-          <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
+
+        </div><!-- /form-card-inner -->
+      </div><!-- /form-card -->
+
+      <!-- COLONNA 2: MASCOTTE (fuori dalla card, a destra) -->
+      <div class="cta-mascot-col f-right">
+        <div class="speech-bubble">
+          <strong>Pronto ad aiutarti!</strong>
+          Ti richiamo entro 24 ore per un sopralluogo gratuito.
         </div>
+        <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
       </div>
 
     </div>

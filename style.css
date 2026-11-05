@@ -278,10 +278,46 @@
       position:absolute; border-radius:50%; pointer-events:none;
       filter:blur(70px); will-change:transform;
     }
-    .hero-orb-1 { width:480px; height:480px; background:rgba(1,54,107,.09); top:-120px; right:5%; animation:orb-drift 9s ease-in-out infinite; }
-    .hero-orb-2 { width:320px; height:320px; background:rgba(1,54,107,.06); bottom:5%; right:30%; animation:orb-drift-b 12s ease-in-out infinite; animation-delay:-4s; }
-    .hero-orb-3 { width:260px; height:260px; background:rgba(1,54,107,.07); top:40%; left:2%; animation:orb-drift 10s ease-in-out infinite; animation-delay:-7s; }
-    .hero-orb-4 { width:200px; height:200px; background:rgba(1,54,107,.08); top:10%; left:35%; animation:orb-drift-b 14s ease-in-out infinite; animation-delay:-2s; }
+    .hero-orb-1 { width:480px; height:480px; background:rgba(26,96,180,.11); top:-120px; right:5%; animation:orb-drift 9s ease-in-out infinite; }
+    .hero-orb-2 { width:320px; height:320px; background:rgba(1,54,107,.07); bottom:5%; right:30%; animation:orb-drift-b 12s ease-in-out infinite; animation-delay:-4s; }
+    .hero-orb-3 { width:260px; height:260px; background:rgba(60,130,220,.08); top:40%; left:2%; animation:orb-drift 10s ease-in-out infinite; animation-delay:-7s; }
+    /* Accento caldo molto tenue per dare profondita', mai dominante */
+    .hero-orb-4 { width:200px; height:200px; background:rgba(237,38,19,.04); top:10%; left:35%; animation:orb-drift-b 14s ease-in-out infinite; animation-delay:-2s; }
+
+    /* ===== HERO PARTICLES — campo di puntini luminosi soft ===== */
+    .hero-particles {
+      position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:2;
+    }
+    .hero-particles span {
+      position:absolute; display:block; border-radius:50%;
+      background:radial-gradient(circle, rgba(26,96,180,.55) 0%, rgba(26,96,180,0) 70%);
+      opacity:0; will-change:transform,opacity;
+      animation:particle-rise linear infinite;
+    }
+    @keyframes particle-rise {
+      0%   { transform:translateY(20px) scale(.6); opacity:0; }
+      15%  { opacity:.7; }
+      85%  { opacity:.5; }
+      100% { transform:translateY(-120px) scale(1); opacity:0; }
+    }
+    /* Posizioni / dimensioni / tempi scaglionati (12 puntini) */
+    .hero-particles span:nth-child(1)  { width:6px;  height:6px;  left:12%; bottom:18%; animation-duration:13s; animation-delay:0s;    }
+    .hero-particles span:nth-child(2)  { width:4px;  height:4px;  left:22%; bottom:34%; animation-duration:16s; animation-delay:-3s;   }
+    .hero-particles span:nth-child(3)  { width:8px;  height:8px;  left:31%; bottom:12%; animation-duration:18s; animation-delay:-6s;   }
+    .hero-particles span:nth-child(4)  { width:5px;  height:5px;  left:44%; bottom:40%; animation-duration:14s; animation-delay:-2s;   }
+    .hero-particles span:nth-child(5)  { width:3px;  height:3px;  left:53%; bottom:22%; animation-duration:17s; animation-delay:-9s;   }
+    .hero-particles span:nth-child(6)  { width:7px;  height:7px;  left:62%; bottom:46%; animation-duration:19s; animation-delay:-4s;   }
+    .hero-particles span:nth-child(7)  { width:4px;  height:4px;  left:71%; bottom:16%; animation-duration:15s; animation-delay:-7s;   }
+    .hero-particles span:nth-child(8)  { width:6px;  height:6px;  left:80%; bottom:30%; animation-duration:20s; animation-delay:-1s;   }
+    .hero-particles span:nth-child(9)  { width:5px;  height:5px;  left:88%; bottom:44%; animation-duration:16s; animation-delay:-11s;  }
+    .hero-particles span:nth-child(10) { width:3px;  height:3px;  left:17%; bottom:52%; animation-duration:21s; animation-delay:-5s;   }
+    .hero-particles span:nth-child(11) { width:6px;  height:6px;  left:37%; bottom:58%; animation-duration:18s; animation-delay:-13s;  }
+    .hero-particles span:nth-child(12) { width:4px;  height:4px;  left:66%; bottom:60%; animation-duration:22s; animation-delay:-8s;   }
+
+    @media (prefers-reduced-motion:reduce) {
+      .hero-particles { display:none; }
+      .hero-orb { animation:none; }
+    }
 
     /* ===== ANIMAZIONI GLOBALI ===== */
     @keyframes pulse-glow {
@@ -406,26 +442,38 @@
       z-index:10;
     }
     .mascot-cta-text {
+      position:relative;
       background:var(--white);
-      color:blu;
+      color:var(--blue);
       font-size:.82rem; font-weight:700;
-      padding:9px 20px;
-      border-radius:50px;
-      margin-bottom:12px;
+      padding:11px 22px;
+      border-radius:20px;
+      margin-bottom:22px;
       line-height: 1.35;
       max-width: 230px;
       display: inline-block;
       text-align: center;
-      box-shadow:0 4px 14px rgba(28,41,53,.28);
+      box-shadow:0 8px 22px rgba(1,54,107,.16), 0 2px 6px rgba(1,54,107,.10);
+    }
+    /* Codina del fumetto: punta morbida verso la mascotte (in basso) */
+    .mascot-cta-text::after {
+      content:"";
+      position:absolute;
+      bottom:-8px; left:50%; transform:translateX(-50%) rotate(45deg);
+      width:16px; height:16px;
+      background:var(--white);
+      border-radius:0 0 4px 0;
+      box-shadow:3px 3px 6px rgba(1,54,107,.08);
     }
     .mascot-hero {
-      height:340px; width:auto;
+      height:270px; width:auto;
       display:block; position:relative; z-index:2;
       filter:drop-shadow(0 18px 32px rgba(0,0,0,.28));
+      animation:mascotFloat 6s ease-in-out infinite;
     }
     @keyframes mascotFloat {
       0%,100% { transform:translateY(0); }
-      50%      { transform:translateY(-12px); }
+      50%      { transform:translateY(-10px); }
     }
 
 
@@ -1009,8 +1057,8 @@
       /* MASCOT dx: bottom su linea superiore stats card (d) */
       .hero-mascot-col { order:2; align-self:stretch; height:auto; margin-bottom:0; overflow:visible; position:relative; z-index:5; }
       .mascot-wrapper { position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); }
-      .mascot-hero { height:230px; filter:drop-shadow(0 14px 24px rgba(0,0,0,.25)); }
-      .mascot-cta-text { font-size:.72rem; padding:7px 14px; max-width:180px; margin-bottom:10px; }
+      .mascot-hero { height:188px; filter:drop-shadow(0 14px 24px rgba(0,0,0,.25)); }
+      .mascot-cta-text { font-size:.72rem; padding:8px 15px; max-width:180px; margin-bottom:18px; }
 
       /* Stats card 3 col compatta */
       .hero-stats-card { grid-template-columns:repeat(3,1fr); padding:18px 18px; gap:10px; border-radius:18px; margin-top:0; }
@@ -1072,7 +1120,7 @@
       .hero { padding-top:100px; padding-bottom:32px; }
       .hero-title { font-size:clamp(1.35rem,4.4vw,1.9rem); }
       .hero-sub { font-size:.82rem; }
-      .mascot-hero { height:200px; }
+      .mascot-hero { height:164px; }
       .mascot-wrapper { bottom:-4px; }
       .hero-stats-card { padding:16px 14px; gap:8px; }
       .hero-stat { padding:0 8px; gap:9px; }
@@ -1140,8 +1188,14 @@
       /* Mascotte assoluta dx, bubble absoluta accanto al viso */
       .hero-mascot-col { position:absolute; bottom:0; right:85px; left:auto; top:auto; height:auto; width:auto; align-self:auto; z-index:5; overflow:visible; }
       .mascot-wrapper { position:relative; display:block; }
-      .mascot-hero { height:150px; max-width:none; display:block; }
-      .mascot-cta-text { position:absolute; bottom:78px; left:100%; margin:0 0 0 -24px; font-size:.55rem; padding:6px 11px; max-width:115px; text-align:center; line-height:1.4; transform:none; white-space:normal; z-index:6; }
+      .mascot-hero { height:124px; max-width:none; display:block; }
+      .mascot-cta-text { position:absolute; bottom:72px; left:100%; margin:0 0 0 -24px; font-size:.55rem; padding:6px 11px; max-width:115px; text-align:center; line-height:1.4; white-space:normal; z-index:6; }
+      /* Su mobile la bubble sta di lato al viso: niente codina in basso, animazione solo fade-in */
+      .mascot-cta-text::after { display:none; }
+      .mascot-cta-text { opacity:0; animation:bubble-in .6s ease .6s both; }
+
+      /* Meno particelle su mobile (performance): ne restano 5 */
+      .hero-particles span:nth-child(n+6) { display:none; }
 
       .hero-stats-card { padding:11px 8px; gap:4px; border-radius:13px; }
       .hero-stat { padding:0 4px; gap:5px; flex-direction:column; text-align:center; align-items:center; }
@@ -1269,20 +1323,29 @@
       .hero-ctas .btn svg { width:11px; height:11px; flex-shrink:0; }
     }
 
-    /* ── Speech bubble mascot: animazione fumetto pop ── */
-    @keyframes comic-pop {
-      0%   { transform:scale(0); opacity:0; }
-      8%   { transform:scale(1.18); opacity:1; }
-      14%  { transform:scale(.94); }
-      20%  { transform:scale(1); }
-      82%  { transform:scale(1); opacity:1; }
-      90%  { transform:scale(1.05); opacity:1; }
-      96%  { transform:scale(0); opacity:0; }
-      100% { transform:scale(0); opacity:0; }
+    /* ── Speech bubble mascot: apparizione delicata + soft bob ── */
+    @keyframes bubble-in {
+      0%   { transform:translateY(8px) scale(.85); opacity:0; }
+      60%  { transform:translateY(0) scale(1.03); opacity:1; }
+      100% { transform:translateY(0) scale(1); opacity:1; }
     }
-    .mascot-cta-text {
-      transform-origin:bottom left;
-      animation:comic-pop 5.5s ease-in-out infinite;
+    @keyframes bubble-bob {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-4px); }
+    }
+    /* Desktop/tablet (>=521px): apparizione + soft bob. Mobile ha la sua regola sopra. */
+    @media (min-width:521px) {
+      .mascot-cta-text {
+        transform-origin:bottom center;
+        opacity:0;
+        animation:
+          bubble-in .7s cubic-bezier(.34,1.56,.64,1) .9s forwards,
+          bubble-bob 4.5s ease-in-out 1.6s infinite;
+      }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .mascot-cta-text { opacity:1; animation:bubble-in .4s ease forwards; }
+      .mascot-hero { animation:none; }
     }
 
     /* ================================================================

@@ -722,30 +722,32 @@
     .cta-head .subtitle { margin:0 auto; }
 
     .cta-body {
-      display:grid;
-      grid-template-columns:minmax(0,1.85fr) minmax(0,0.75fr);
-      align-items:center;
-      gap:40px;
+      display:flex;
+      justify-content:center;
     }
 
-    /* CARD UNICA: form bianco (sx) + pannello blu vantaggi (dx), separati dal colore */
+    /* CARD UNICA A 3 PANNELLI: form bianco (sx) | vantaggi blu (centro) | mascotte azzurro (dx) */
     .form-card-inner {
       display:grid;
-      grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+      grid-template-columns:40fr 28fr 32fr;
       align-items:stretch;
       gap:0;
     }
+    /* Divisori verticali sottili tra i pannelli */
+    .form-card-perks { border-left:1px solid var(--bd-light); }
+    .form-card-mascot { border-left:1px solid var(--bd-light); }
+
     .form-card-form { min-width:0; padding:38px 40px; }
     .form-card-head { text-align:center; margin-bottom:26px; }
     .form-card-title { font-size:1.3rem; font-weight:800; color:var(--blue); letter-spacing:-.01em; }
     .form-card-sub { font-size:.82rem; color:var(--txt-sub-light); margin-top:6px; }
 
-    /* PANNELLO BLU VANTAGGI — a filo dei bordi/angoli destri della card */
+    /* PANNELLO 2 — VANTAGGI (blu scuro), contenuto centrato verticalmente */
     .form-card-perks {
       min-width:0;
       background:linear-gradient(160deg, var(--blue) 0%, var(--blue-dark) 100%);
       display:flex; align-items:center; justify-content:center;
-      padding:40px 38px;
+      padding:40px 34px;
     }
     .perks-inner { width:100%; }
     .perks-title {
@@ -754,21 +756,90 @@
       color:rgba(255,255,255,.72);
     }
 
-    /* COLONNA 2 = mascotte (fuori dalla card, sfondo chiaro sezione) */
-    .cta-mascot-col { display:flex; flex-direction:column; align-items:center; gap:14px; width:100%; }
-    .cta-mascot-img {
-      width:100%; max-width:230px;
-      filter:drop-shadow(0 14px 36px rgba(1,54,107,.2));
+    /* PANNELLO 3 — MASCOTTE (azzurro chiaro, pulito): stage mascotte+bubble sopra, strip icone sotto */
+    .form-card-mascot {
+      min-width:0; position:relative; overflow:hidden;
+      display:flex; flex-direction:column;
+      background:linear-gradient(180deg,#f3f8fe 0%, #e7f1fc 100%);
     }
+    /* Stage: area dove vive la mascotte; la sua base poggia sulla linea della strip icone.
+       padding-top = banda libera SOPRA la testa dove vive la bubble (così non copre il viso) */
+    .cta-mascot-stage {
+      position:relative; flex:1 1 auto;
+      display:flex; align-items:flex-end; justify-content:center;
+      padding:96px 14px 0;
+      min-height:270px;
+    }
+    .cta-mascot-img {
+      display:block; width:100%; max-width:270px;   /* ~18% più grande di prima (230→270) */
+      margin-bottom:30px;           /* RITOCCO: mascotte sollevata di 30px → la mano tesa resta sopra l'onda */
+      filter:drop-shadow(0 12px 22px rgba(1,54,107,.18));
+      position:relative; z-index:2; /* mascotte TRA i due strati d'onda (rear dietro, front davanti) */
+    }
+    /* Onda a 2 strati attorno alla mascotte, a tutta larghezza del pannello, ancorata al basso
+       (la linea = pavimento della strip icone). Altezza 128px: copre busto basso/gambe. */
+    .cta-mascot-base {
+      position:absolute; left:0; right:0; bottom:0;
+      width:100%; height:128px;
+      pointer-events:none; overflow:visible;
+    }
+    /* Strato POSTERIORE (scuro + contorno): DIETRO la mascotte */
+    .cta-wave-rear  { z-index:1; }
+    /* Strato ANTERIORE (azzurro chiaro): DAVANTI la mascotte → la copre, la mascotte spunta in mezzo */
+    .cta-wave-front { z-index:3; }
+    /* 2 livelli di riempimento azzurro per dare profondità (back più saturo, front più chiaro ma
+       ben distinto dallo sfondo tenue del pannello) */
+    .cta-mascot-base .wave-back  { fill:rgba(1,54,107,.22); }
+    .cta-mascot-base .wave-front { fill:#cfe2f6; }
+    /* Profilo superiore marcato: la "linea curva" dell'onda, ora ben visibile */
+    .cta-mascot-base .wave-line {
+      fill:none; stroke:var(--blue); opacity:.55;
+      stroke-width:2.4; stroke-linecap:round;
+      vector-effect:non-scaling-stroke;
+    }
+    /* Bubble: SOPRA la testa della mascotte (non la copre), codina che punta in basso verso di lei (effetto "parla").
+       Ancorata dal basso (bottom) = segue la testa: la mascotte è alta ~337px (poggia a bottom:0),
+       quindi bottom:348px tiene il bordo inferiore della bubble appena sopra la cima del cappellino. */
     .speech-bubble {
+      position:absolute; z-index:4;
+      bottom:378px; left:50%; transform:translateX(-50%); max-width:200px;
       background:var(--white); border:1.5px solid var(--bd-light);
-      border-radius:16px 16px 4px 16px;
-      padding:14px 18px; font-size:.84rem; color:var(--txt-sub-light);
-      line-height:1.55; text-align:center;
-      box-shadow:0 4px 16px rgba(1,54,107,.08);
-      width:100%;
+      border-radius:16px 16px 16px 16px;
+      padding:12px 16px; font-size:.78rem; color:var(--txt-sub-light);
+      line-height:1.5; text-align:center;
+      box-shadow:0 8px 20px rgba(1,54,107,.12);
     }
     .speech-bubble strong { color:var(--blue); display:block; margin-bottom:4px; }
+    /* Codina centrata in basso, punta verso la testa della mascotte (effetto "parla" dall'alto) */
+    .speech-bubble::after {
+      content:''; position:absolute; z-index:-1;
+      bottom:-6px; left:50%; margin-left:-6px; width:12px; height:12px;
+      background:inherit;
+      border-right:1.5px solid var(--bd-light); border-bottom:1.5px solid var(--bd-light);
+      transform:rotate(45deg);
+    }
+
+    /* FASCIA 3 ICONE-SERVIZIO: border-top sottile = linea/pavimento su cui poggia la mascotte */
+    .cta-svc-strip {
+      position:relative; z-index:2;
+      display:grid; grid-template-columns:repeat(3,1fr);
+      border-top:1px solid var(--bd-light);
+      background:rgba(255,255,255,.35);
+    }
+    .cta-svc {
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      padding:16px 10px; text-align:center;
+      border-left:1px solid rgba(1,54,107,.12);
+    }
+    .cta-svc:first-child { border-left:none; }
+    .cta-svc-ico {
+      width:34px; height:34px; display:flex; align-items:center; justify-content:center;
+    }
+    .cta-svc-ico svg {
+      width:26px; height:26px; fill:none; stroke:var(--blue);
+      stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;
+    }
+    .cta-svc-lbl { font-size:.68rem; line-height:1.35; color:var(--txt-sub-light); font-weight:600; }
 
     .perks { list-style:none; display:flex; flex-direction:column; gap:16px; margin-bottom:0; width:100%; }
     .perks li { display:flex; align-items:center; gap:13px; color:#eaf1fb; font-size:.9rem; line-height:1.4; }
@@ -1093,17 +1164,21 @@
       .rev-role { font-size:.68rem; }
       .c-controls { margin-top:24px; }
 
-      /* PREVENTIVO: card (form sopra + pannello blu sotto) impilata, mascotte sotto */
-      .cta-body { grid-template-columns:1fr; gap:30px; justify-items:center; }
+      /* PREVENTIVO: i 3 pannelli si impilano full-width, divisori orizzontali */
       .cta-head { margin-bottom:34px; }
       .form-card { width:100%; }
       .form-card-inner { grid-template-columns:1fr; gap:0; align-items:stretch; }
+      .form-card-perks, .form-card-mascot { border-left:none; border-top:1px solid var(--bd-light); }
       .form-card-form { padding:32px 30px; }
-      .form-card-perks { padding:30px; }
-      .cta-mascot-col { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:center; width:auto; max-width:460px; gap:18px; }
-      .cta-mascot-img { max-width:200px; }
-      .speech-bubble { font-size:.78rem; padding:10px 14px; line-height:1.45; width:auto; max-width:230px; }
-      .speech-bubble strong { font-size:.82rem; margin-bottom:3px; }
+      .form-card-perks { padding:34px 30px; }
+      .cta-mascot-stage { min-height:300px; padding:112px 20px 0; }
+      .cta-mascot-img { max-width:250px; }
+      /* bubble ancorata dal basso = sopra la testa (mascotte alta ~312px a max-width 250, sollevata 30px) */
+      .speech-bubble { bottom:352px; top:auto; left:50%; transform:translateX(-50%); max-width:240px; font-size:.8rem; padding:12px 16px; }
+      .speech-bubble strong { font-size:.84rem; margin-bottom:3px; }
+      /* onda a 2 strati: resta a tutta larghezza del pannello, mascotte in mezzo */
+      .cta-mascot-base { left:0; right:0; width:100%; height:118px; }
+      .cta-svc-lbl { font-size:.74rem; }
       .perks { gap:12px; }
       .perks li { font-size:.88rem; gap:11px; line-height:1.4; }
 
@@ -1130,7 +1205,7 @@
       .hero-stat-l { font-size:.7rem; }
       .fg-row  { grid-template-columns:1fr; }
       .f-bottom { flex-direction:column; text-align:center; gap:10px; }
-      .cta-mascot-img { max-width:170px; }
+      .cta-mascot-img { max-width:220px; }
     }
 
     /* ── Fix range 521-600: bubble mascotte ridotto ── */
@@ -1277,13 +1352,13 @@
       .c-controls { margin-top:12px; gap:10px; }
       .c-btn { width:32px; height:32px; }
 
-      /* Preventivo: card (form + vantaggi impilati) full-width, poi mascotte sotto */
+      /* Preventivo: 3 pannelli impilati full-width, divisori orizzontali */
       #preventivo { padding:40px 0; }
-      .cta-body { grid-template-columns:1fr; gap:24px; }
       .cta-head { margin-bottom:26px; }
       .cta-head .section-title { font-size:1.4rem; }
       .cta-head .subtitle { font-size:.8rem; }
       .form-card-inner { grid-template-columns:1fr; gap:0; align-items:stretch; }
+      .form-card-perks, .form-card-mascot { border-left:none; border-top:1px solid var(--bd-light); }
       .form-card-form { padding:24px 20px; }
       .form-card-perks { padding:24px 20px; }
       .form-card-head { margin-bottom:18px; }
@@ -1291,10 +1366,19 @@
       .form-card-sub { font-size:.74rem; margin-top:5px; }
       .perks-title { font-size:.74rem; margin-bottom:16px; letter-spacing:.12em; }
 
-      .cta-mascot-col { width:auto; flex-direction:row; align-items:center; justify-content:center; gap:0; position:relative; transform:translateX(-10px); }
-      .speech-bubble { font-size:.64rem; padding:7px 11px; max-width:140px; line-height:1.35; align-self:flex-start; margin:24px 0 0 8px; position:relative; z-index:5; border-radius:14px 14px 14px 4px; box-shadow:0 4px 14px rgba(1,54,107,.12); order:2; }
-      .speech-bubble::after { content:''; position:absolute; bottom:auto; top:50%; left:-6px; width:10px; height:10px; background:inherit; border-left:1.5px solid var(--bd-light); border-bottom:1.5px solid var(--bd-light); transform:translateY(-50%) rotate(45deg); }
-      .cta-mascot-img { max-width:160px; margin:0; position:relative; z-index:0; order:1; }
+      /* Pannello mascotte: mascotte poggia sulla linea sopra le icone, bubble SOPRA la testa (non copre il viso) */
+      .cta-mascot-stage { min-height:240px; padding:88px 16px 0; }
+      .cta-mascot-img { max-width:190px; margin-bottom:22px; } /* sollevamento ridotto su mobile (compatto) */
+      /* bubble ancorata dal basso = sopra la testa (mascotte alta ~237px a max-width 190, sollevata 22px) */
+      .speech-bubble { bottom:268px; top:auto; left:50%; transform:translateX(-50%); margin-left:0; max-width:190px; font-size:.68rem; padding:9px 12px; line-height:1.4; border-radius:14px; }
+      .speech-bubble strong { font-size:.74rem; }
+      .speech-bubble::after { bottom:-5px; left:50%; margin-left:-5px; right:auto; width:10px; height:10px; }
+      /* onda a 2 strati: tutta larghezza del pannello, mascotte in mezzo, altezza ridotta */
+      .cta-mascot-base { left:0; right:0; width:100%; height:92px; }
+      .cta-svc { padding:12px 6px; gap:6px; }
+      .cta-svc-ico { width:28px; height:28px; }
+      .cta-svc-ico svg { width:22px; height:22px; }
+      .cta-svc-lbl { font-size:.62rem; }
       .perks { gap:12px; align-items:flex-start; text-align:left; width:100%; }
       .perks li { font-size:.82rem; gap:11px; line-height:1.4; }
       .perk-ico { width:20px; height:20px; min-width:20px; }

@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=f63fde981a">
+  <link rel="stylesheet" href="style.css?v=75ede609a7">
 </head>
 <body>
 
@@ -399,11 +399,11 @@
 
     <div class="cta-body">
 
-      <!-- COLONNA 1: CARD BIANCA UNICA con form (sx) + vantaggi (dx) -->
+      <!-- CARD UNICA A 3 PANNELLI: form (sx) | vantaggi blu (centro) | mascotte azzurro (dx) -->
       <div class="form-card f-up">
         <div class="form-card-inner">
 
-          <!-- Sotto-colonna sinistra: FORM -->
+          <!-- PANNELLO 1 (SX, bianco): FORM -->
           <div class="form-card-form">
           <div class="form-card-head">
             <h3 class="form-card-title">Richiedi il tuo preventivo</h3>
@@ -456,7 +456,7 @@
           </div>
           </div><!-- /form-card-form -->
 
-          <!-- Sotto-colonna destra: PANNELLO BLU VANTAGGI (contrasto sul form bianco) -->
+          <!-- PANNELLO 2 (CENTRO, blu scuro): VANTAGGI -->
           <div class="form-card-perks">
             <div class="perks-inner">
               <span class="perks-title">I tuoi vantaggi</span>
@@ -470,17 +470,52 @@
             </div>
           </div>
 
+          <!-- PANNELLO 3 (DX, azzurro chiaro): MASCOTTE + BUBBLE + ICONE SERVIZIO -->
+          <div class="form-card-mascot">
+            <div class="cta-mascot-stage">
+              <div class="speech-bubble">
+                <strong>Pronto ad aiutarti!</strong>
+                Ti richiamo entro 24 ore per un sopralluogo gratuito.
+              </div>
+              <!-- Onda a 2 strati attorno alla mascotte (a tutta larghezza):
+                   STRATO POSTERIORE (scuro + contorno) DIETRO la mascotte, STRATO ANTERIORE (azzurro chiaro) DAVANTI.
+                   Cosi' la linea curva scura resta dietro, l'onda azzurra chiara la copre davanti; la mascotte spunta in mezzo. -->
+              <!-- Strato DIETRO la mascotte: riempimento scuro + profilo superiore marcato (z-index:1) -->
+              <svg class="cta-mascot-base cta-wave-rear" viewBox="0 0 240 100" preserveAspectRatio="none" aria-hidden="true">
+                <path class="wave-back" d="M0 34 C40 14 80 14 120 30 C160 46 200 46 240 28 L240 100 L0 100 Z" />
+                <path class="wave-line" d="M0 54 C44 34 86 36 120 50 C154 64 196 62 240 48" />
+              </svg>
+              <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
+              <!-- Strato DAVANTI la mascotte: onda azzurra chiara piena (z-index:3) -->
+              <svg class="cta-mascot-base cta-wave-front" viewBox="0 0 240 100" preserveAspectRatio="none" aria-hidden="true">
+                <path class="wave-front" d="M0 54 C44 34 86 36 120 50 C154 64 196 62 240 48 L240 100 L0 100 Z" />
+              </svg>
+            </div>
+            <!-- Fascia 3 icone-servizio: la LINEA border-top sopra fa da pavimento alla mascotte -->
+            <div class="cta-svc-strip">
+              <div class="cta-svc">
+                <span class="cta-svc-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/><path d="M10 19v-5h4v5"/></svg>
+                </span>
+                <span class="cta-svc-lbl">Riscaldamento e raffrescamento</span>
+              </div>
+              <div class="cta-svc">
+                <span class="cta-svc-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+                </span>
+                <span class="cta-svc-lbl">Fotovoltaico e incentivi</span>
+              </div>
+              <div class="cta-svc">
+                <span class="cta-svc-ico">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c3.6 4 6 6.9 6 10a6 6 0 0 1-12 0c0-3.1 2.4-6 6-10Z"/></svg>
+                </span>
+                <span class="cta-svc-lbl">Acqua calda sanitaria</span>
+              </div>
+            </div>
+          </div>
+
         </div><!-- /form-card-inner -->
       </div><!-- /form-card -->
-
-      <!-- COLONNA 2: MASCOTTE (fuori dalla card, a destra) -->
-      <div class="cta-mascot-col f-right">
-        <div class="speech-bubble">
-          <strong>Pronto ad aiutarti!</strong>
-          Ti richiamo entro 24 ore per un sopralluogo gratuito.
-        </div>
-        <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
-      </div>
 
     </div>
   </div>

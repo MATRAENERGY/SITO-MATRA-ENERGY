@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=d295cfb33f">
+  <link rel="stylesheet" href="style.css?v=51d67ec22a">
 </head>
 <body>
 
@@ -468,108 +468,13 @@
         </div><!-- /form-card-inner -->
       </div><!-- /form-card -->
 
-      <!-- COLONNA 2: MASCOTTE + SCENA ILLUSTRATA (fuori dalla card, a destra) -->
+      <!-- COLONNA 2: MASCOTTE (fuori dalla card, a destra) -->
       <div class="cta-mascot-col f-right">
-
-        <!-- Palco: scena SVG soft dietro + mascotte sopra + bubble in primo piano -->
-        <div class="cta-stage">
-
-          <!-- SCENA SVG (z-index basso, dietro la mascotte) -->
-          <svg class="cta-scene" viewBox="0 0 320 300" fill="none" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMax meet">
-            <!-- Nuvole soft -->
-            <g class="scene-clouds" fill="#dbe8f8">
-              <ellipse cx="62" cy="52" rx="26" ry="11"/>
-              <ellipse cx="84" cy="48" rx="20" ry="13"/>
-              <ellipse cx="248" cy="40" rx="30" ry="12"/>
-              <ellipse cx="226" cy="44" rx="18" ry="11"/>
-            </g>
-
-            <!-- Sole stilizzato (angolo alto dx) -->
-            <g class="scene-sun" stroke="#aecbf0" stroke-width="2.4" stroke-linecap="round">
-              <circle cx="286" cy="34" r="12" fill="#eaf2fc"/>
-              <line x1="286" y1="12" x2="286" y2="18"/>
-              <line x1="286" y1="50" x2="286" y2="56"/>
-              <line x1="264" y1="34" x2="270" y2="34"/>
-              <line x1="302" y1="34" x2="308" y2="34"/>
-              <line x1="270" y1="18" x2="274" y2="22"/>
-              <line x1="298" y1="46" x2="302" y2="50"/>
-            </g>
-
-            <!-- CASETTA lineare (dietro-destra, secondo piano) -->
-            <g class="scene-house" stroke="#9cbde8" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
-              <!-- corpo -->
-              <rect x="196" y="150" width="86" height="78" rx="6" fill="#eef4fa"/>
-              <!-- tetto a falde -->
-              <path d="M186 152 L239 118 L292 152 Z" fill="#e3edf9"/>
-              <!-- porta -->
-              <rect x="210" y="190" width="24" height="38" rx="3" fill="#dde9f7"/>
-              <!-- finestra -->
-              <rect x="248" y="168" width="24" height="24" rx="3" fill="#dde9f7"/>
-              <line x1="260" y1="168" x2="260" y2="192"/>
-              <line x1="248" y1="180" x2="272" y2="180"/>
-            </g>
-
-            <!-- CONDIZIONATORE / unità esterna (accanto alla casa) -->
-            <g class="scene-ac" stroke="#9cbde8" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
-              <rect x="150" y="196" width="48" height="32" rx="6" fill="#eef4fa"/>
-              <circle cx="174" cy="212" r="10" fill="#e3edf9"/>
-              <path d="M174 212 L174 204 M174 212 L182 215 M174 212 L166 215" />
-              <line x1="156" y1="223" x2="192" y2="223"/>
-            </g>
-
-            <!-- CESPUGLI soft -->
-            <g class="scene-bush" fill="#cfe1f5">
-              <ellipse cx="44" cy="238" rx="24" ry="16"/>
-              <ellipse cx="62" cy="242" rx="16" ry="12"/>
-              <ellipse cx="128" cy="244" rx="14" ry="10"/>
-            </g>
-
-            <!-- COLLINETTE / ONDE (due livelli, primo piano del terreno) -->
-            <path class="scene-hill-back" d="M0 252 C70 232 130 266 200 248 C258 234 300 258 320 250 L320 300 L0 300 Z" fill="#dbe8f8"/>
-            <path class="scene-hill-front" d="M0 272 C60 256 120 284 190 270 C250 258 290 282 320 272 L320 300 L0 300 Z" fill="#c4d9f2"/>
-          </svg>
-
-          <!-- MASCOTTE PNG (z-index medio, protagonista) — INVARIATA -->
-          <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
-
-          <!-- SPEECH BUBBLE (z-index alto) -->
-          <div class="speech-bubble">
-            <strong>Pronto ad aiutarti!</strong>
-            Ti richiamo entro 24 ore per un sopralluogo gratuito.
-          </div>
-        </div><!-- /cta-stage -->
-
-        <!-- FASCIA 3 ICONE-SERVIZIO -->
-        <div class="cta-services">
-          <div class="cta-srv">
-            <span class="cta-srv-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9h14v-9"/>
-                <path d="M9.5 19v-4.5a2.5 2.5 0 0 1 5 0V19"/>
-              </svg>
-            </span>
-            <span class="cta-srv-label">Riscaldamento<br>e raffrescamento</span>
-          </div>
-          <span class="cta-srv-div" aria-hidden="true"></span>
-          <div class="cta-srv">
-            <span class="cta-srv-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 3.5c3.5 4.2 6 7.4 6 10.5a6 6 0 0 1-12 0c0-3.1 2.5-6.3 6-10.5Z"/>
-              </svg>
-            </span>
-            <span class="cta-srv-label">Acqua calda<br>sanitaria</span>
-          </div>
-          <span class="cta-srv-div" aria-hidden="true"></span>
-          <div class="cta-srv">
-            <span class="cta-srv-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="4.2"/>
-                <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/>
-              </svg>
-            </span>
-            <span class="cta-srv-label">Fotovoltaico<br>e incentivi</span>
-          </div>
+        <div class="speech-bubble">
+          <strong>Pronto ad aiutarti!</strong>
+          Ti richiamo entro 24 ore per un sopralluogo gratuito.
         </div>
+        <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
       </div>
 
     </div>

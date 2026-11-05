@@ -663,41 +663,26 @@
 
 
     /* ===================== CTA / FORM ===================== */
-    /* Sezione a 2 metà: sx scura (form) | dx chiara (mascotte + testo) */
-    .cta-section { position:relative; overflow:hidden; }
-    .cta-split {
+    /* Sezione chiara unica: header centrato + form compatto (sx) | mascotte & vantaggi (dx) */
+    .cta-section {
+      position:relative; overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%, #f3f7fc 100%);
+    }
+    .cta-head { text-align:center; margin-bottom:52px; }
+    .cta-head .subtitle { margin:0 auto; text-align:center; }
+
+    .cta-grid {
       display:grid;
-      grid-template-columns:1fr 1fr;
-      align-items:stretch;
-      min-height:100%;
+      grid-template-columns:minmax(0,1fr) minmax(0,.9fr);
+      align-items:center; gap:56px;
     }
-    .cta-half { display:flex; align-items:center; padding:84px 56px; position:relative; }
+    .cta-form-wrap { width:100%; max-width:480px; justify-self:center; }
 
-    /* Metà sinistra — scura con radial glow blu */
-    .cta-half-dark {
-      justify-content:center;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(1,54,107,.55), transparent 60%),
-        radial-gradient(circle at 80% 90%, rgba(1,54,107,.4), transparent 55%),
-        #010c24;
-    }
-    .cta-half-dark::after {
-      content:''; position:absolute; top:0; right:0; bottom:0; width:1px;
-      background:linear-gradient(to bottom, transparent, rgba(255,255,255,.14), transparent);
-    }
-    .cta-form-wrap { width:100%; max-width:520px; }
-
-    /* Metà destra — chiara: mascotte (sx) + testo (estrema dx) */
-    .cta-half-light {
-      background:var(--blue-bg);
-      justify-content:space-between; gap:40px;
-      box-shadow:inset 1px 0 0 rgba(1,54,107,.08);
-    }
-
-    /* Mascotte colonna */
-    .cta-mascot-col { display:flex; flex-direction:column; align-items:center; gap:14px; flex-shrink:0; width:260px; }
+    /* Colonna destra: mascotte + vantaggi */
+    .cta-aside { display:flex; flex-direction:column; align-items:center; gap:26px; }
+    .cta-mascot-col { display:flex; flex-direction:column; align-items:center; gap:14px; width:100%; max-width:260px; }
     .cta-mascot-img {
-      width:100%; max-width:260px;
+      width:100%; max-width:230px;
       filter:drop-shadow(0 14px 36px rgba(1,54,107,.2));
       animation:mascotFloat 5.5s ease-in-out infinite;
     }
@@ -711,18 +696,7 @@
     }
     .speech-bubble strong { color:var(--blue); display:block; margin-bottom:4px; }
 
-    /* Testo (blocco a estrema destra della metà chiara) */
-    .cta-left { padding-top:8px; flex:1; max-width:460px; }
-    .cta-left h2 { font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; margin-bottom:18px; color:var(--blue); line-height:1.18; }
-    .cta-left h2 span {
-      background-image: var(--headline-gradient-fallback);
-      background-image: var(--headline-gradient);
-      -webkit-background-clip:text; background-clip:text;
-      color:transparent; -webkit-text-fill-color:transparent;
-    }
-    .cta-left > p { color:var(--txt-sub-light); font-size:.97rem; margin-bottom:32px; line-height:1.75; border-left:3px solid var(--accent); padding-left:14px; }
-
-    .perks { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:0; }
+    .perks { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:0; width:100%; max-width:320px; }
     .perks li { display:flex; align-items:center; gap:11px; color:var(--txt-sub-light); font-size:.91rem; }
     .perk-ico {
       width:22px; height:22px; min-width:22px;
@@ -731,15 +705,13 @@
       color:var(--navy); font-size:.65rem; font-weight:700;
     }
 
-    /* Form */
+    /* Form — compatto e sobrio su sfondo chiaro */
     .form-card {
-      background:var(--white); border:1.5px solid rgba(255,255,255,.12);
-      border-radius:var(--r2); padding:38px 44px;
-      box-shadow:0 30px 70px rgba(0,0,0,.45);
+      background:var(--white); border:1.5px solid var(--bd-light);
+      border-radius:var(--r2); padding:30px 32px;
+      box-shadow:0 18px 44px rgba(1,54,107,.12);
     }
-    .form-card h3 { font-size:1.3rem; font-weight:700; color:var(--blue); margin-bottom:4px; text-align:center; }
-    .form-card .sub { color:var(--txt-muted-light); font-size:.84rem; margin-bottom:28px; text-align:center; }
-    .fg { margin-bottom:22px; }
+    .fg { margin-bottom:18px; }
     .fg label { display:block; font-size:.77rem; font-weight:600; color:var(--txt-sub-light); margin-bottom:9px; text-transform:uppercase; letter-spacing:.04em; }
     .fg input, .fg select, .fg textarea {
       width:100%; background:var(--blue-bg); border:1.5px solid var(--bd-light);
@@ -1007,24 +979,17 @@
       .rev-role { font-size:.68rem; }
       .c-controls { margin-top:24px; }
 
-      /* PREVENTIVO: 2 metà impilate — form (scuro) sopra | mascotte+testo (chiaro) sotto */
-      .cta-split { grid-template-columns:1fr; }
-      .cta-half { padding:48px 28px; }
-      .cta-half-dark::after { top:auto; left:0; right:0; bottom:0; width:auto; height:1px;
-        background:linear-gradient(to right, transparent, rgba(255,255,255,.14), transparent); }
-      .cta-half-light { box-shadow:none; justify-content:center; gap:24px; }
+      /* PREVENTIVO: header centrato, poi form sopra | mascotte+vantaggi sotto */
+      .cta-head { margin-bottom:34px; }
+      .cta-grid { grid-template-columns:1fr; gap:34px; justify-items:center; }
       .cta-form-wrap { max-width:560px; }
-      .cta-left { max-width:none; text-align:left; padding-top:0; }
-      .cta-left .tag { font-size:.72rem; padding:5px 12px; }
-      .cta-left h2 { font-size:1.6rem; margin-bottom:12px; line-height:1.18; }
-      .cta-left > p { font-size:.85rem; margin-bottom:14px; padding-left:12px; line-height:1.55; max-width:none; }
-      .cta-left .perks { gap:6px; margin-bottom:0; }
-      .cta-left .perks li { font-size:.76rem; gap:8px; line-height:1.35; }
-      .cta-left .perks .perk-ico { width:18px; height:18px; min-width:18px; font-size:.55rem; }
-      .cta-mascot-col { width:auto; flex-direction:column; align-items:center; gap:8px; padding-top:0; }
-      .cta-mascot-img { max-width:200px; }
-      .speech-bubble { font-size:.72rem; padding:8px 12px; max-width:170px; line-height:1.4; }
-      .speech-bubble strong { font-size:.78rem; margin-bottom:2px; }
+      .cta-aside { flex-direction:row; flex-wrap:wrap; justify-content:center; gap:24px 36px; max-width:620px; }
+      .cta-mascot-col { max-width:220px; gap:12px; }
+      .cta-mascot-img { max-width:190px; }
+      .perks { gap:9px; max-width:300px; }
+      .perks li { font-size:.86rem; gap:9px; line-height:1.4; }
+      .speech-bubble { font-size:.78rem; padding:10px 14px; line-height:1.45; }
+      .speech-bubble strong { font-size:.82rem; margin-bottom:3px; }
       .form-card { padding:26px 22px; }
 
       /* FOOTER: brand full | Servizi+Azienda 2col | Assistenza full */
@@ -1050,7 +1015,6 @@
       .hero-stat-l { font-size:.7rem; }
       .fg-row  { grid-template-columns:1fr; }
       .f-bottom { flex-direction:column; text-align:center; gap:10px; }
-      .cta-left h2 { font-size:1.45rem; }
       .cta-mascot-img { max-width:170px; }
     }
 
@@ -1195,30 +1159,24 @@
       .c-controls { margin-top:12px; gap:10px; }
       .c-btn { width:32px; height:32px; }
 
-      /* Preventivo: 2 metà impilate — form (scuro) sopra, poi mascotte+testo (chiaro) sotto */
-      .cta-split { grid-template-columns:1fr !important; }
-      .cta-half { padding:30px 16px !important; }
-      .cta-half-light { flex-direction:column-reverse; gap:18px; }
+      /* Preventivo: header centrato, poi form, poi mascotte+vantaggi impilati */
+      #preventivo { padding:40px 0; }
+      .cta-head { margin-bottom:22px; }
+      .cta-grid { grid-template-columns:1fr; gap:24px; justify-items:center; }
       .cta-form-wrap { max-width:100%; }
 
-      #preventivo .cta-left { position:relative; z-index:2; text-align:center; max-width:100%; }
-      /* Tag come "primo titolo" centrale */
-      #preventivo .cta-left .tag { display:inline-block; font-size:.78rem; padding:7px 18px; margin:0 auto 14px; }
-      .cta-left h2 { font-size:1.6rem; margin:0 auto 10px; line-height:1.18; max-width:100%; text-align:center; }
-      .cta-left > p { font-size:.92rem; padding:0; margin:0 auto 16px; line-height:1.55; max-width:100%; text-align:center; border-left:none; }
-      .cta-left .perks { gap:5px; align-items:center; }
-      .cta-left .perks li { font-size:.7rem; gap:6px; line-height:1.4; max-width:none; justify-content:center; }
-      .cta-left .perks .perk-ico { width:15px; height:15px; min-width:15px; font-size:.5rem; }
+      .cta-aside { flex-direction:column; gap:18px; max-width:100%; }
 
       /* Mascot + bubble affiancati */
-      .cta-mascot-col { width:auto; margin:0; padding-top:0; gap:0; align-items:center; position:relative; z-index:1; transform:translateX(-20px); flex-direction:row; justify-content:center; }
-      .speech-bubble { font-size:.62rem; padding:7px 11px; max-width:130px; line-height:1.3; align-self:flex-start; margin:30px 0 0 8px; position:relative; z-index:5; border-radius:14px 14px 14px 4px; box-shadow:0 4px 14px rgba(0,0,0,.18); order:2; }
+      .cta-mascot-col { width:auto; margin:0; gap:0; align-items:center; position:relative; transform:translateX(-10px); flex-direction:row; justify-content:center; max-width:none; }
+      .speech-bubble { font-size:.64rem; padding:7px 11px; max-width:140px; line-height:1.35; align-self:flex-start; margin:24px 0 0 8px; position:relative; z-index:5; border-radius:14px 14px 14px 4px; box-shadow:0 4px 14px rgba(1,54,107,.12); order:2; }
       .speech-bubble::after { content:''; position:absolute; bottom:auto; top:50%; left:-6px; width:10px; height:10px; background:inherit; border-left:1.5px solid var(--bd-light); border-bottom:1.5px solid var(--bd-light); transform:translateY(-50%) rotate(45deg); }
-      .cta-mascot-img { max-width:200px; margin:0; animation:mascotFloatMini 5s ease-in-out infinite; position:relative; z-index:0; order:1; }
+      .cta-mascot-img { max-width:180px; margin:0; animation:mascotFloatMini 5s ease-in-out infinite; position:relative; z-index:0; order:1; }
       @keyframes mascotFloatMini { 0%,100% { transform:translateY(-2px); } 50% { transform:translateY(-7px); } }
+      .perks { gap:8px; align-items:flex-start; max-width:320px; }
+      .perks li { font-size:.78rem; gap:9px; line-height:1.4; }
+      .perk-ico { width:18px; height:18px; min-width:18px; font-size:.55rem; }
       .form-card { padding:18px 14px; border-radius:14px; }
-      .form-card h3 { font-size:.95rem; margin-bottom:2px; }
-      .form-card .sub { font-size:.6rem; margin-bottom:14px; }
       .fg { margin-bottom:10px; }
       .fg label { font-size:.55rem; margin-bottom:4px; letter-spacing:.03em; }
       .fg input, .fg select, .fg textarea { padding:9px 12px; font-size:.75rem; border-radius:8px; border-width:1px; }
@@ -1679,15 +1637,21 @@
 
 
 <!-- ===================== CTA / FORM ===================== -->
-<section class="cta-section" id="preventivo">
-  <div class="cta-split">
+<section class="section cta-section" id="preventivo">
+  <div class="container">
 
-    <!-- META SINISTRA: sfondo scuro + form bianca -->
-    <div class="cta-half cta-half-dark">
+    <!-- HEADER CENTRATO (stile altre sezioni) -->
+    <div class="cta-head f-up">
+      <span class="tag">Preventivo</span>
+      <h2 class="section-title">Contatta<span>ci</span></h2>
+      <p class="subtitle">Compila il form: un nostro tecnico ti ricontatta entro 24 ore con un sopralluogo e un preventivo gratuito e senza impegno.</p>
+    </div>
+
+    <div class="cta-grid">
+
+      <!-- COLONNA SINISTRA: form compatto -->
       <div class="f-up cta-form-wrap">
         <div class="form-card">
-          <h3>Contattaci Subito</h3>
-          <p class="sub">Risposta garantita entro 24 ore lavorative</p>
           <form id="contactForm" novalidate>
             <input type="hidden" name="access_key" value="b7cb4961-7aed-4508-b728-933945ddba89">
             <input type="hidden" name="subject" value="Nuova richiesta preventivo — Matra Energy">
@@ -1735,21 +1699,16 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- META DESTRA: sfondo chiaro + mascotte (sx) e testo (estrema dx) -->
-    <div class="cta-half cta-half-light">
-      <div class="cta-mascot-col f-right">
-        <div class="speech-bubble">
-          <strong>Pronto ad aiutarti!</strong>
-          Compila il form: ti richiamo entro 24 ore per un sopralluogo gratuito.
+      <!-- COLONNA DESTRA: mascotte + elenco vantaggi -->
+      <div class="cta-aside f-right">
+        <div class="cta-mascot-col">
+          <div class="speech-bubble">
+            <strong>Pronto ad aiutarti!</strong>
+            Ti richiamo entro 24 ore per un sopralluogo gratuito.
+          </div>
+          <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
         </div>
-        <img src="assets/mascotte%20per%20preventivi.png" alt="Tecnico Matra Energy" class="cta-mascot-img">
-      </div>
-      <div class="cta-left f-left">
-        <span class="tag">Preventivo Gratuito</span>
-        <h2>Inizia a risparmiare<br><span>già da oggi</span></h2>
-        <p>Compila il form: un nostro tecnico ti contatterà entro 24 ore per un sopralluogo gratuito e un preventivo senza impegno.</p>
         <ul class="perks">
           <li><span class="perk-ico">✓</span> Sopralluogo gratuito senza impegno</li>
           <li><span class="perk-ico">✓</span> Preventivo dettagliato entro 24 ore</li>
@@ -1758,8 +1717,8 @@
           <li><span class="perk-ico">✓</span> Garanzia su materiali e manodopera</li>
         </ul>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 

@@ -680,16 +680,31 @@
       gap:40px;
     }
 
-    /* CARD BIANCA UNICA: griglia interna form (sx) + vantaggi (dx), nessun divisore */
+    /* CARD UNICA: form bianco (sx) + pannello blu vantaggi (dx), separati dal colore */
     .form-card-inner {
       display:grid;
-      grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
-      align-items:center;
-      gap:40px;
+      grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+      align-items:stretch;
+      gap:0;
     }
-    .form-card-form { min-width:0; }
-    .form-card-perks { min-width:0; }
-    .form-card-title { font-size:1.25rem; font-weight:800; color:var(--blue); margin-bottom:22px; letter-spacing:-.01em; }
+    .form-card-form { min-width:0; padding:38px 40px; }
+    .form-card-head { text-align:center; margin-bottom:26px; }
+    .form-card-title { font-size:1.3rem; font-weight:800; color:var(--blue); letter-spacing:-.01em; }
+    .form-card-sub { font-size:.82rem; color:var(--txt-sub-light); margin-top:6px; }
+
+    /* PANNELLO BLU VANTAGGI — a filo dei bordi/angoli destri della card */
+    .form-card-perks {
+      min-width:0;
+      background:linear-gradient(160deg, var(--blue) 0%, var(--blue-dark) 100%);
+      display:flex; align-items:center; justify-content:center;
+      padding:40px 38px;
+    }
+    .perks-inner { width:100%; }
+    .perks-title {
+      display:block; margin-bottom:22px;
+      font-size:.82rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(255,255,255,.72);
+    }
 
     /* COLONNA 2 = mascotte (fuori dalla card, sfondo chiaro sezione) */
     .cta-mascot-col { display:flex; flex-direction:column; align-items:center; gap:14px; width:100%; }
@@ -707,19 +722,19 @@
     }
     .speech-bubble strong { color:var(--blue); display:block; margin-bottom:4px; }
 
-    .perks { list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:0; width:100%; }
-    .perks li { display:flex; align-items:center; gap:11px; color:var(--txt-sub-light); font-size:.9rem; }
+    .perks { list-style:none; display:flex; flex-direction:column; gap:16px; margin-bottom:0; width:100%; }
+    .perks li { display:flex; align-items:center; gap:13px; color:#eaf1fb; font-size:.9rem; line-height:1.4; }
     .perk-ico {
-      width:22px; height:22px; min-width:22px;
-      background:var(--accent-tint); border:1px solid var(--bd-accent);
+      width:24px; height:24px; min-width:24px;
+      background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35);
       border-radius:50%; display:flex; align-items:center; justify-content:center;
-      color:var(--navy); font-size:.65rem; font-weight:700;
     }
+    .perk-ico svg { width:13px; height:13px; fill:none; stroke:#fff; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
 
-    /* Card bianca unica (rettangolare) — form + vantaggi sullo stesso sfondo */
+    /* Card unica — overflow:hidden così il pannello blu segue gli angoli arrotondati */
     .form-card {
       background:var(--white); border:1.5px solid var(--bd-light);
-      border-radius:var(--r2); padding:38px 44px;
+      border-radius:var(--r2); overflow:hidden;
       box-shadow:0 18px 44px rgba(1,54,107,.12);
     }
     .fg { margin-bottom:18px; }
@@ -1014,17 +1029,19 @@
       .rev-role { font-size:.68rem; }
       .c-controls { margin-top:24px; }
 
-      /* PREVENTIVO: card (form sopra + vantaggi sotto) impilata, mascotte sotto */
+      /* PREVENTIVO: card (form sopra + pannello blu sotto) impilata, mascotte sotto */
       .cta-body { grid-template-columns:1fr; gap:30px; justify-items:center; }
       .cta-head { margin-bottom:34px; }
       .form-card { width:100%; }
-      .form-card-inner { grid-template-columns:1fr; gap:26px; align-items:start; }
+      .form-card-inner { grid-template-columns:1fr; gap:0; align-items:stretch; }
+      .form-card-form { padding:32px 30px; }
+      .form-card-perks { padding:30px; }
       .cta-mascot-col { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:center; width:auto; max-width:460px; gap:18px; }
       .cta-mascot-img { max-width:200px; }
       .speech-bubble { font-size:.78rem; padding:10px 14px; line-height:1.45; width:auto; max-width:230px; }
       .speech-bubble strong { font-size:.82rem; margin-bottom:3px; }
-      .perks { gap:9px; }
-      .perks li { font-size:.86rem; gap:9px; line-height:1.4; }
+      .perks { gap:12px; }
+      .perks li { font-size:.88rem; gap:11px; line-height:1.4; }
 
       /* FOOTER: brand full | Servizi+Azienda 2col | Assistenza full */
       .footer-top { grid-template-columns:1fr 1fr; gap:28px 24px; }
@@ -1197,17 +1214,22 @@
       .cta-head { margin-bottom:26px; }
       .cta-head .section-title { font-size:1.4rem; }
       .cta-head .subtitle { font-size:.8rem; }
-      .form-card { padding:22px 20px; }
-      .form-card-inner { grid-template-columns:1fr; gap:22px; align-items:start; }
-      .form-card-title { font-size:1.02rem; margin-bottom:16px; }
+      .form-card-inner { grid-template-columns:1fr; gap:0; align-items:stretch; }
+      .form-card-form { padding:24px 20px; }
+      .form-card-perks { padding:24px 20px; }
+      .form-card-head { margin-bottom:18px; }
+      .form-card-title { font-size:1.08rem; }
+      .form-card-sub { font-size:.74rem; margin-top:5px; }
+      .perks-title { font-size:.74rem; margin-bottom:16px; letter-spacing:.12em; }
 
       .cta-mascot-col { width:auto; flex-direction:row; align-items:center; justify-content:center; gap:0; position:relative; transform:translateX(-10px); }
       .speech-bubble { font-size:.64rem; padding:7px 11px; max-width:140px; line-height:1.35; align-self:flex-start; margin:24px 0 0 8px; position:relative; z-index:5; border-radius:14px 14px 14px 4px; box-shadow:0 4px 14px rgba(1,54,107,.12); order:2; }
       .speech-bubble::after { content:''; position:absolute; bottom:auto; top:50%; left:-6px; width:10px; height:10px; background:inherit; border-left:1.5px solid var(--bd-light); border-bottom:1.5px solid var(--bd-light); transform:translateY(-50%) rotate(45deg); }
       .cta-mascot-img { max-width:160px; margin:0; position:relative; z-index:0; order:1; }
-      .perks { gap:8px; align-items:flex-start; text-align:left; width:100%; }
-      .perks li { font-size:.78rem; gap:9px; line-height:1.4; }
-      .perk-ico { width:18px; height:18px; min-width:18px; font-size:.55rem; }
+      .perks { gap:12px; align-items:flex-start; text-align:left; width:100%; }
+      .perks li { font-size:.82rem; gap:11px; line-height:1.4; }
+      .perk-ico { width:20px; height:20px; min-width:20px; }
+      .perk-ico svg { width:11px; height:11px; }
       .fg { margin-bottom:10px; }
       .fg label { font-size:.55rem; margin-bottom:4px; letter-spacing:.03em; }
       .fg input, .fg select, .fg textarea { padding:9px 12px; font-size:.75rem; border-radius:8px; border-width:1px; }
@@ -1683,7 +1705,10 @@
 
           <!-- Sotto-colonna sinistra: FORM -->
           <div class="form-card-form">
-          <h3 class="form-card-title">Richiedi il tuo preventivo</h3>
+          <div class="form-card-head">
+            <h3 class="form-card-title">Richiedi il tuo preventivo</h3>
+            <p class="form-card-sub">Ti rispondiamo entro 24 ore, senza impegno</p>
+          </div>
           <form id="contactForm" novalidate>
             <input type="hidden" name="access_key" value="b7cb4961-7aed-4508-b728-933945ddba89">
             <input type="hidden" name="subject" value="Nuova richiesta preventivo — Matra Energy">
@@ -1731,15 +1756,18 @@
           </div>
           </div><!-- /form-card-form -->
 
-          <!-- Sotto-colonna destra: VANTAGGI (stesso sfondo bianco, nessun divisore) -->
+          <!-- Sotto-colonna destra: PANNELLO BLU VANTAGGI (contrasto sul form bianco) -->
           <div class="form-card-perks">
-            <ul class="perks">
-              <li><span class="perk-ico">✓</span> Sopralluogo gratuito senza impegno</li>
-              <li><span class="perk-ico">✓</span> Preventivo dettagliato entro 24 ore</li>
-              <li><span class="perk-ico">✓</span> Consulenza su incentivi e detrazioni fiscali</li>
-              <li><span class="perk-ico">✓</span> Assistenza dalla progettazione al collaudo</li>
-              <li><span class="perk-ico">✓</span> Garanzia su materiali e manodopera</li>
-            </ul>
+            <div class="perks-inner">
+              <span class="perks-title">I tuoi vantaggi</span>
+              <ul class="perks">
+                <li><span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Sopralluogo gratuito senza impegno</li>
+                <li><span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Preventivo dettagliato entro 24 ore</li>
+                <li><span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Consulenza su incentivi e detrazioni fiscali</li>
+                <li><span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Assistenza dalla progettazione al collaudo</li>
+                <li><span class="perk-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Garanzia su materiali e manodopera</li>
+              </ul>
+            </div>
           </div>
 
         </div><!-- /form-card-inner -->

@@ -76,7 +76,8 @@
     /* ===== RESET ===== */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    html { scroll-behavior:smooth; scroll-padding-top:106px; overflow-x:hidden; width:100%; }
+    /* Scala globale leggermente ridotta (~6%): root 15px invece di 16px -> tutto cio' che e' in rem si rimpicciolisce in modo omogeneo. I breakpoint restano in px. */
+    html { font-size:15px; scroll-behavior:smooth; scroll-padding-top:106px; overflow-x:hidden; width:100%; }
 
     body {
       font-family: 'Poppins', sans-serif;

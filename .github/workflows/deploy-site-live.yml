@@ -39,6 +39,12 @@ jobs:
             -iname "*.webp" \
           \) -exec cp {} /tmp/deploy/assets/ \;
 
+          # Cache-busting: append a content hash of style.css/script.js as ?v=
+          # ONLY on the staged copy of index.html (not on the repo source).
+          CSS_V=$(md5sum style.css | cut -c1-10)
+          JS_V=$(md5sum script.js | cut -c1-10)
+          sed -i "s|href=\"style.css\"|href=\"style.css?v=${CSS_V}\"|; s|src=\"script.js\"|src=\"script.js?v=${JS_V}\"|" /tmp/deploy/index.html
+
           # Switch to site-live — create orphan on first run, track remote on updates
           if git ls-remote --exit-code --heads origin site-live > /dev/null 2>&1; then
             git fetch origin site-live

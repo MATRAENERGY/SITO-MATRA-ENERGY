@@ -391,21 +391,6 @@
       background:#f5f9ff; border-color:var(--blue); transform:translateY(-2px);
     }
 
-    /* Feature pills */
-    .hero-features {
-      display:flex; flex-wrap:nowrap; gap:8px; margin-bottom:34px;
-    }
-    .hero-feat {
-      display:inline-flex; align-items:center; gap:7px;
-      padding:9px 13px;
-      background:#fff;
-      border:1.5px solid #e3ebf6; border-radius:14px;
-      font-size:.78rem; font-weight:600; color:#1a2944;
-      box-shadow:0 3px 10px rgba(1,54,107,.04);
-      white-space:nowrap;
-    }
-    .hero-feat svg { width:16px; height:16px; stroke:var(--blue); flex-shrink:0; }
-
     /* Stats card bianca dentro hero — overlap bottom */
     .hero-stats-card {
       position:relative; z-index:3;
@@ -432,7 +417,7 @@
       flex-shrink:0;
     }
     .hero-stat-ico svg { width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:2; }
-    .hero-stat-n { font-size:2.1rem; font-weight:900; color:var(--blue); line-height:1; }
+    .hero-stat-n { font-size:1.2rem; font-weight:800; color:var(--blue); line-height:1.15; }
     .hero-stat-l { font-size:.92rem; color:#3a4a66; font-weight:500; margin-top:4px; }
 
     /* ===== HERO MASCOT — sovrapposta alla stats card ===== */
@@ -482,7 +467,7 @@
         linear-gradient(135deg, #010c24 0%, #01244a 50%, #01366b 100%);
       padding:80px 0;
     }
-    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+    .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); }
     .stat {
       text-align:center; padding:40px 24px; position:relative;
       transition:.3s ease;
@@ -961,7 +946,6 @@
       .hero-txt { text-align:left; order:1; }
       .hero-sub { margin:0 0 18px; max-width:none; }
       .hero-ctas { justify-content:flex-start; }
-      .hero-features { justify-content:flex-start; flex-wrap:wrap; }
 
       /* BG overlay laterale (come desktop) */
       .hero-bg-overlay { background:linear-gradient(to right, #fff 0%, rgba(255,255,255,.95) 28%, rgba(255,255,255,.5) 55%, rgba(255,255,255,0) 75%); }
@@ -983,11 +967,6 @@
       .hero-ctas .btn { padding:11px 14px; font-size:.74rem; border-radius:50px; width:auto; justify-content:center; gap:6px; flex:1; font-weight:600; }
       .hero-ctas .btn svg { width:13px; height:13px; }
 
-      /* Feature pills */
-      .hero-features { gap:7px; margin-bottom:18px; }
-      .hero-feat { font-size:.7rem; padding:7px 11px; border-radius:11px; gap:6px; }
-      .hero-feat svg { width:13px; height:13px; }
-
       /* MASCOT dx: bottom su linea superiore stats card (d) */
       .hero-mascot-col { order:2; align-self:stretch; height:auto; margin-bottom:0; overflow:visible; position:relative; z-index:5; }
       .mascot-wrapper { position:absolute; bottom:-6px; left:50%; transform:translateX(-50%); }
@@ -1000,12 +979,12 @@
       .hero-stat:last-child { border-right:none; }
       .hero-stat-ico { width:44px; height:44px; border-radius:11px; }
       .hero-stat-ico svg { width:22px; height:22px; }
-      .hero-stat-n { font-size:1.6rem; }
+      .hero-stat-n { font-size:1.05rem; }
       .hero-stat-l { font-size:.78rem; margin-top:3px; line-height:1.2; }
 
       /* SEZIONI: tutto a 2 colonne */
       .services-grid  { grid-template-columns:repeat(2,1fr); }
-      .stats-grid     { grid-template-columns:repeat(2,1fr); }
+      .stats-grid     { grid-template-columns:repeat(3,1fr); }
       .stat + .stat::before { display:none; }
       .about-grid     { grid-template-columns:1fr; gap:40px; }
       .contacts-grid  { grid-template-columns:repeat(2,1fr); }
@@ -1067,7 +1046,7 @@
       .hero-stat { padding:0 8px; gap:9px; }
       .hero-stat-ico { width:40px; height:40px; }
       .hero-stat-ico svg { width:20px; height:20px; }
-      .hero-stat-n { font-size:1.4rem; }
+      .hero-stat-n { font-size:.95rem; }
       .hero-stat-l { font-size:.7rem; }
       .fg-row  { grid-template-columns:1fr; }
       .f-bottom { flex-direction:column; text-align:center; gap:10px; }
@@ -1075,10 +1054,8 @@
       .cta-mascot-img { max-width:170px; }
     }
 
-    /* ── Fix range 521-600: pill features stack + bubble mascotte ridotto ── */
+    /* ── Fix range 521-600: bubble mascotte ridotto ── */
     @media(min-width:521px) and (max-width:600px){
-      .hero-features { flex-direction:column; align-items:flex-start; gap:6px; }
-      .hero-feat { width:auto; }
       .hero-ctas .btn { padding:10px 10px; font-size:.7rem; }
       .mascot-cta-text { font-size:.6rem; padding:6px 12px; max-width:150px; }
     }
@@ -1091,7 +1068,7 @@
       .hero-ctas .btn svg { width:7px; height:10px; }
       .hero-stats-card { padding:10px 5px; gap:3px; }
       .hero-stat { padding:0 2px; }
-      .hero-stat-n { font-size:.85rem; }
+      .hero-stat-n { font-size:.6rem; line-height:1.1; }
       .hero-stat-l { font-size:.46rem; word-break:normal; hyphens:auto; }
     }
 
@@ -1123,14 +1100,9 @@
       .hero-sub { font-size:.65rem; line-height:1.55; margin-bottom:18px; max-width:240px; }
 
       /* Bottoni larghi e affiancati */
-      .hero-ctas { gap:8px; margin-bottom:18px; flex-wrap:wrap; transform: translateX(-2px); }
+      .hero-ctas { gap:8px; margin-bottom:130px; flex-wrap:wrap; transform: translateX(-2px); }
       .hero-ctas .btn { padding:10px 5px; font-size:.60rem; border-radius:10px; gap:5px; flex:1; justify-content:center; }
       .hero-ctas .btn svg { width:8px; height:12px; }
-
-      /* Spazio per mascotte tra features e stats card */
-      .hero-features { gap:6px; margin-bottom:130px; flex-direction:column; align-items:flex-start; }
-      .hero-feat { font-size:.55rem; padding:5px 9px; border-radius:10px; gap:5px; }
-      .hero-feat svg { width:12px; height:12px; }
 
       .hero-orb-1 { width:240px; height:240px; }
       .hero-orb-2 { width:160px; height:160px; }
@@ -1147,7 +1119,7 @@
       .hero-stat { padding:0 4px; gap:5px; flex-direction:column; text-align:center; align-items:center; }
       .hero-stat-ico { width:26px; height:26px; border-radius:7px; }
       .hero-stat-ico svg { width:14px; height:14px; }
-      .hero-stat-n { font-size:.95rem; }
+      .hero-stat-n { font-size:.68rem; line-height:1.15; }
       .hero-stat-l { font-size:.52rem; margin-top:2px; }
 
       /* Contatti: card piccole e centrate */
@@ -1192,11 +1164,11 @@
 
       /* Stats sezione compatta */
       .stats { padding:32px 0; }
-      .stats-grid { grid-template-columns:1fr 1fr; gap:0; }
-      .stat { padding:18px 10px; }
-      .stat-n { font-size:1.7rem; margin-bottom:4px; }
-      .stat-l { font-size:.62rem; letter-spacing:.06em; }
-      .stat-d { font-size:.58rem; margin-top:2px; }
+      .stats-grid { grid-template-columns:repeat(3,1fr); gap:0; }
+      .stat { padding:18px 6px; }
+      .stat-n { font-size:1.3rem; margin-bottom:4px; }
+      .stat-l { font-size:.56rem; letter-spacing:.04em; }
+      .stat-d { font-size:.5rem; margin-top:2px; }
 
       /* Chi siamo: foto prima */
       .about-grid { grid-template-columns:1fr; gap:22px; }
@@ -1449,20 +1421,6 @@
           </a>
         </div>
 
-        <div class="hero-features">
-          <div class="hero-feat">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            25+ anni di esperienza
-          </div>
-          <div class="hero-feat">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            Offerte chiavi in mano
-          </div>
-          <div class="hero-feat">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg>
-            Assistenza garantita
-          </div>
-        </div>
       </div>
 
       <!-- Mascotte destra -->
@@ -1486,26 +1444,26 @@
           <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </div>
         <div>
-          <div class="hero-stat-n">25+</div>
-          <div class="hero-stat-l">Anni di attività</div>
+          <div class="hero-stat-n">25+ anni</div>
+          <div class="hero-stat-l">di esperienza nel settore</div>
         </div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-ico">
-          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 9h2M13 9h2M9 13h2M13 13h2M9 17h2M13 17h2"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div>
-          <div class="hero-stat-n">500+</div>
-          <div class="hero-stat-l">Progetti completati</div>
+          <div class="hero-stat-n">Chiavi in mano</div>
+          <div class="hero-stat-l">soluzioni complete</div>
         </div>
       </div>
       <div class="hero-stat">
         <div class="hero-stat-ico">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg>
         </div>
         <div>
-          <div class="hero-stat-n">300+</div>
-          <div class="hero-stat-l">Clienti soddisfatti</div>
+          <div class="hero-stat-n">Assistenza</div>
+          <div class="hero-stat-l">garantita e continua</div>
         </div>
       </div>
     </div>
@@ -1518,24 +1476,19 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat f-up">
-        <div class="stat-n"><span class="counter" data-t="25">0</span>+</div>
-        <div class="stat-l">Anni di Esperienza</div>
-        <div class="stat-d">nel settore termoidraulica</div>
-      </div>
-      <div class="stat f-up" style="transition-delay:.1s">
         <div class="stat-n"><span class="counter" data-t="500">0</span>+</div>
         <div class="stat-l">Progetti Realizzati</div>
         <div class="stat-d">tra privati e imprese</div>
       </div>
-      <div class="stat f-up" style="transition-delay:.2s">
+      <div class="stat f-up" style="transition-delay:.1s">
         <div class="stat-n"><span class="counter" data-t="300">0</span>+</div>
         <div class="stat-l">Clienti Fidelizzati</div>
         <div class="stat-d">in tutta la provincia pontina</div>
       </div>
-      <div class="stat f-up" style="transition-delay:.3s">
-        <div class="stat-n"><span class="counter" data-t="1200">0</span>kW</div>
-        <div class="stat-l">Fotovoltaico Installato</div>
-        <div class="stat-d">di potenza totale cumulata</div>
+      <div class="stat f-up" style="transition-delay:.2s">
+        <div class="stat-n">24/48<span style="font-size:.5em;font-weight:700;margin-left:2px">h</span></div>
+        <div class="stat-l">Tempo di Risposta</div>
+        <div class="stat-d">dalla richiesta all'intervento</div>
       </div>
     </div>
   </div>

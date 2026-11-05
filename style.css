@@ -1458,6 +1458,15 @@
       .nav-cta { display:none; }
       .nav-inner { position:relative; }
       .nav-logo { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+
+      /* Anti-overflow difensivo (nessun cambio di layout): orario/indirizzo/copia mai tagliati */
+      .ct-day  { min-width:0; overflow-wrap:anywhere; }
+      .ct-time { flex-shrink:0; white-space:nowrap; }
+      .ct-map-addr { flex-wrap:wrap; align-items:flex-start; }
+      .ct-map-addr span { min-width:0; overflow-wrap:anywhere; }
+      .ct-copyval { min-width:0; }
+      .ct-copybtn { flex-shrink:0; }
+      .cta-svc-lbl { overflow-wrap:anywhere; }
     }
 
     /* ===== MOBILE (<=620px) ===== */
@@ -1475,4 +1484,32 @@
       .f-social { justify-content:center; }
       .f-links { align-items:center; }
       .f-bottom { text-align:center; justify-content:center; }
+
+      /* ---------- CONTATTI: anti-overflow orizzontale ---------- */
+      /* Orari: giorno può andare a capo, orario sempre leggibile e non tagliato */
+      .ct-hours-list li { gap:10px; padding-left:0; padding-right:0; align-items:center; }
+      .ct-day  { min-width:0; overflow-wrap:anywhere; word-break:break-word; line-height:1.25; }
+      .ct-time { flex-shrink:0; white-space:nowrap; }
+
+      /* Indirizzo sotto la mappa: va a capo e resta nei margini */
+      .ct-map-addr { flex-wrap:wrap; align-items:flex-start; gap:8px; }
+      .ct-map-addr span { min-width:0; flex:1; overflow-wrap:anywhere; word-break:break-word; line-height:1.4; }
+      .ct-map-addr svg { margin-top:1px; }
+
+      /* Righe numero/email + pulsante copia: tutto dentro la card, niente sforo */
+      .ct-copyrow { gap:6px; padding:7px 7px 7px 12px; }
+      .ct-copyval { min-width:0; flex:1 1 auto; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+      .ct-copybtn { flex-shrink:0; width:32px; height:32px; }
+
+      /* ---------- PREVENTIVO: hardening anti-overflow ---------- */
+      /* L'intero form-card ha gia overflow:hidden (regola base): clippa onda/mascotte
+         orizzontalmente. NB: niente overflow:hidden sullo stage, altrimenti si taglia
+         la speech-bubble che e ancorata sopra la testa (bottom alto). Qui solo guardie
+         di larghezza perche nessun figlio sfori lateralmente. */
+      .cta-mascot-base  { max-width:100%; }
+      .cta-mascot-img   { max-width:min(190px,78%); }
+      .speech-bubble    { max-width:min(190px,86%); }
+      /* 3 icone-servizio: etichette senza troncamento/sforo anche a ~240px */
+      .cta-svc { min-width:0; padding:12px 4px; gap:6px; }
+      .cta-svc-lbl { min-width:0; overflow-wrap:anywhere; word-break:break-word; hyphens:auto; }
     }

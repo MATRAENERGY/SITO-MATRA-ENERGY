@@ -30,6 +30,8 @@ jobs:
           # Collect only web-safe files into a staging area
           mkdir -p /tmp/deploy/assets
           cp index.html /tmp/deploy/
+          cp style.css /tmp/deploy/
+          cp script.js /tmp/deploy/
 
           find assets/ -maxdepth 1 -type f \( \
             -iname "*.png" -o -iname "*.jpg" -o \
@@ -47,9 +49,11 @@ jobs:
           fi
 
           # Replace content entirely with filtered snapshot
-          rm -rf assets index.html
+          rm -rf assets index.html style.css script.js
           mkdir -p assets
           cp /tmp/deploy/index.html .
+          cp /tmp/deploy/style.css .
+          cp /tmp/deploy/script.js .
           cp /tmp/deploy/assets/* assets/ 2>/dev/null || true
 
           # Stage all changes (additions, modifications, deletions)

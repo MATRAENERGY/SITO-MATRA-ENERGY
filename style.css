@@ -899,10 +899,10 @@
     }
     .contacts-head { text-align:center; margin-bottom:52px; }
     .contacts-head .subtitle { margin:0 auto; }
-    .contacts-grid { display:grid; grid-template-columns:1.7fr 1fr; gap:48px; align-items:stretch; }
+    .contacts-grid { display:grid; grid-template-columns:minmax(0,1.7fr) minmax(0,1fr); gap:48px; align-items:stretch; }
 
     /* --- SINISTRA: orari (liberi, no card) + mappa --- */
-    .ct-left { display:flex; flex-direction:column; gap:30px; }
+    .ct-left { display:flex; flex-direction:column; gap:30px; min-width:0; }
 
     .ct-hours-head { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
     .ct-hours-ico {
@@ -925,7 +925,7 @@
       border:1px solid var(--bd-light); background:#fff;
       box-shadow:0 14px 34px rgba(1,54,107,.1);
     }
-    .ct-map-frame iframe { width:100%; height:100%; border:0; display:block; }
+    .ct-map-frame iframe { width:100%; max-width:100%; height:100%; border:0; display:block; }
     .ct-map-addr {
       display:inline-flex; align-items:center; gap:10px;
       color:var(--blue); font-size:.9rem; font-weight:600; text-decoration:none;
@@ -935,7 +935,7 @@
     .ct-map-addr svg { width:18px; height:18px; flex-shrink:0; fill:none; stroke:var(--blue); stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
 
     /* --- DESTRA: assistenza/WhatsApp + aziende/email --- */
-    .ct-right { display:flex; flex-direction:column; gap:22px; }
+    .ct-right { display:flex; flex-direction:column; gap:22px; min-width:0; }
     .ct-box {
       background:#fff; border:1px solid var(--bd-light);
       border-radius:16px; padding:24px 26px;
@@ -1145,7 +1145,7 @@
       .stats-grid     { grid-template-columns:repeat(3,1fr); }
       .stat + .stat::before { display:none; }
       .about-grid     { grid-template-columns:1fr; gap:40px; }
-      .contacts-grid  { grid-template-columns:1fr; gap:34px; align-items:stretch; }
+      .contacts-grid  { grid-template-columns:minmax(0,1fr); gap:34px; align-items:stretch; }
       .ct-map-frame   { flex:none; min-height:0; height:320px; }
       .ct-right { gap:20px; }
       .ct-box { flex:none; }

@@ -1,6 +1,6 @@
 # Matra Energy Sito — Guida operativa Claude
 
-> Punto d'ingresso ChatGPT: `CHATGPT.md`. Stato corrente e task aperti: `HANDOFF.md`.
+> Stato corrente e task aperti: `HANDOFF.md`.
 > Questo file è la guida operativa viva: workflow, vincoli, stato dettagliato delle sezioni.
 
 ---
@@ -242,6 +242,7 @@ FUNZIONA ✅
 - Sfondo mascotte preventivi: rimosso (PNG trasparente)
 - Lightbox portfolio con album per categoria (prev/next/dots/ESC)
 - Privacy Policy + Cookie Policy (modal 2 tab, GDPR 2026)
+- Favicon: presente (assets/favicon.png — icon 512/192 + apple-touch-icon nell'head)
 
 NON FUNZIONA / MANCA ❌
 Priorità alta:
@@ -249,7 +250,6 @@ Priorità alta:
 - Google Reviews API: serve Place ID + Google API key (chiamata server-side)
 
 Tecnici minori:
-- Favicon: manca
 - Meta og:image: manca (social share senza preview)
 - robots.txt + sitemap.xml: mancano (SEO base)
 - Cookie banner GDPR: manca banner visibile all'ingresso (modal privacy presente ma non auto-popup)

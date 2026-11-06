@@ -1,6 +1,6 @@
 # Matra Energy Sito — Handoff
 
-**Snapshot:** 2026-10-28
+**Snapshot:** 2026-11-06
 **Produzione:** `https://matraenergy.it` (Hostinger Business Web Hosting) — LIVE
 **Branch deploy:** `site-live` (auto-generato da GitHub Action su push a `main`)
 **Repo:** `MATRAENERGY/SITO-MATRA-ENERGY`
@@ -12,7 +12,7 @@
 
 ## 1. Stack e deploy
 
-- **Sito:** statico — file unico `index.html` + cartella `assets/`
+- **Sito:** statico — struttura a 3 file in root: `index.html` (HTML) + `style.css` (CSS, con 3 zone responsive isolate in fondo) + `script.js` (JS) + cartella `assets/`
 - **Server locale:** `node server.js` → http://localhost:8080 (solo dev, NON in produzione)
 - **Font:** Poppins (Google CDN)
 - **Form:** Web3Forms → `amministrazione@matraenergy.it`
@@ -47,7 +47,6 @@
 - [ ] Google Reviews API: serve Place ID + Google API key
 
 **SEO / tecnici:**
-- [ ] Favicon mancante
 - [ ] Meta og:image mancante (social share senza preview)
 - [ ] robots.txt + sitemap.xml mancanti
 - [ ] Cookie banner GDPR (modal presente ma non auto-popup all'ingresso)
@@ -73,8 +72,8 @@
 
 | SHA | Descrizione |
 |---|---|
-| `fc00182` | Aggiunge GitHub Action per deploy filtrato su branch site-live |
-| `2ee5bc5` | Aggiunte foto team recensioni e aggiornamento index.html |
-| `0ae6e07` | Production-ready: splash intro, portfolio completo, mobile fixes |
-| `d5c1bfe` | Mobile/iPad refinements |
-| `8f2b20b` | Redesign responsive mobile/iPad |
+| `6a39c64` | Contatti mobile: fix overflow colonne (min-width:0 + minmax(0,1fr) sulla grid) |
+| `edd3a72` | Mobile: fix overflow Contatti (orari/indirizzo/copia) + hardening Preventivo |
+| `8b3524b` | Preventivo: card a 3 pannelli con mascotte che spunta dall'onda (mano visibile, onda a 2 strati) |
+| `bb6cea8` | Prova: ambience hero + mascotte ridotta + bubble animata |
+| `4fa993b` | Revert "Preventivo: scena SVG soft attorno alla mascotte (casa, condizionatore, collinette) + fascia 3 icone-servizio" |

@@ -1613,3 +1613,21 @@
         .speech-bubble strong { font-size:.8rem; }
       }
     }
+
+/* ===== ACCESSIBILITÀ TOUCH (telefoni/tablet) =====
+   Il sito è servito come layout desktop anche su telefono (viewport width=1050),
+   quindi le media query mobile non si attivano. Questa regola si attiva SOLO sui
+   dispositivi touch (pointer:coarse) e NON tocca il desktop (mouse = pointer fine):
+   ingrandisce scritte e bottoni delle azioni importanti per facilitare gli anziani.
+   Valori testati senza overflow a 1050px. */
+@media (pointer: coarse) {
+  .btn { font-size:1.15rem; padding:16px 30px; }
+  .nav-cta { font-size:1.1rem; padding:17px 32px; }
+  .hero-ctas .btn { font-size:1.18rem; padding:18px 34px; }
+  .btn-submit { font-size:1.25rem; padding:19px; }
+  .nav-links a { font-size:1.12rem; }
+  .fg label { font-size:1rem; }
+  .fg input, .fg textarea, .fg select { font-size:1.15rem; }
+  .form-card-title { font-size:1.65rem; }
+  .ct-day, .ct-time { font-size:1.12rem; }
+}

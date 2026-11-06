@@ -163,7 +163,7 @@
   /* Scroll top */
   /* ===== LIGHTBOX / ALBUM ===== */
   const albums = {
-    fotovoltaico:   { label:'Fotovoltaico',          photos:['assets/imagine impianto fotovoltaico.png'] },
+    fotovoltaico:   { label:'Fotovoltaico',          photos:['assets/imagine impianto fotovoltaico.jpg'] },
     termoidraulica: { label:'Termoidraulica',        photos:[
       'assets/immagine pdc full electric 1 (principale.jpg',
       'assets/immagine pdc full electric 2.jpg',
@@ -175,7 +175,7 @@
       'assets/immagine climatizzatore 2.jpg'
     ] },
     industriale:    { label:'Impianto Industriale',  photos:[
-      'assets/imagine impianto industriale.png',
+      'assets/imagine impianto industriale.jpg',
       'assets/immagine industriale 2.jpg'
     ] },
     scaldabagno:    { label:'Scaldabagno',           photos:[
@@ -454,4 +454,54 @@
         } catch(e){ /* no-op */ }
       });
     });
+  })();
+
+  /* ===== POP-UP PROMO ===== */
+  (function(){
+    var promo = document.getElementById('promo');
+    if(!promo) return;
+    var pForm = document.getElementById('promoForm');
+    var pOk   = document.getElementById('promoOk');
+    var pErr  = document.getElementById('promoErr');
+    var SEEN  = 'matraPromoSeen';
+    function promoOpen(){
+      if(localStorage.getItem(SEEN)) return;
+      if(promo.classList.contains('open')) return;
+      promo.classList.add('open');
+      try{ localStorage.setItem(SEEN,'1'); }catch(e){}
+      history.pushState({promo:true},'');
+    }
+    function promoClose(fromPop){
+      if(!promo.classList.contains('open')) return;
+      promo.classList.remove('open');
+      if(!fromPop && history.state && history.state.promo) history.back();
+    }
+    document.getElementById('promoClose').addEventListener('click', function(){ promoClose(); });
+    promo.addEventListener('click', function(e){ if(e.target===promo) promoClose(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && promo.classList.contains('open')) promoClose(); });
+    window.addEventListener('popstate', function(){ if(promo.classList.contains('open')) promoClose(true); });
+    pForm.addEventListener('submit', async function(e){
+      e.preventDefault();
+      pErr.classList.remove('show');
+      var nome = document.getElementById('promoNome').value.trim();
+      var tel  = document.getElementById('promoTel').value.trim();
+      var ok = true;
+      [['promoNome',nome],['promoTel',tel]].forEach(function(p){
+        var el=document.getElementById(p[0]);
+        if(!p[1]){ el.style.borderColor='var(--red)'; ok=false; el.addEventListener('input',function(){el.style.borderColor='';},{once:true}); }
+      });
+      if(!ok) return;
+      var btn = document.getElementById('promoSubmit');
+      btn.disabled=true; btn.textContent='Invio in corso…';
+      try{
+        var res = await fetch('https://api.web3forms.com/submit',{method:'POST', body:new FormData(pForm)});
+        var data = await res.json();
+        if(data.success){ pForm.style.display='none'; pOk.classList.add('show'); }
+        else { throw new Error(data.message); }
+      }catch(err){
+        btn.disabled=false; btn.textContent='Richiedi ora';
+        pErr.classList.add('show');
+      }
+    });
+    setTimeout(promoOpen, 20000);
   })();

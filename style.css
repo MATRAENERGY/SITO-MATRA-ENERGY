@@ -352,7 +352,7 @@
     .review-card.on { animation:card-float 5s ease-in-out infinite; animation-delay:var(--delay,0s); }
     .hero-bg-photo {
       position:absolute; inset:0;
-      background:url('assets/background%20per%20la%20hero.png') center right / cover no-repeat;
+      background:url('assets/background%20per%20la%20hero.jpg') center right / cover no-repeat;
       z-index:0;
     }
     .hero-bg-overlay {
@@ -1444,6 +1444,51 @@
        nella zona corrispondente qui sotto.
        ================================================================ */
 
+/* ===== POP-UP PROMO ===== */
+.promo-overlay{
+  position:fixed; inset:0; z-index:9500;
+  background:rgba(1,12,36,.78); backdrop-filter:blur(3px);
+  display:flex; align-items:center; justify-content:center; padding:20px;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.promo-overlay.open{ opacity:1; pointer-events:all; }
+.promo-card{
+  position:relative; background:#fff; border-radius:20px;
+  width:min(440px,100%); padding:40px 34px 30px; text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.4);
+  transform:translateY(16px) scale(.97); transition:transform .3s;
+}
+.promo-overlay.open .promo-card{ transform:translateY(0) scale(1); }
+.promo-close{
+  position:absolute; top:12px; right:12px;
+  width:44px; height:44px; border-radius:50%;
+  background:#f0f4fa; border:none; color:var(--blue);
+  font-size:1.9rem; line-height:1; cursor:pointer; transition:.2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.promo-close:hover{ background:#e2eaf5; }
+.promo-badge{
+  display:inline-block; background:rgba(214,32,18,.1); color:var(--cta);
+  font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:7px 14px; border-radius:60px; margin-bottom:16px;
+}
+.promo-title{ font-size:1.7rem; font-weight:800; color:var(--blue); line-height:1.2; margin-bottom:12px; }
+.promo-title span{ color:var(--cta); }
+.promo-sub{ font-size:.92rem; color:var(--txt-sub-light); line-height:1.5; margin-bottom:22px; }
+.promo-form{ display:flex; flex-direction:column; gap:12px; }
+.promo-form input{
+  width:100%; padding:14px 16px; border:1.5px solid #d6e1f0; border-radius:10px;
+  font-family:'Poppins',sans-serif; font-size:.95rem; color:var(--navy);
+}
+.promo-form input:focus{ outline:none; border-color:var(--blue); }
+.promo-submit{ width:100%; justify-content:center; padding:15px; font-size:1rem; font-weight:700; margin-top:4px; }
+.promo-ok{ display:none; color:var(--blue); font-weight:700; font-size:1.05rem; padding:20px 0; }
+.promo-ok.show{ display:block; }
+.promo-err{ display:none; color:var(--cta); font-size:.85rem; margin-top:12px; }
+.promo-err.show{ display:block; }
+.promo-full{ display:inline-block; margin-top:16px; color:var(--txt-sub-light); font-size:.84rem; text-decoration:none; }
+.promo-full:hover{ color:var(--cta); }
+
     /* ===== DESKTOP (>=1041px) ===== */
     @media (min-width:1041px) {
       .nav-cta { display:none; }
@@ -1632,4 +1677,9 @@
   .ct-day, .ct-time { font-size:1.12rem; }
   .fg-row { grid-template-columns:1fr; }
   .mascot-hero { animation:none; }
+  .promo-title{ font-size:1.9rem; }
+  .promo-sub{ font-size:1.05rem; }
+  .promo-form input{ font-size:1.15rem; padding:16px; }
+  .promo-submit{ font-size:1.15rem; }
+  .promo-close{ width:56px; height:56px; font-size:2.3rem; }
 }

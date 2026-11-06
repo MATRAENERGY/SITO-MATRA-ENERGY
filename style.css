@@ -1516,9 +1516,13 @@
       /* =====================================================================
          RIDIMENSIONAMENTO MOBILE DECISO (scala piu compatta e professionale)
          - NAVBAR: valido su tutto il range <=620 (logo a sinistra, ham a destra)
-         - TIPOGRAFIA/SPAZIATURE: applicate SOLO nel band 521-620 (nested) per
-           non rimpicciolire ulteriormente i telefoni stretti <=520 che hanno
-           gia la loro scala finest piu in alto nel file.
+         - TIPOGRAFIA/SPAZIATURE: ora valide per TUTTO <=620 (inclusi i telefoni
+           reali <=520), perche clamp()/legacy non abbassavano abbastanza i titoli.
+         - ECCEZIONI: i selettori sensibili all'overflow orizzontale che i media
+           query legacy <=520/<=416 gia riducono per anti-overflow (contatori
+           .stat*, hero-stat*, mascotte hero/preventivo + bubble) NON vengono
+           allargati qui: restano sotto il nested 521-620 cosi il legacy vince
+           sui telefoni stretti e il mid-band mantiene la sua calibrazione.
          ===================================================================== */
 
       /* ---------- NAVBAR: logo a SINISTRA, hamburger a DESTRA (tutto <=620) ---------- */
@@ -1532,68 +1536,77 @@
       /* hamburger spinto a destra, dopo il logo */
       .ham { order:1; margin-left:auto; display:flex; }
 
-      /* ---------- 521-620px: scala tipografica/spaziature compattate ---------- */
+      /* ---------- SCALA DECISA: valida per TUTTO <=620 (inclusi <=520) ---------- */
+      /* Sezioni: meno aria verticale (padding solo verticale: non crea overflow) */
+      .section { padding:44px 0; }
+      .stats { padding:44px 0; }
+      .services-head, .portfolio-head, .reviews-head, .contacts-head { margin-bottom:30px; }
+      .cta-head { margin-bottom:30px; }
+
+      /* Titoli di sezione ed eyebrow — piu compatti e decisi (i titoli vanno a
+         capo, nessun rischio di overflow orizzontale anche sugli ultra-stretti) */
+      .section-title { font-size:1.3rem; line-height:1.2; }
+      .tag { font-size:.64rem; letter-spacing:.1em; padding:5px 11px; margin-bottom:12px; }
+      .subtitle { font-size:.9rem; line-height:1.6; }
+
+      /* HERO — titolo piu compatto (wrap naturale, no overflow) */
+      .hero-title { font-size:1.5rem; line-height:1.15; }
+      .hero-sub { font-size:.92rem; line-height:1.6; }
+
+      /* SERVIZI */
+      .svc-body { padding:16px 16px 18px; }
+      .svc-body h3 { font-size:1rem; margin-bottom:7px; }
+      .svc-body p { font-size:.82rem; line-height:1.55; }
+      .svc-link { width:40px; height:40px; margin-top:16px; }
+
+      /* CHI SIAMO */
+      .about-list li { font-size:.85rem; gap:9px; line-height:1.5; }
+
+      /* PORTFOLIO */
+      .p-cat { font-size:.6rem; padding:3px 8px; }
+      .p-count { font-size:.58rem; padding:3px 8px; }
+      .p-hint { font-size:.76rem; }
+
+      /* RECENSIONI */
+      .review-card { padding:20px 18px; }
+      .review-txt { font-size:.82rem; line-height:1.6; }
+      .rev-name { font-size:.88rem; }
+      .rev-role { font-size:.7rem; }
+      .google-badge { font-size:.58rem; padding:3px 8px; }
+
+      /* PREVENTIVO — solo testi (geometria mascotte/bubble resta sotto il nested) */
+      .form-card-title { font-size:1.15rem; }
+      .form-card-sub { font-size:.8rem; }
+      .perks li { font-size:.84rem; gap:10px; }
+      .perks-title { font-size:.74rem; }
+
+      /* CONTATTI: titoli card non sovradimensionati (anti-overflow gia sopra, intatti) */
+      .ct-box-title { font-size:1.02rem; }
+      .ct-box-txt { font-size:.84rem; }
+      .ct-hours-head h3 { font-size:1.02rem; }
+
+      /* ---------- SOLO 521-620px: geometria sensibile all'overflow ----------
+         Questi selettori i legacy <=520/<=416 li riducono gia per anti-overflow
+         (contatori 3-col, hero-stats-card, mascotte assoluta). Qui li tocchiamo
+         SOLO nel mid-band 521-620 per mantenere la calibrazione decisa senza
+         allargarli sui telefoni reali <=520 (dove vince il legacy). */
       @media (min-width:521px) {
-        /* Sezioni: meno aria verticale (da 64-96px a 44px) */
-        .section { padding:44px 0; }
-        .stats { padding:44px 0; }
-        .services-head, .portfolio-head, .reviews-head, .contacts-head { margin-bottom:30px; }
-        .cta-head { margin-bottom:30px; }
-
-        /* Titoli di sezione ed eyebrow */
-        .section-title { font-size:1.4rem; line-height:1.22; }
-        .tag { font-size:.64rem; letter-spacing:.1em; padding:5px 11px; margin-bottom:12px; }
-        .subtitle { font-size:.9rem; line-height:1.6; }
-
-        /* HERO */
-        .hero-title { font-size:1.62rem; line-height:1.16; }
-        .hero-sub { font-size:.92rem; line-height:1.6; }
+        /* HERO: mascotte + contatori hero */
         .mascot-hero { height:140px; }            /* ~ -15% da 164px */
         .hero-stat-n { font-size:.9rem; }
         .hero-stat-l { font-size:.66rem; }
 
-        /* SERVIZI */
-        .svc-body { padding:16px 16px 18px; }
-        .svc-body h3 { font-size:1rem; margin-bottom:7px; }
-        .svc-body p { font-size:.82rem; line-height:1.55; }
-        .svc-link { width:40px; height:40px; margin-top:16px; }
-
-        /* CONTATORI (stats) */
+        /* CONTATORI (stats, griglia 3-col: sensibile all'overflow) */
         .stat { padding:28px 10px; }
         .stat-n { font-size:2rem; margin-bottom:6px; }
         .stat-l { font-size:.72rem; }
         .stat-d { font-size:.66rem; }
 
-        /* CHI SIAMO */
-        .about-list li { font-size:.85rem; gap:9px; line-height:1.5; }
-
-        /* PORTFOLIO */
-        .p-cat { font-size:.6rem; padding:3px 8px; }
-        .p-count { font-size:.58rem; padding:3px 8px; }
-        .p-hint { font-size:.76rem; }
-
-        /* RECENSIONI */
-        .review-card { padding:20px 18px; }
-        .review-txt { font-size:.82rem; line-height:1.6; }
-        .rev-name { font-size:.88rem; }
-        .rev-role { font-size:.7rem; }
-        .google-badge { font-size:.58rem; padding:3px 8px; }
-
-        /* PREVENTIVO (pannelli impilati 1-col in questo band: mascotte+bubble
-           ridimensionate in modo coerente per restare agganciate, come su <=520) */
-        .form-card-title { font-size:1.15rem; }
-        .form-card-sub { font-size:.8rem; }
-        .perks li { font-size:.84rem; gap:10px; }
-        .perks-title { font-size:.74rem; }
+        /* PREVENTIVO: mascotte + bubble agganciate (calibrate per il mid-band) */
         .cta-mascot-stage { min-height:250px; padding:92px 16px 0; }
         .cta-mascot-img { max-width:180px; margin-bottom:22px; }
         .cta-mascot-base { height:96px; }
         .speech-bubble { bottom:258px; max-width:170px; font-size:.72rem; padding:10px 14px; }
         .speech-bubble strong { font-size:.8rem; }
-
-        /* CONTATTI: titoli card non sovradimensionati (anti-overflow gia sopra, intatti) */
-        .ct-box-title { font-size:1.02rem; }
-        .ct-box-txt { font-size:.84rem; }
-        .ct-hours-head h3 { font-size:1.02rem; }
       }
     }

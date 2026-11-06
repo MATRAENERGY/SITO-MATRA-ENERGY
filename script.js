@@ -115,6 +115,24 @@
   dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.i); resetAp(); }));
   resetAp();
 
+  /* Swipe touch recensioni */
+  var cWrap = slides.length ? slides[0].parentElement : null;
+  if (cWrap) {
+    let cTX = null, cTY = null;
+    cWrap.addEventListener('touchstart', e => {
+      cTX = e.touches[0].clientX; cTY = e.touches[0].clientY;
+    }, { passive:true });
+    cWrap.addEventListener('touchend', e => {
+      if (cTX === null) return;
+      const dx = e.changedTouches[0].clientX - cTX;
+      const dy = e.changedTouches[0].clientY - cTY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        goTo(dx < 0 ? cur+1 : cur-1); resetAp();
+      }
+      cTX = cTY = null;
+    }, { passive:true });
+  }
+
   /* Form — invio a amministrazione@matraenergy.it via Web3Forms */
   document.getElementById('contactForm').addEventListener('submit', async function(e){
     e.preventDefault();

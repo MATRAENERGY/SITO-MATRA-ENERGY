@@ -215,17 +215,22 @@
     lbRender();
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
+    history.pushState({ lb:true }, '');
   }
 
-  function lbClose() {
+  function lbClose(fromPop) {
+    if (!lb.classList.contains('open')) return;
     lb.classList.remove('open');
     document.body.style.overflow = '';
+    if (!fromPop && history.state && history.state.lb) {
+      history.back();
+    }
   }
 
   document.querySelectorAll('.p-item[data-album]').forEach(el =>
     el.addEventListener('click', () => lbOpen(el.dataset.album))
   );
-  document.getElementById('lbClose').addEventListener('click', lbClose);
+  document.getElementById('lbClose').addEventListener('click', () => lbClose());
   lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
   lbPrev.addEventListener('click', () => { lbIdx--; lbRender(); });
   lbNext.addEventListener('click', () => { lbIdx++; lbRender(); });
@@ -234,6 +239,10 @@
     if (e.key === 'Escape') lbClose();
     if (e.key === 'ArrowLeft'  && !lbPrev.disabled) { lbIdx--; lbRender(); }
     if (e.key === 'ArrowRight' && !lbNext.disabled) { lbIdx++; lbRender(); }
+  });
+
+  window.addEventListener('popstate', () => {
+    if (lb.classList.contains('open')) lbClose(true);
   });
 
   /* Swipe touch lightbox */

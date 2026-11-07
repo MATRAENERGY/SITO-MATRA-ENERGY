@@ -463,12 +463,11 @@
     var pForm = document.getElementById('promoForm');
     var pOk   = document.getElementById('promoOk');
     var pErr  = document.getElementById('promoErr');
-    var SEEN  = 'matraPromoSeen';
+    var promoSubmitted = false;
     function promoOpen(){
-      if(localStorage.getItem(SEEN)) return;
+      if(promoSubmitted) return;
       if(promo.classList.contains('open')) return;
       promo.classList.add('open');
-      try{ localStorage.setItem(SEEN,'1'); }catch(e){}
       history.pushState({promo:true},'');
     }
     function promoClose(fromPop){
@@ -496,12 +495,12 @@
       try{
         var res = await fetch('https://api.web3forms.com/submit',{method:'POST', body:new FormData(pForm)});
         var data = await res.json();
-        if(data.success){ pForm.style.display='none'; pOk.classList.add('show'); }
+        if(data.success){ pForm.style.display='none'; pOk.classList.add('show'); promoSubmitted = true; }
         else { throw new Error(data.message); }
       }catch(err){
         btn.disabled=false; btn.textContent='Richiedi ora';
         pErr.classList.add('show');
       }
     });
-    setTimeout(promoOpen, 20000);
+    setTimeout(function(){ promoOpen(); setInterval(promoOpen, 120000); }, 60000);
   })();
